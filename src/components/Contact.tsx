@@ -1,6 +1,58 @@
 import { motion } from "framer-motion";
+import { useState, FormEvent } from "react";
+
+interface FormData {
+  name: string;
+  email: string;
+  message: string;
+}
 
 export const Contact = () => {
+  const [formData, setFormData] = useState<FormData>({
+    name: "",
+    email: "",
+    message: "",
+  });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+
+    try {
+      // Replace this URL with your actual backend endpoint
+      const response = await fetch('your-api-endpoint', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (response.ok) {
+        // Reset form
+        setFormData({ name: "", email: "", message: "" });
+        alert("Mensaje enviado con éxito!");
+      } else {
+        throw new Error('Error al enviar el mensaje');
+      }
+    } catch (error) {
+      alert("Hubo un error al enviar el mensaje. Por favor, intenta nuevamente.");
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
+
   return (
     <section className="section-padding bg-secondary">
       <div className="max-w-4xl mx-auto">
@@ -23,6 +75,7 @@ export const Contact = () => {
         </motion.div>
 
         <motion.form
+          onSubmit={handleSubmit}
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -34,32 +87,46 @@ export const Contact = () => {
               <label className="block text-sm font-medium mb-2">Nombre</label>
               <input
                 type="text"
+                name="name"
+                value={formData.name}
+                onChange={handleChange}
                 className="w-full px-4 py-3 rounded-lg border bg-white/50"
                 placeholder="Tu nombre"
+                required
               />
             </div>
             <div>
               <label className="block text-sm font-medium mb-2">Correo electrónico</label>
               <input
                 type="email"
+                name="email"
+                value={formData.email}
+                onChange={handleChange}
                 className="w-full px-4 py-3 rounded-lg border bg-white/50"
                 placeholder="tu@correo.com"
+                required
               />
             </div>
           </div>
           <div className="mb-6">
             <label className="block text-sm font-medium mb-2">Mensaje</label>
             <textarea
+              name="message"
+              value={formData.message}
+              onChange={handleChange}
               className="w-full px-4 py-3 rounded-lg border bg-white/50 h-32"
               placeholder="Cuéntame sobre tu proyecto"
+              required
             ></textarea>
           </div>
           <motion.button
+            type="submit"
+            disabled={isSubmitting}
             whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.98 }}
-            className="w-full px-8 py-4 bg-primary text-white rounded-lg font-medium"
+            className="w-full px-8 py-4 bg-primary text-white rounded-lg font-medium disabled:opacity-70"
           >
-            Enviar Mensaje
+            {isSubmitting ? "Enviando..." : "Enviar Mensaje"}
           </motion.button>
         </motion.form>
       </div>
