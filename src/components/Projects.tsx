@@ -23,7 +23,7 @@ const projects = [
 
 export const Projects = () => {
   return (
-    <section className="section-padding bg-secondary">
+    <section id="projects" className="section-padding bg-secondary">
       <div className="max-w-6xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
