@@ -11,22 +11,22 @@ export const Hero = () => {
         className="text-center z-10"
       >
         <span className="px-4 py-2 rounded-full bg-accent text-sm font-medium mb-6 inline-block">
-          Available for Projects
+          Disponible para Proyectos
         </span>
         <h1 className="text-4xl md:text-6xl font-bold mb-6 tracking-tight">
-          Crafting Digital Experiences
-          <br /> with Purpose
+          Creando Experiencias Digitales
+          <br /> con Propósito
         </h1>
         <p className="text-lg md:text-xl text-primary/80 max-w-2xl mx-auto mb-8">
-          I create custom websites that help businesses achieve their goals through
-          modern design and development practices.
+          Creo sitios web personalizados que ayudan a las empresas a lograr sus objetivos a través de
+          prácticas modernas de diseño y desarrollo.
         </p>
         <motion.button
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
           className="px-8 py-4 bg-primary text-white rounded-lg font-medium"
         >
-          View My Work
+          Ver mi trabajo
         </motion.button>
       </motion.div>
     </section>

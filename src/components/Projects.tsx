@@ -2,20 +2,20 @@ import { motion } from "framer-motion";
 
 const projects = [
   {
-    title: "E-commerce Platform",
-    description: "Modern online store with seamless checkout experience",
+    title: "Plataforma de comercio electrónico",
+    description: "Tienda online moderna con una experiencia de compra fluida",
     image: "https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d",
     link: "#",
   },
   {
-    title: "Company Website",
-    description: "Corporate website with custom CMS integration",
+    title: "Sitio web de empresa",
+    description: "Sitio web corporativo con integración de CMS personalizado",
     image: "https://images.unsplash.com/photo-1483058712412-4245e9b90334",
     link: "#",
   },
   {
-    title: "Web Application",
-    description: "Full-stack application with real-time features",
+    title: "Aplicación web",
+    description: "Aplicación de pila completa con funciones en tiempo real",
     image: "https://images.unsplash.com/photo-1488590528505-98d2b5aba04b",
     link: "#",
   },
@@ -33,12 +33,11 @@ export const Projects = () => {
           className="text-center mb-16"
         >
           <span className="px-4 py-2 rounded-full bg-accent text-sm font-medium mb-6 inline-block">
-            Featured Work
+            Trabajo destacado
           </span>
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">Recent Projects</h2>
+          <h2 className="text-3xl md:text-4xl font-bold mb-4">Proyectos recientes</h2>
           <p className="text-primary/80 max-w-2xl mx-auto">
-            Explore some of my latest web development projects, showcasing modern
-            design and technical excellence.
+            Explora algunos de mis últimos proyectos de desarrollo web, mostrando un diseño moderno y excelencia técnica.
           </p>
         </motion.div>
 
@@ -66,7 +65,7 @@ export const Projects = () => {
                     href={project.link}
                     className="text-primary font-medium hover:opacity-70 transition-opacity"
                   >
-                    View Project →
+                    Ver proyecto →
                   </a>
                 </div>
               </div>

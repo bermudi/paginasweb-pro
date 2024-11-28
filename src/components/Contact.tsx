@@ -12,14 +12,13 @@ export const Contact = () => {
           className="text-center mb-16"
         >
           <span className="px-4 py-2 rounded-full bg-accent text-sm font-medium mb-6 inline-block">
-            Get in Touch
+            Contáctame
           </span>
           <h2 className="text-3xl md:text-4xl font-bold mb-4">
-            Start Your Project
+            Comienza tu Proyecto
           </h2>
           <p className="text-primary/80 max-w-2xl mx-auto">
-            Ready to bring your vision to life? Let's discuss your project and
-            create something amazing together.
+            ¿Listo para dar vida a tu visión? Hablemos sobre tu proyecto y creemos algo increíble juntos.
           </p>
         </motion.div>
 
@@ -32,27 +31,27 @@ export const Contact = () => {
         >
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
             <div>
-              <label className="block text-sm font-medium mb-2">Name</label>
+              <label className="block text-sm font-medium mb-2">Nombre</label>
               <input
                 type="text"
                 className="w-full px-4 py-3 rounded-lg border bg-white/50"
-                placeholder="Your name"
+                placeholder="Tu nombre"
               />
             </div>
             <div>
-              <label className="block text-sm font-medium mb-2">Email</label>
+              <label className="block text-sm font-medium mb-2">Correo electrónico</label>
               <input
                 type="email"
                 className="w-full px-4 py-3 rounded-lg border bg-white/50"
-                placeholder="your@email.com"
+                placeholder="tu@correo.com"
               />
             </div>
           </div>
           <div className="mb-6">
-            <label className="block text-sm font-medium mb-2">Message</label>
+            <label className="block text-sm font-medium mb-2">Mensaje</label>
             <textarea
               className="w-full px-4 py-3 rounded-lg border bg-white/50 h-32"
-              placeholder="Tell me about your project"
+              placeholder="Cuéntame sobre tu proyecto"
             ></textarea>
           </div>
           <motion.button
@@ -60,7 +59,7 @@ export const Contact = () => {
             whileTap={{ scale: 0.98 }}
             className="w-full px-8 py-4 bg-primary text-white rounded-lg font-medium"
           >
-            Send Message
+            Enviar Mensaje
           </motion.button>
         </motion.form>
       </div>
