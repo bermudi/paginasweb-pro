@@ -20,13 +20,20 @@ export const Contact = () => {
     setIsSubmitting(true);
 
     try {
-      // Replace this URL with your actual backend endpoint
-      const response = await fetch('https://4878aaa.requestcatcher.com/test', {
+      const response = await fetch('https://api.staticforms.xyz/submit', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(formData),
+        body: JSON.stringify({
+          accessKey: 'ffd6c7c4-cd5e-43f2-a018-bb7b36cd217c', // Remove trailing space
+          name: formData.name,
+          email: formData.email,
+          message: formData.message,
+          subject: 'New Contact Form Submission',
+          replyTo: formData.email,
+          honeypot: '', // Add honeypot field for spam prevention
+        }),
       });
 
       if (response.ok) {
