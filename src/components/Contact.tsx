@@ -21,7 +21,7 @@ export const Contact = () => {
 
     try {
       // Replace this URL with your actual backend endpoint
-      const response = await fetch('your-api-endpoint', {
+      const response = await fetch('https://4878aaa.requestcatcher.com/test', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -54,7 +54,7 @@ export const Contact = () => {
   };
 
   return (
-    <section className="section-padding bg-secondary">
+    <section id="contact" className="section-padding bg-secondary">
       <div className="max-w-4xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}

@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Code, Laptop, Globe } from "lucide-react";
+import { Code, Laptop, Globe, Check } from "lucide-react";
 
 const services = [
   {
@@ -64,3 +64,4 @@ export const Services = () => {
     </section>
   );
 };
+

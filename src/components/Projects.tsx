@@ -17,7 +17,7 @@ const projects = [
     title: "Aplicación web",
     description: "Aplicación de pila completa con funciones en tiempo real",
     image: "https://images.unsplash.com/photo-1488590528505-98d2b5aba04b",
-    link: "#",
+    link: "https://respira.bermudi.dev/",
   },
 ];
 
