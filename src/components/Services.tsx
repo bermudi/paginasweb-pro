@@ -1,24 +1,24 @@
 import { motion } from "framer-motion";
-import { Code, Laptop, Globe } from "lucide-react";
+import { Code, Laptop, Globe, Check } from "lucide-react";
 
 const services = [
   {
     icon: <Code className="w-6 h-6" />,
-    title: "Custom Development",
+    title: "Desarrollo personalizado",
     description:
-      "Tailored web solutions built from scratch to meet your specific needs",
+      "Soluciones web a medida, creadas desde cero para satisfacer tus necesidades específicas",
   },
   {
     icon: <Laptop className="w-6 h-6" />,
-    title: "Responsive Design",
+    title: "Diseño receptivo",
     description:
-      "Beautiful, functional websites that work perfectly on all devices",
+      "Sitios web hermosos y funcionales que funcionan perfectamente en todos los dispositivos",
   },
   {
     icon: <Globe className="w-6 h-6" />,
-    title: "E-commerce Solutions",
+    title: "Soluciones de comercio electrónico",
     description:
-      "Online stores with secure payment processing and inventory management",
+      "Tiendas online con procesamiento seguro de pagos y gestión de inventario",
   },
 ];
 
@@ -34,12 +34,11 @@ export const Services = () => {
           className="text-center mb-16"
         >
           <span className="px-4 py-2 rounded-full bg-accent text-sm font-medium mb-6 inline-block">
-            Services
+            Servicios
           </span>
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">What I Offer</h2>
+          <h2 className="text-3xl md:text-4xl font-bold mb-4">Lo que ofrezco</h2>
           <p className="text-primary/80 max-w-2xl mx-auto">
-            Professional web development services tailored to your needs, with a
-            focus on performance and user experience.
+            Servicios profesionales de desarrollo web adaptados a tus necesidades, con enfoque en el rendimiento y la experiencia del usuario.
           </p>
         </motion.div>
 
@@ -65,3 +64,4 @@ export const Services = () => {
     </section>
   );
 };
+
