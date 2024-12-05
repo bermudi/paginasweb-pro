@@ -4,7 +4,22 @@ import { Search, Filter, Check, Plus, ChevronLeft, ChevronRight } from "lucide-r
 import { addons, categories, type Addon } from "../data/addons";
 import { removeAccents } from "@/utils/text"; // Updated import path
 
-const ITEMS_PER_PAGE = 6;
+const ITEMS_PER_PAGE_LANDSCAPE = 6;
+const ITEMS_PER_PAGE_PORTRAIT = 3;
+
+const useOrientation = () => {
+  const [isPortrait, setIsPortrait] = useState(window.matchMedia("(orientation: portrait)").matches);
+
+  useEffect(() => {
+    const mediaQuery = window.matchMedia("(orientation: portrait)");
+    const handleChange = (e: MediaQueryListEvent) => setIsPortrait(e.matches);
+    
+    mediaQuery.addEventListener("change", handleChange);
+    return () => mediaQuery.removeEventListener("change", handleChange);
+  }, []);
+
+  return isPortrait;
+};
 
 interface AddonsProps {
   onAddonsChange?: (addons: string[]) => void;
@@ -17,10 +32,17 @@ export const Addons = ({ onAddonsChange, id }: AddonsProps) => {
   const [selectedAddons, setSelectedAddons] = useState<string[]>([]);
   const [currentPage, setCurrentPage] = useState(1);
   const sectionRef = useRef<HTMLElement>(null);
+  const isPortrait = useOrientation();
+  const ITEMS_PER_PAGE = isPortrait ? ITEMS_PER_PAGE_PORTRAIT : ITEMS_PER_PAGE_LANDSCAPE;
 
   useEffect(() => {
     onAddonsChange?.(selectedAddons);
   }, [selectedAddons, onAddonsChange]);
+
+  useEffect(() => {
+    // Reset to first page when orientation changes to prevent empty pages
+    setCurrentPage(1);
+  }, [isPortrait]);
 
   const filteredAddons = addons.filter((addon) => {
     const normalizedSearch = removeAccents(searchQuery);
