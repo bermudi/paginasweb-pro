@@ -59,7 +59,7 @@ export const Pricing = ({ selectedPackage, onPackageSelect, onAddonsChange }: Pr
                   <p className="text-primary/80 mb-4">{plan.description}</p>
                   <div className="flex items-baseline mb-6">
                     <span className="text-4xl font-bold">${plan.price.toLocaleString()}</span>
-                    <span className="text-primary/60 ml-2">/proyecto*</span>
+                    <span className="text-primary/60 ml-2">/proyecto{index === pricingPlans.length - 1 ? '*' : ''}</span>
                   </div>
                   <div className="relative">
                     <ul className={`space-y-3 transition-opacity duration-300 ${selectedPackage === plan.name && index === pricingPlans.length - 1 && showPricingFactors ? 'opacity-0' : 'opacity-100'}`}>
