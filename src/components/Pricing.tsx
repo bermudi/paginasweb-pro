@@ -39,8 +39,8 @@ export const Pricing = ({ selectedPackage, onPackageSelect, onAddonsChange }: Pr
             <p className="text-primary/80 max-w-2xl mx-auto">
               Elige el diseño base y personalízalo con los complementos que necesites.
             </p>
-            <p className="text-primary max-w-2xl mx-auto mt-4 text-sm">
-              Cada paquete incluye: dominio .com, alojamiento web con capacidad de 2GB por un año y configuración de redirección para una cuenta de correo electrónico profesional.
+            <p className="text-primary max-w-2xl mx-auto mt-4 text-sm ">
+              <strong>Cada paquete incluye:</strong> dominio .com, alojamiento web con capacidad de 2GB por un año y configuración de redirección para una cuenta de correo electrónico profesional.
             </p>
           </motion.div>
 
@@ -59,7 +59,7 @@ export const Pricing = ({ selectedPackage, onPackageSelect, onAddonsChange }: Pr
                   <p className="text-primary/80 mb-4">{plan.description}</p>
                   <div className="flex items-baseline mb-6">
                     <span className="text-4xl font-bold">${plan.price.toLocaleString()}</span>
-                    <span className="text-primary/60 ml-2">/proyecto</span>
+                    <span className="text-primary/60 ml-2">/proyecto*</span>
                   </div>
                   <div className="relative">
                     <ul className={`space-y-3 transition-opacity duration-300 ${selectedPackage === plan.name && index === pricingPlans.length - 1 && showPricingFactors ? 'opacity-0' : 'opacity-100'}`}>
@@ -82,10 +82,10 @@ export const Pricing = ({ selectedPackage, onPackageSelect, onAddonsChange }: Pr
                           {showPricingFactors ? <ChevronUp className="w-4 h-4" /> : <ChevronDown className="w-4 h-4" />}
                           {showPricingFactors ? 'Ocultar factores de precio' : 'Ver factores de precio'}
                         </button>
-                        
+
                         <motion.div
                           initial={{ opacity: 0, y: -20 }}
-                          animate={{ 
+                          animate={{
                             opacity: showPricingFactors ? 1 : 0,
                             y: showPricingFactors ? 0 : -20,
                           }}
@@ -117,7 +117,7 @@ export const Pricing = ({ selectedPackage, onPackageSelect, onAddonsChange }: Pr
                               </li>
                               <li className="flex items-center gap-2">
                                 <div className="w-1.5 h-1.5 rounded-full bg-accent/60"></div>
-                                <span>Ausencia/Presencia de plantilla (Figma, Adobe XD, Sketch, etc)</span>
+                                <span>Ausencia/Presencia de <span className="italic">wireframes</span> (Figma, Adobe XD, Sketch, etc)</span>
                               </li>
                             </ul>
                           </div>
@@ -130,11 +130,10 @@ export const Pricing = ({ selectedPackage, onPackageSelect, onAddonsChange }: Pr
                   onClick={() => handlePackageSelect(plan.name)}
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
-                  className={`mt-auto w-full py-3 px-6 rounded-lg font-medium transition-colors ${
-                    selectedPackage === plan.name
-                      ? 'bg-accent text-black'
-                      : 'bg-primary text-white hover:bg-primary/90'
-                  }`}
+                  className={`mt-auto w-full py-3 px-6 rounded-lg font-medium transition-colors ${selectedPackage === plan.name
+                    ? 'bg-accent text-black'
+                    : 'bg-primary text-white hover:bg-primary/90'
+                    }`}
                 >
                   {selectedPackage === plan.name ? 'Paquete Seleccionado' : 'Empezar ahora'}
                 </motion.button>

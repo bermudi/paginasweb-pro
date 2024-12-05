@@ -8,41 +8,41 @@ export interface PricingPlan {
 export const pricingPlans: PricingPlan[] = [
   {
     name: "Paquete Básico",
-    description: "Ideal para emprendedores y pequeños negocios",
+    description: "Diseño web esencial y profesional",
     price: 6500,
     features: [
-      "Diseño web estático",
+      "Diseño web moderno y limpio",
+      "Paleta de colores corporativa",
+      "Tipografía profesional",
       "Diseño adaptable a dispositivos móviles",
-      "Formulario de contacto básico",
-      "Enlaces a redes sociales",
-      "Botones para WhatsApp/Messenger",
-      "Una sola landing page o sitio informativo simple"
+      "Iconografía básica",
+      "Layout simple y efectivo"
     ]
   },
   {
     name: "Paquete Profesional",
-    description: "Ideal para empresas establecidas",
+    description: "Diseño web avanzado y distintivo",
     price: 12500,
     features: [
-      "Diseño web personalizado",
-      "Optimización de velocidad de carga",
+      "Diseño web premium personalizado",
+      "Identidad visual única",
+      "Animaciones y transiciones elegantes",
       "Diseño responsivo avanzado",
-      "Múltiples secciones y páginas",
-      "Integración completa con redes sociales",
-      "Formularios personalizados"
+      "Sistema de diseño coherente",
+      "Elementos visuales personalizados"
     ]
   },
   {
     name: "Paquete Personalizado",
-    description: "Ideal para empresas que requieren diferenciación",
+    description: "Diseño web exclusivo de alta gama",
     price: 25000,
     features: [
-      "Diseño premium totalmente personalizado",
-      "Optimización SEO on-page",
-      "Alta puntuación en Google Page Speed",
-      "Copywriting profesional",
-      "Diseño UX/UI avanzado",
-      "Múltiples páginas con diseños únicos por sección"
+      "Diseño web de lujo totalmente único",
+      "Branding completo integrado",
+      "Micro-interacciones personalizadas",
+      "Diseño UX/UI premium",
+      "Ilustraciones y gráficos exclusivos",
+      "Experiencia visual inmersiva"
     ]
   }
 ];
