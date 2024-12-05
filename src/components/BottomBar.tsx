@@ -48,26 +48,26 @@ export const BottomBar = ({ selectedPackage, selectedAddons }: BottomBarProps) =
         exit={{ y: 100 }}
         className="fixed bottom-0 left-0 right-0 bg-white border-t border-accent/10 shadow-lg z-50"
       >
-        <div className="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
-          <div className="flex items-center gap-4">
-            <div className="flex items-center gap-2">
-              <span className="text-sm text-primary/60">
+        <div className="max-w-6xl mx-auto px-3 py-3 flex flex-col sm:flex-row sm:items-center justify-between gap-2 sm:gap-0">
+          <div className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-4">
+            <div className="flex flex-wrap items-center gap-2">
+              <span className="text-xs sm:text-sm text-primary/60">
                 {selectedAddons.length} complemento{selectedAddons.length !== 1 ? 's' : ''} seleccionado{selectedAddons.length !== 1 ? 's' : ''}
               </span>
               {selectedPackage && (
                 <>
-                  <span className="text-primary/60">•</span>
-                  <span className="text-sm text-primary/60">
+                  <span className="text-primary/60 hidden sm:inline">•</span>
+                  <span className="text-xs sm:text-sm text-primary/60">
                     Paquete: {selectedPackage}
                   </span>
                 </>
               )}
             </div>
           </div>
-          <div className="flex items-center gap-4">
-            <div className="text-right">
-              <span className="text-sm text-primary/60">Total:</span>
-              <span className="ml-2 text-lg font-bold">${totalPrice.toLocaleString()} MXN</span>
+          <div className="flex items-center justify-between sm:gap-4">
+            <div className="text-left sm:text-right">
+              <span className="text-xs sm:text-sm text-primary/60">Total:</span>
+              <span className="ml-2 text-base sm:text-lg font-bold">${totalPrice.toLocaleString()} MXN</span>
             </div>
             <motion.a
               onClick={() => {
@@ -78,7 +78,7 @@ export const BottomBar = ({ selectedPackage, selectedAddons }: BottomBarProps) =
               }}
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
-              className="bg-accent text-black px-6 py-2 rounded-lg font-medium cursor-pointer"
+              className="bg-accent text-black px-4 sm:px-6 py-2 rounded-lg text-sm sm:text-base font-medium cursor-pointer whitespace-nowrap"
             >
               Continuar
             </motion.a>
