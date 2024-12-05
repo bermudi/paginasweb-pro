@@ -7,27 +7,54 @@ export type Addon = {
 };
 
 export const categories = [
-  "Gestión de Contenido",
-  "Comunidad y Social",
-  "Comercio Electrónico",
-  "Gestión Empresarial",
   "Atención al Cliente",
-  "Educativo",
-  "Gestión de Medios",
+  "Comercio Electrónico",
   "Comunicación",
+  "Comunidad y Social",
+  "Educativo",
+  "Gestión de Contenido",
+  "Gestión de Medios",
+  "Gestión Empresarial",
   "Soluciones Especializadas",
-  "Utilidades y Herramientas"
+  "Utilidades y Herramientas",
 ] as const;
+
 
 export const addons: Addon[] = [
   // Gestión de Contenido
+  {
+    name: "Paquete de Sitio Web Estático",
+    category: "Gestión de Contenido",
+    price: 2500,
+    description: "Solución simple y eficiente para sitios web estáticos",
+    features: [
+      "Gestión simple de 2 a 6 páginas",
+      "Optimización básica de SEO",
+      "Capacidad de respuesta móvil",
+      "Formulario de contacto simple"
+    ]
+  },
+  {
+    name: "Paquete de Sitio Web Dinámico",
+    category: "Gestión de Contenido",
+    price: 8500,
+    description: "Solución completa para sitios web dinámicos",
+    features: [
+      "Gestión avanzada de contenido",
+      "Roles y permisos de usuario",
+      "Plantillas y temas personalizados",
+      "Soporte multilingüe",
+      "Integración con servicios de terceros"
+    ]
+  },
   {
     name: "Paquete Básico de Blog",
     category: "Gestión de Contenido",
     price: 3500,
     description: "Plataforma profesional de blogs",
     features: [
-      "Gestión y programación de publicaciones",
+      "Gestión de publicaciones",
+      "Editor de contenido",
       "Sistema de comentarios",
       "Categorías y etiquetas",
       "Perfiles de autor",
@@ -42,35 +69,11 @@ export const addons: Addon[] = [
     features: [
       "Todas las características del Paquete Básico de Blog",
       "Gestión de múltiples autores",
+      "Programación de publicaciones",
       "Tipos de publicaciones personalizadas",
       "Herramientas avanzadas de SEO",
       "Integración con redes sociales",
       "Panel de análisis"
-    ]
-  },
-  {
-    name: "Paquete de Sitio Web Estático",
-    category: "Gestión de Contenido",
-    price: 4500,
-    description: "Solución simple y eficiente para sitios web estáticos",
-    features: [
-      "Gestión simple de páginas",
-      "Optimización básica de SEO",
-      "Capacidad de respuesta móvil",
-      "Formulario de contacto"
-    ]
-  },
-  {
-    name: "Paquete de Sitio Web Dinámico",
-    category: "Gestión de Contenido",
-    price: 8500,
-    description: "Solución completa para sitios web dinámicos",
-    features: [
-      "Gestión avanzada de contenido",
-      "Roles y permisos de usuario",
-      "Plantillas y temas personalizados",
-      "Soporte multilingüe",
-      "Integración con servicios de terceros"
     ]
   },
   {

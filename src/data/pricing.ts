@@ -7,7 +7,7 @@ export interface PricingPlan {
 
 export const pricingPlans: PricingPlan[] = [
   {
-    name: "Paquete Básico",
+    name: "Diseño Web Básico",
     description: "Diseño web esencial y profesional",
     price: 6500,
     features: [
@@ -20,7 +20,7 @@ export const pricingPlans: PricingPlan[] = [
     ]
   },
   {
-    name: "Paquete Profesional",
+    name: "Diseño Web Avanzado",
     description: "Diseño web avanzado y distintivo",
     price: 12500,
     features: [
@@ -33,7 +33,7 @@ export const pricingPlans: PricingPlan[] = [
     ]
   },
   {
-    name: "Paquete Personalizado",
+    name: "Diseño web Inmersivo",
     description: "Diseño web exclusivo de alta gama",
     price: 25000,
     features: [
