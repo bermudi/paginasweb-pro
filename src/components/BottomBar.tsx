@@ -16,7 +16,7 @@ export const BottomBar = ({ selectedPackage, selectedAddons }: BottomBarProps) =
       ([entry]) => {
         setIsContactVisible(entry.isIntersecting);
       },
-      { threshold: 0.5 }
+      { threshold: 0.3 }
     );
 
     const contactSection = document.getElementById('contact');
