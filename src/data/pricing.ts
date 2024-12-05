@@ -5,6 +5,7 @@ export interface PricingPlan {
   features: string[];
 }
 
+
 export const pricingPlans: PricingPlan[] = [
   {
     name: "Diseño Web Básico",
