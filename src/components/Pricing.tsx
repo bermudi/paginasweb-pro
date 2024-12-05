@@ -39,8 +39,8 @@ export const Pricing = ({ selectedPackage, onPackageSelect, onAddonsChange }: Pr
             <p className="text-primary/80 max-w-2xl mx-auto">
               Elige el diseño base y personalízalo con los complementos que necesites.
             </p>
-            <p className="text-primary/80 max-w-2xl mx-auto mt-4 text-sm">
-              Todos los paquetes incluyen dominio.com + hosting + redireccionamiento basico de una cuenta de correo
+            <p className="text-primary max-w-2xl mx-auto mt-4 text-sm">
+              Cada paquete incluye: dominio .com, alojamiento web con capacidad de 2GB por un año y configuración de redirección para una cuenta de correo electrónico profesional.
             </p>
           </motion.div>
 
