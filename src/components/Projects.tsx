@@ -50,23 +50,25 @@ export const Projects = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: index * 0.2 }}
             >
-              <div className="group relative overflow-hidden rounded-2xl glass h-full">
-                <div className="aspect-video overflow-hidden">
+              <div className="group relative overflow-hidden rounded-2xl glass h-full flex flex-col">
+                <a href={project.link} className="block aspect-video overflow-hidden">
                   <img
                     src={project.image}
                     alt={project.title}
                     className="object-cover w-full h-full transform group-hover:scale-105 transition-transform duration-300"
                   />
-                </div>
-                <div className="p-6 flex flex-col flex-grow">
+                </a>
+                <div className="p-6 flex flex-col flex-1">
                   <h3 className="text-xl font-semibold mb-2">{project.title}</h3>
-                  <p className="text-primary/80 mb-4 flex-grow">{project.description}</p>
-                  <a
-                    href={project.link}
-                    className="text-primary font-medium hover:opacity-70 transition-opacity"
-                  >
-                    Ver proyecto →
-                  </a>
+                  <p className="text-primary/80 mb-4">{project.description}</p>
+                  <div className="mt-auto">
+                    <a
+                      href={project.link}
+                      className="text-primary font-medium hover:opacity-70 transition-opacity inline-block"
+                    >
+                      Ver proyecto →
+                    </a>
+                  </div>
                 </div>
               </div>
             </motion.div>
