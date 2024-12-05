@@ -1,21 +1,36 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Search, Filter, Check, Plus, ChevronLeft, ChevronRight } from "lucide-react";
 import { addons, categories, type Addon } from "../data/addons";
+import { removeAccents } from "@/utils/text"; // Updated import path
 
 const ITEMS_PER_PAGE = 6;
 
-export const Addons = () => {
+interface AddonsProps {
+  onAddonsChange?: (addons: string[]) => void;
+  id?: string;
+}
+
+export const Addons = ({ onAddonsChange, id }: AddonsProps) => {
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
   const [selectedAddons, setSelectedAddons] = useState<string[]>([]);
   const [currentPage, setCurrentPage] = useState(1);
   const sectionRef = useRef<HTMLElement>(null);
 
+  useEffect(() => {
+    onAddonsChange?.(selectedAddons);
+  }, [selectedAddons, onAddonsChange]);
+
   const filteredAddons = addons.filter((addon) => {
-    const matchesSearch = addon.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      addon.description.toLowerCase().includes(searchQuery.toLowerCase());
+    const normalizedSearch = removeAccents(searchQuery);
+    const normalizedName = removeAccents(addon.name);
+    const normalizedDescription = removeAccents(addon.description);
+
+    const matchesSearch = normalizedName.includes(normalizedSearch) ||
+      normalizedDescription.includes(normalizedSearch);
     const matchesCategory = !selectedCategory || addon.category === selectedCategory;
+
     return matchesSearch && matchesCategory;
   });
 
@@ -48,7 +63,7 @@ export const Addons = () => {
   };
 
   return (
-    <section ref={sectionRef} className="py-16 bg-accent/5">
+    <section id={id} ref={sectionRef} className="py-16 bg-accent/5">
       <div className="max-w-6xl mx-auto px-4">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -122,32 +137,41 @@ export const Addons = () => {
                         {addon.category}
                       </span>
                     </div>
-                    <h3 className="text-xl font-bold mb-2">{addon.name}</h3>
-                    <p className="text-primary/70 text-sm mb-4">{addon.description}</p>
-                    <div className="text-2xl font-bold mb-4">
-                      ${addon.price.toLocaleString()}
-                      <span className="text-sm font-normal text-primary/60 ml-1">MXN</span>
+                    <h3 className="text-xl font-semibold mb-2">{addon.name}</h3>
+                    <p className="text-primary/80 mb-4">{addon.description}</p>
+                    <div className="flex items-baseline mb-4">
+                      <span className="text-2xl font-bold">${addon.price.toLocaleString()}</span>
+                      <span className="text-primary/60 ml-2">/complemento</span>
                     </div>
                     <ul className="space-y-2 mb-6">
-                      {addon.features.map((feature, index) => (
-                        <li key={index} className="flex items-center text-sm">
-                          <Check className="w-4 h-4 text-green-500 mr-2 flex-shrink-0" />
+                      {addon.features.map((feature, featureIndex) => (
+                        <li key={featureIndex} className="flex items-center">
+                          <Check className="w-4 h-4 text-green-500 mr-2" />
                           <span className="text-primary/80">{feature}</span>
                         </li>
                       ))}
                     </ul>
                     <motion.button
+                      onClick={() => handleAddonToggle(addon.name)}
                       whileHover={{ scale: 1.02 }}
                       whileTap={{ scale: 0.98 }}
-                      onClick={() => handleAddonToggle(addon.name)}
-                      className={`w-full py-2 px-4 rounded-lg flex items-center justify-center gap-2 transition-colors ${
+                      className={`w-full py-2 px-4 rounded-lg font-medium flex items-center justify-center gap-2 ${
                         selectedAddons.includes(addon.name)
-                          ? "bg-green-500 text-white"
-                          : "bg-accent hover:bg-accent/90 text-black"
+                          ? 'bg-accent text-black'
+                          : 'bg-primary text-white hover:bg-primary/90'
                       }`}
                     >
-                      <Plus className="w-4 h-4" />
-                      {selectedAddons.includes(addon.name) ? "Seleccionado" : "Agregar"}
+                      {selectedAddons.includes(addon.name) ? (
+                        <>
+                          <Check className="w-4 h-4" />
+                          Seleccionado
+                        </>
+                      ) : (
+                        <>
+                          <Plus className="w-4 h-4" />
+                          Agregar
+                        </>
+                      )}
                     </motion.button>
                   </motion.div>
                 ))}
@@ -176,39 +200,6 @@ export const Addons = () => {
               </div>
             )}
           </>
-        )}
-
-        {selectedAddons.length > 0 && (
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="fixed bottom-0 left-0 right-0 bg-white border-t shadow-lg p-4 z-50"
-          >
-            <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
-              <div className="text-center md:text-left">
-                <span className="font-medium block md:inline">
-                  {selectedAddons.length} complemento{selectedAddons.length !== 1 ? "s" : ""} seleccionado{selectedAddons.length !== 1 ? "s" : ""}
-                </span>
-                <span className="block md:inline md:ml-4 font-bold">
-                  Total: ${addons
-                    .filter(addon => selectedAddons.includes(addon.name))
-                    .reduce((sum, addon) => sum + addon.price, 0)
-                    .toLocaleString()} MXN
-                </span>
-              </div>
-              <button
-                onClick={() => {
-                  const element = document.getElementById('contact');
-                  if (element) {
-                    element.scrollIntoView({ behavior: 'smooth' });
-                  }
-                }}
-                className="w-full md:w-auto bg-accent hover:bg-accent/90 text-black py-2 px-6 rounded-lg font-medium transition-colors"
-              >
-                Continuar
-              </button>
-            </div>
-          </motion.div>
         )}
       </div>
     </section>

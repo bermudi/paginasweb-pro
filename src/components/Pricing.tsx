@@ -1,52 +1,18 @@
 import { motion } from "framer-motion";
 import { Check } from "lucide-react";
 import { Addons } from "./Addons";
+import { pricingPlans } from "../data/pricing";
 
-const pricingPlans = [
-  {
-    name: "Diseño Web Básico",
-    price: "7500",
-    description: "Diseño funcional y efectivo",
-    features: [
-      "Diseño web responsive básico",
-      "Paleta de colores armoniosa",
-      "Tipografía web estándar",
-      "Elementos visuales básicos",
-      "Estructura limpia y organizada",
-    ],
-  },
-  {
-    name: "Diseño Web Profesional",
-    price: "20,000",
-    description: "Diseño moderno y atractivo",
-    features: [
-      "Diseño web responsive avanzado",
-      "Paleta de colores personalizada",
-      "Tipografía premium seleccionada",
-      "Animaciones y transiciones suaves",
-      "Elementos visuales profesionales",
-      "Interfaz de usuario moderna",
-    ],
-  },
-  {
-    name: "Diseño Web Personalizado",
-    price: "50,000",
-    description: "Diseño único y exclusivo",
-    features: [
-      "Diseño web responsive premium",
-      "Identidad visual única",
-      "Tipografía y estilos exclusivos",
-      "Animaciones personalizadas",
-      "Elementos visuales de alta calidad",
-      "Experiencia de usuario excepcional",
-      "Diseño totalmente a medida",
-    ],
-  },
-];
+interface PricingProps {
+  selectedPackage: string;
+  onPackageSelect: (packageName: string) => void;
+  onAddonsChange: (addons: string[]) => void;
+}
 
-export const Pricing = () => {
-  const scrollToContact = () => {
-    const element = document.getElementById('contact');
+export const Pricing = ({ selectedPackage, onPackageSelect, onAddonsChange }: PricingProps) => {
+  const handlePackageSelect = (packageName: string) => {
+    onPackageSelect(packageName);
+    const element = document.getElementById('addons');
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' });
     }
@@ -80,13 +46,13 @@ export const Pricing = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: index * 0.2 }}
-                className="glass rounded-2xl p-8 flex flex-col"
+                className={`glass rounded-2xl p-8 flex flex-col ${selectedPackage === plan.name ? 'ring-2 ring-accent' : ''}`}
               >
                 <div className="mb-6">
                   <h3 className="text-2xl font-bold mb-2">{plan.name}</h3>
                   <p className="text-primary/80 mb-4">{plan.description}</p>
                   <div className="flex items-baseline mb-6">
-                    <span className="text-4xl font-bold">${plan.price}</span>
+                    <span className="text-4xl font-bold">${plan.price.toLocaleString()}</span>
                     <span className="text-primary/60 ml-2">/proyecto</span>
                   </div>
                   <ul className="space-y-3">
@@ -99,19 +65,23 @@ export const Pricing = () => {
                   </ul>
                 </div>
                 <motion.button
-                  onClick={scrollToContact}
+                  onClick={() => handlePackageSelect(plan.name)}
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
-                  className="mt-auto w-full bg-accent hover:bg-accent/90 text-black py-3 px-6 rounded-lg font-medium transition-colors"
+                  className={`mt-auto w-full py-3 px-6 rounded-lg font-medium transition-colors ${
+                    selectedPackage === plan.name
+                      ? 'bg-accent text-black'
+                      : 'bg-primary text-white hover:bg-primary/90'
+                  }`}
                 >
-                  Empezar ahora
+                  {selectedPackage === plan.name ? 'Paquete Seleccionado' : 'Empezar ahora'}
                 </motion.button>
               </motion.div>
             ))}
           </div>
         </div>
       </section>
-      <Addons />
+      <Addons id="addons" onAddonsChange={onAddonsChange} />
     </>
   );
 };
