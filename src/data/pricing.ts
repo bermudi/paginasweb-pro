@@ -7,44 +7,42 @@ export interface PricingPlan {
 
 export const pricingPlans: PricingPlan[] = [
   {
-    name: "Diseño Web Básico",
-    description: "Perfecto para pequeños negocios que buscan establecer su presencia en línea",
-    price: 8500,
+    name: "Paquete Básico",
+    description: "Ideal para emprendedores y pequeños negocios",
+    price: 6500,
     features: [
-      "Diseño web responsive",
-      "Hasta 5 secciones",
-      "Formulario de contacto",
-      "Optimización SEO básica",
-      "Integración con redes sociales",
-      "Hosting por 1 año"
+      "Diseño web estático",
+      "Diseño adaptable a dispositivos móviles",
+      "Formulario de contacto básico",
+      "Enlaces a redes sociales",
+      "Botones para WhatsApp/Messenger",
+      "Una sola landing page o sitio informativo simple"
     ]
   },
   {
-    name: "Diseño Web Pro",
-    description: "Ideal para negocios en crecimiento que necesitan más funcionalidades",
-    price: 15000,
+    name: "Paquete Profesional",
+    description: "Ideal para empresas establecidas",
+    price: 12500,
     features: [
-      "Todo lo del plan Básico",
-      "Hasta 10 secciones",
-      "Blog integrado",
-      "Galería de imágenes",
-      "Optimización SEO avanzada",
-      "Panel de administración",
-      "Soporte prioritario"
+      "Diseño web personalizado",
+      "Optimización de velocidad de carga",
+      "Diseño responsivo avanzado",
+      "Múltiples secciones y páginas",
+      "Integración completa con redes sociales",
+      "Formularios personalizados"
     ]
   },
   {
-    name: "Diseño Web Premium",
-    description: "Solución completa para empresas que requieren máximo rendimiento",
+    name: "Paquete Personalizado",
+    description: "Ideal para empresas que requieren diferenciación",
     price: 25000,
     features: [
-      "Todo lo del plan Pro",
-      "Secciones ilimitadas",
-      "E-commerce integrado",
-      "Sistema de reservas",
-      "Análisis de tráfico",
-      "Optimización de velocidad",
-      "Mantenimiento mensual"
+      "Diseño premium totalmente personalizado",
+      "Optimización SEO on-page",
+      "Alta puntuación en Google Page Speed",
+      "Copywriting profesional",
+      "Diseño UX/UI avanzado",
+      "Múltiples páginas con diseños únicos por sección"
     ]
   }
 ];

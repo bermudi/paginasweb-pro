@@ -44,17 +44,17 @@ export const Contact = ({ selectedPackage = "", selectedAddons = [] }: ContactPr
           accessKey: 'ffd6c7c4-cd5e-43f2-a018-bb7b36cd217c',
           name: formData.name,
           email: formData.email,
-          message: `
+          message: `${selectedPackage && selectedPackage !== "" ? `
 Package: ${selectedPackage}
 Price: $${pricingPlans.find(p => p.name === selectedPackage)?.price.toLocaleString()} MXN
 
-Addons:
+${selectedAddons.length > 0 ? `Addons:
 ${selectedAddons.map(addon => {
   const addonData = addons.find(a => a.name === addon);
   return `- ${addon}: $${addonData?.price.toLocaleString()} MXN`;
 }).join('\n')}
 
-Total: $${(
+` : ''}Total: $${(
   (pricingPlans.find(p => p.name === selectedPackage)?.price || 0) +
   selectedAddons.reduce((total, addonName) => {
     const addon = addons.find(a => a.name === addonName);
@@ -62,7 +62,7 @@ Total: $${(
   }, 0)
 ).toLocaleString()} MXN
 
-Message:
+` : ''}Message:
 ${formData.message}`,
           subject: `New Project Request - ${selectedPackage}`,
           replyTo: formData.email,
@@ -112,14 +112,14 @@ ${formData.message}`,
           </p>
         </motion.div>
 
-        {(selectedPackage || selectedAddons.length) && (
+        {(selectedPackage && selectedPackage !== "" || selectedAddons.length > 0) && (
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             className="mb-8 p-6 rounded-xl bg-accent/5 border border-accent/10"
           >
             <h3 className="text-xl font-semibold mb-4">Tu selección:</h3>
-            {selectedPackage && (
+            {selectedPackage && selectedPackage !== "" && (
               <div className="mb-4">
                 <div className="flex items-center justify-between mb-2">
                   <span className="font-medium">Paquete seleccionado:</span>
@@ -155,20 +155,22 @@ ${formData.message}`,
                 </div>
               </div>
             )}
-            <div className="mt-4 pt-4 border-t border-accent/10">
-              <div className="flex items-center justify-between">
-                <span className="font-semibold">Total:</span>
-                <span className="font-bold text-lg">
-                  ${(
-                    (pricingPlans.find(p => p.name === selectedPackage)?.price || 0) +
-                    selectedAddons.reduce((total, addonName) => {
-                      const addon = addons.find(a => a.name === addonName);
-                      return total + (addon?.price || 0);
-                    }, 0)
-                  ).toLocaleString()} MXN
-                </span>
+            {(selectedPackage && selectedPackage !== "" || selectedAddons.length > 0) && (
+              <div className="mt-4 pt-4 border-t border-accent/10">
+                <div className="flex items-center justify-between">
+                  <span className="font-semibold">Total:</span>
+                  <span className="font-bold text-lg">
+                    ${(
+                      (pricingPlans.find(p => p.name === selectedPackage)?.price || 0) +
+                      selectedAddons.reduce((total, addonName) => {
+                        const addon = addons.find(a => a.name === addonName);
+                        return total + (addon?.price || 0);
+                      }, 0)
+                    ).toLocaleString()} MXN
+                  </span>
+                </div>
               </div>
-            </div>
+            )}
           </motion.div>
         )}
 
