@@ -121,7 +121,7 @@ export const Addons = ({ onAddonsChange, id }: AddonsProps) => {
           </div>
         ) : (
           <>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 auto-rows-fr">
               <AnimatePresence mode="wait">
                 {paginatedAddons.map((addon) => (
                   <motion.div
@@ -130,7 +130,7 @@ export const Addons = ({ onAddonsChange, id }: AddonsProps) => {
                     animate={{ opacity: 1, scale: 1 }}
                     exit={{ opacity: 0, scale: 0.95 }}
                     transition={{ duration: 0.2 }}
-                    className="glass rounded-xl p-6 relative overflow-hidden"
+                    className="glass rounded-xl p-6 relative overflow-hidden flex flex-col"
                   >
                     <div className="mb-4">
                       <span className="text-xs font-medium px-2 py-1 rounded-full bg-accent/10">
@@ -143,7 +143,7 @@ export const Addons = ({ onAddonsChange, id }: AddonsProps) => {
                       <span className="text-2xl font-bold">${addon.price.toLocaleString()}</span>
                       <span className="text-primary/60 ml-2">/complemento</span>
                     </div>
-                    <ul className="space-y-2 mb-6">
+                    <ul className="space-y-2 flex-grow pb-4">
                       {addon.features.map((feature, featureIndex) => (
                         <li key={featureIndex} className="flex items-center">
                           <Check className="w-4 h-4 text-green-500 mr-2" />
