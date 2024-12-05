@@ -44,8 +44,27 @@ export const Contact = ({ selectedPackage = "", selectedAddons = [] }: ContactPr
           accessKey: 'ffd6c7c4-cd5e-43f2-a018-bb7b36cd217c',
           name: formData.name,
           email: formData.email,
-          message: formData.message,
-          subject: 'New Contact Form Submission',
+          message: `
+Package: ${selectedPackage}
+Price: $${pricingPlans.find(p => p.name === selectedPackage)?.price.toLocaleString()} MXN
+
+Addons:
+${selectedAddons.map(addon => {
+  const addonData = addons.find(a => a.name === addon);
+  return `- ${addon}: $${addonData?.price.toLocaleString()} MXN`;
+}).join('\n')}
+
+Total: $${(
+  (pricingPlans.find(p => p.name === selectedPackage)?.price || 0) +
+  selectedAddons.reduce((total, addonName) => {
+    const addon = addons.find(a => a.name === addonName);
+    return total + (addon?.price || 0);
+  }, 0)
+).toLocaleString()} MXN
+
+Message:
+${formData.message}`,
+          subject: `New Project Request - ${selectedPackage}`,
           replyTo: formData.email,
           honeypot: formData.honeypot,
         }),

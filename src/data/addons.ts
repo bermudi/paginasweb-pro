@@ -7,7 +7,6 @@ export type Addon = {
 };
 
 export const categories = [
-  "Base",
   "Blog y Contenido",
   "Comunidad",
   "E-Commerce",
@@ -19,13 +18,6 @@ export const categories = [
 ] as const;
 
 export const addons: Addon[] = [
-  {
-    name: "Paquete Base",
-    category: "Base",
-    price: 7500,
-    description: "Funcionalidades esenciales para cualquier sitio web",
-    features: ["Hosting básico", "Dominio por 1 año", "SSL", "Configuración inicial"]
-  },
   {
     name: "Paquete Básico de Blog",
     category: "Blog y Contenido",
