@@ -393,6 +393,35 @@ export const addons: Addon[] = [
   },
   // Comunicación
   {
+    name: "Paquete de administracíon de Correo Electrónico",
+    category: "Comunicación",
+    price: 1000,
+    description: "Configuración y administración de correo electrónico en Zoho/Google Workspace/Outlook",
+    features: [
+      "Tú pagas tu suscripción anual",
+      "Nosotros administramos el servico",
+      "Uso de dominios personalizados",
+      "Aplicación móvil de correo electrónico",
+      "Sincronización de calendarios",
+      "Calendarios grupales",
+      "Contactos y grupos"
+    ]
+  },
+  {
+    name: "Paquete de Correo Electrónico Avanzado",
+    category: "Comunicación",
+    price: 9500,
+    description: "Servicio de correo electrónico privado y personalizado",
+    features: [
+      "100 GB de almacenamiento de correo electrónico",
+      "Servidor privado de correo",
+      "Control total de tus datos",
+      "Cuentas infinitas* de correo",
+      "Uso de multiples dominios personalizados",
+      "Aplicación móvil de correo electrónico",
+    ]
+  },
+  {
     name: "Paquete de Marketing por Correo Electrónico",
     category: "Comunicación",
     price: 8500,
