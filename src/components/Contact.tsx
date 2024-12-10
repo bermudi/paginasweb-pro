@@ -94,29 +94,35 @@ ${formData.message}`,
   };
 
   return (
-    <section id="contact" className="section-padding">
+    <section 
+      id="contact" 
+      className="section-padding"
+      aria-label="Formulario de contacto"
+    >
       <div className="max-w-4xl mx-auto">
-        <motion.div
+        <motion.header
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <span className="px-4 py-2 rounded-full bg-accent text-sm font-medium mb-6 inline-block">
+          <span className="px-4 py-2 rounded-full bg-accent text-sm font-medium mb-6 inline-block" role="text">
             Contáctame
           </span>
           <h2 className="text-3xl md:text-4xl font-bold mb-4">¿Listo para empezar?</h2>
           <p className="text-primary/80 max-w-2xl mx-auto">
             Cuéntanos sobre tu proyecto y nos pondremos en contacto contigo lo antes posible.
           </p>
-        </motion.div>
+        </motion.header>
 
         {(selectedPackage && selectedPackage !== "" || selectedAddons.length > 0) && (
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             className="mb-8 p-6 rounded-xl bg-accent/5 border border-accent/10"
+            role="region"
+            aria-label="Resumen de selección"
           >
             <h3 className="text-xl font-semibold mb-4">Tu selección:</h3>
             {selectedPackage && selectedPackage !== "" && (
@@ -181,43 +187,53 @@ ${formData.message}`,
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.2 }}
           className="space-y-6"
+          aria-label="Formulario de contacto"
+          role="form"
         >
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
             <div>
-              <label className="block text-sm font-medium mb-2">Nombre</label>
+              <label htmlFor="name" className="block text-sm font-medium mb-2">Nombre</label>
               <input
                 type="text"
+                id="name"
                 name="name"
                 value={formData.name}
                 onChange={handleChange}
                 className="w-full px-4 py-3 rounded-lg border bg-white/50"
                 placeholder="Tu nombre"
                 required
+                aria-required="true"
+                autoComplete="name"
               />
             </div>
             <div>
-              <label className="block text-sm font-medium mb-2">Correo electrónico</label>
+              <label htmlFor="email" className="block text-sm font-medium mb-2">Correo electrónico</label>
               <input
                 type="email"
+                id="email"
                 name="email"
                 value={formData.email}
                 onChange={handleChange}
                 className="w-full px-4 py-3 rounded-lg border bg-white/50"
                 placeholder="tu@correo.com"
                 required
+                aria-required="true"
+                autoComplete="email"
               />
             </div>
           </div>
 
           <div className="mb-6">
-            <label className="block text-sm font-medium mb-2">Mensaje</label>
+            <label htmlFor="message" className="block text-sm font-medium mb-2">Mensaje</label>
             <textarea
+              id="message"
               name="message"
               value={formData.message}
               onChange={handleChange}
               className="w-full px-4 py-3 rounded-lg border bg-white/50 h-32"
               placeholder="Cuéntame más sobre tu proyecto y cualquier requisito específico"
               required
+              aria-required="true"
             ></textarea>
           </div>
           <motion.button
@@ -226,8 +242,12 @@ ${formData.message}`,
             whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.98 }}
             className="w-full px-8 py-4 bg-primary text-white rounded-lg font-medium disabled:opacity-70"
+            aria-busy={isSubmitting}
           >
-            {isSubmitting ? "Enviando..." : "Enviar Mensaje"}
+            <span className="flex items-center justify-center gap-2">
+              {isSubmitting ? "Enviando..." : "Enviar Mensaje"}
+              {!isSubmitting && <Send className="w-4 h-4" aria-hidden="true" />}
+            </span>
           </motion.button>
         </motion.form>
       </div>

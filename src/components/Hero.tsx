@@ -2,7 +2,11 @@ import { motion } from "framer-motion";
 
 export const Hero = () => {
   return (
-    <section className="min-h-screen flex items-center justify-center section-padding relative overflow-hidden">
+    <section 
+      className="min-h-screen flex items-center justify-center section-padding relative overflow-hidden"
+      aria-label="Introducción principal"
+      role="banner"
+    >
       {/* Fondo degradado */}
       <div className="absolute inset-0 bg-gradient-to-br from-accent via-background to-muted" />
       
@@ -68,9 +72,12 @@ export const Hero = () => {
             <div className="absolute inset-0 bg-gradient-to-tr from-accent/20 to-transparent rounded-2xl" />
             <img
               src="images/hero03.jpg"
-              alt="Espacio de trabajo de codificación"
+              alt="Espacio de trabajo de desarrollo web profesional con múltiples pantallas y equipo moderno"
               className="rounded-2xl shadow-xl w-full object-cover"
               style={{ maxHeight: "600px" }}
+              loading="eager"
+              width="800"
+              height="600"
             />
           </div>
         </motion.div>

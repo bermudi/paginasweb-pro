@@ -48,49 +48,60 @@ export const Pricing = ({ selectedPackage, onPackageSelect, onAddonsChange }: Pr
 
   return (
     <>
-      <section className="section-padding bg-accent/5">
+      <section 
+        className="section-padding bg-accent/5"
+        aria-label="Planes de precios"
+      >
         <div className="max-w-6xl mx-auto">
-          <motion.div
+          <motion.header
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
             className="text-center mb-16"
           >
-            <span className="px-4 py-2 rounded-full bg-accent text-sm font-medium mb-6 inline-block">
+            <span className="px-4 py-2 rounded-full bg-accent text-sm font-medium mb-6 inline-block" role="text">
               Precios
             </span>
             <h2 className="text-3xl md:text-4xl font-bold mb-4">Diseño que se adapta a ti</h2>
             <p className="text-primary/80 max-w-2xl mx-auto">
               Elige el diseño base y personalízalo con los complementos que necesites.
             </p>
-            <p className="text-primary max-w-2xl mx-auto mt-4 text-sm ">
+            <p className="text-primary max-w-2xl mx-auto mt-4 text-sm">
               <strong>Cada paquete incluye:</strong> dominio .com, alojamiento web con capacidad de 2GB por un año y configuración de redirección para una cuenta de correo electrónico profesional.
             </p>
-          </motion.div>
+          </motion.header>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div 
+            className="grid grid-cols-1 md:grid-cols-3 gap-8"
+            role="list"
+            aria-label="Lista de planes de precios"
+          >
             {pricingPlans.map((plan, index) => (
-              <motion.div
+              <motion.article
                 key={index}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: index * 0.2 }}
                 className={`glass rounded-2xl p-8 flex flex-col ${selectedPackage === plan.name ? 'ring-2 ring-accent' : ''}`}
+                role="listitem"
               >
                 <div className="mb-6">
                   <h3 className="text-2xl font-bold mb-2">{plan.name}</h3>
                   <p className="text-primary/80 mb-4">{plan.description}</p>
-                  <div className="flex items-baseline mb-6">
+                  <div className="flex items-baseline mb-6" aria-label={`Precio: ${plan.price.toLocaleString()} pesos por proyecto`}>
                     <span className="text-4xl font-bold">${plan.price.toLocaleString()}</span>
                     <span className="text-primary/60 ml-2">/proyecto{index === pricingPlans.length - 1 ? '*' : ''}</span>
                   </div>
                   <div className="relative">
-                    <ul className={`space-y-3 transition-opacity duration-300 ${selectedPackage === plan.name && index === pricingPlans.length - 1 && showPricingFactors ? 'opacity-0' : 'opacity-100'}`}>
+                    <ul 
+                      className={`space-y-3 transition-opacity duration-300 ${selectedPackage === plan.name && index === pricingPlans.length - 1 && showPricingFactors ? 'opacity-0' : 'opacity-100'}`}
+                      aria-label={`Características del plan ${plan.name}`}
+                    >
                       {plan.features.map((feature, featureIndex) => (
                         <li key={featureIndex} className="flex items-center">
-                          <Check className="w-5 h-5 text-green-500 mr-2" />
+                          <Check className="w-5 h-5 text-green-500 mr-2" aria-hidden="true" />
                           <span className="text-primary/80">{feature}</span>
                         </li>
                       ))}
@@ -159,10 +170,12 @@ export const Pricing = ({ selectedPackage, onPackageSelect, onAddonsChange }: Pr
                     ? 'bg-accent text-black'
                     : 'bg-primary text-white hover:bg-primary/90'
                     }`}
+                  aria-pressed={selectedPackage === plan.name}
+                  aria-label={selectedPackage === plan.name ? 'Paquete seleccionado' : `Seleccionar paquete ${plan.name}`}
                 >
                   {selectedPackage === plan.name ? 'Paquete Seleccionado' : 'Empezar ahora'}
                 </motion.button>
-              </motion.div>
+              </motion.article>
             ))}
           </div>
         </div>
