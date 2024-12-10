@@ -86,11 +86,17 @@ export const Projects = () => {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <span className="px-4 py-2 rounded-full bg-accent text-sm font-medium mb-6 inline-block" role="text">
+          <span 
+            className="px-4 py-2 rounded-full bg-accent text-accent-foreground text-sm font-medium mb-6 inline-block" 
+            role="text"
+            aria-label="Sección de proyectos"
+          >
             Trabajo destacado
           </span>
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">Proyectos recientes</h2>
-          <p className="text-primary/80 max-w-2xl mx-auto">
+          <h2 className="text-3xl md:text-4xl font-bold mb-4 text-foreground">
+            Proyectos recientes
+          </h2>
+          <p className="text-muted-foreground max-w-2xl mx-auto">
             Explora algunos de mis últimos proyectos de desarrollo web, mostrando un diseño moderno y excelencia técnica.
           </p>
         </motion.header>
@@ -102,42 +108,36 @@ export const Projects = () => {
         >
           {projects.map((project, index) => (
             <motion.article
-              key={index}
+              key={project.title}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: index * 0.2 }}
+              className="group relative bg-background rounded-2xl shadow-lg overflow-hidden border border-primary/10"
               role="listitem"
-              className="group relative overflow-hidden rounded-2xl bg-white shadow-xl"
             >
-              <a href={project.link} className="block aspect-[4/3] overflow-hidden">
-                <img
-                  srcSet={`${project.image.small} 400w, ${project.image.large} 800w`}
-                  sizes="(max-width: 768px) 400px, 800px"
-                  src={project.image.large}
-                  alt={project.title}
-                  width={800}
-                  height={600}
-                  loading="lazy"
-                  decoding="async"
-                  className="object-cover w-full h-full transform group-hover:scale-105 transition-transform duration-300"
-                />
-              </a>
-              <div className="p-6 flex flex-col flex-1">
-                <h3 className="text-xl font-semibold mb-2">{project.title}</h3>
-                <p className="text-primary/80 mb-4">{project.description}</p>
-                <div className="mt-auto">
-                  <a
-                    href={project.link}
-                    className="text-primary font-medium hover:opacity-70 transition-opacity inline-block"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label={`Ver detalles del proyecto: ${project.title}`}
-                  >
-                    Ver proyecto →
-                  </a>
+              <a 
+                href={project.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block"
+                aria-label={`Ver proyecto: ${project.title}`}
+              >
+                <div className="aspect-video relative overflow-hidden">
+                  <img
+                    src={project.image.small}
+                    srcSet={`${project.image.small} 400w, ${project.image.large} 800w`}
+                    sizes="(max-width: 768px) 100vw, 33vw"
+                    alt={`Captura de pantalla del proyecto ${project.title}`}
+                    className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                    loading="lazy"
+                  />
                 </div>
-              </div>
+                <div className="p-6">
+                  <h3 className="text-xl font-semibold mb-2 text-foreground">{project.title}</h3>
+                  <p className="text-muted-foreground">{project.description}</p>
+                </div>
+              </a>
             </motion.article>
           ))}
         </div>

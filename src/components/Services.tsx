@@ -74,11 +74,15 @@ export const Services = () => {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <span className="px-4 py-2 rounded-full bg-accent text-sm font-medium mb-6 inline-block" role="text">
+          <span 
+            className="px-4 py-2 rounded-full bg-accent text-accent-foreground text-sm font-medium mb-6 inline-block" 
+            role="text"
+            aria-label="Sección de servicios"
+          >
             Servicios
           </span>
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">Lo que ofrezco</h2>
-          <p className="text-primary/80 max-w-2xl mx-auto">
+          <h2 className="text-3xl md:text-4xl font-bold mb-4 text-foreground">Lo que ofrezco</h2>
+          <p className="text-muted-foreground max-w-2xl mx-auto">
             Servicios profesionales de desarrollo web adaptados a tus necesidades, con enfoque en el rendimiento y la experiencia del usuario.
           </p>
         </motion.header>
@@ -86,23 +90,30 @@ export const Services = () => {
         <div 
           className="grid grid-cols-1 md:grid-cols-3 gap-8"
           role="list"
-          aria-label="Lista de servicios"
+          aria-label="Lista de servicios disponibles"
         >
           {services.map((service, index) => (
             <motion.article
-              key={index}
+              key={service.title}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: index * 0.2 }}
-              className="glass rounded-2xl p-8"
+              className="bg-card text-card-foreground rounded-2xl p-8 border border-border shadow-sm"
               role="listitem"
             >
-              <div className="mb-6 inline-block p-3 bg-accent rounded-xl" aria-hidden="true">
+              <div 
+                className="mb-6 inline-block p-3 bg-accent/10 text-accent-foreground rounded-xl" 
+                aria-hidden="true"
+              >
                 {service.icon}
               </div>
-              <h3 className="text-xl font-semibold mb-4">{service.title}</h3>
-              <p className="text-primary/80">{service.description}</p>
+              <h3 className="text-xl font-semibold mb-3 text-foreground">
+                {service.title}
+              </h3>
+              <p className="text-muted-foreground">
+                {service.description}
+              </p>
             </motion.article>
           ))}
         </div>
