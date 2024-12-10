@@ -192,105 +192,63 @@ ${formData.message}`,
         >
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
             <div>
-              <label htmlFor="name" className="block text-sm font-medium mb-2 text-foreground">
-                Nombre <span className="text-destructive">*</span>
-              </label>
+              <label htmlFor="name" className="block text-sm font-medium mb-2">Nombre</label>
               <input
                 type="text"
                 id="name"
                 name="name"
                 value={formData.name}
                 onChange={handleChange}
+                className="w-full px-4 py-3 rounded-lg border bg-white/50"
+                placeholder="Tu nombre"
                 required
                 aria-required="true"
-                className="w-full px-4 py-2 rounded-lg border border-input bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-primary"
-                aria-invalid={formData.name === ""}
-                aria-describedby="name-error"
+                autoComplete="name"
               />
-              {formData.name === "" && (
-                <span id="name-error" className="text-sm text-destructive mt-1">
-                  Este campo es requerido
-                </span>
-              )}
             </div>
             <div>
-              <label htmlFor="email" className="block text-sm font-medium mb-2 text-foreground">
-                Email <span className="text-destructive">*</span>
-              </label>
+              <label htmlFor="email" className="block text-sm font-medium mb-2">Correo electrónico</label>
               <input
                 type="email"
                 id="email"
                 name="email"
                 value={formData.email}
                 onChange={handleChange}
+                className="w-full px-4 py-3 rounded-lg border bg-white/50"
+                placeholder="tu@correo.com"
                 required
                 aria-required="true"
-                className="w-full px-4 py-2 rounded-lg border border-input bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-primary"
-                aria-invalid={formData.email === ""}
-                aria-describedby="email-error"
+                autoComplete="email"
               />
-              {formData.email === "" && (
-                <span id="email-error" className="text-sm text-destructive mt-1">
-                  Este campo es requerido
-                </span>
-              )}
             </div>
           </div>
 
-          <div>
-            <label htmlFor="message" className="block text-sm font-medium mb-2 text-foreground">
-              Mensaje <span className="text-destructive">*</span>
-            </label>
+          <div className="mb-6">
+            <label htmlFor="message" className="block text-sm font-medium mb-2">Mensaje</label>
             <textarea
               id="message"
               name="message"
               value={formData.message}
               onChange={handleChange}
+              className="w-full px-4 py-3 rounded-lg border bg-white/50 h-32"
+              placeholder="Cuéntame más sobre tu proyecto y cualquier requisito específico"
               required
               aria-required="true"
-              rows={6}
-              className="w-full px-4 py-2 rounded-lg border border-input bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-primary resize-y"
-              aria-invalid={formData.message === ""}
-              aria-describedby="message-error"
-            />
-            {formData.message === "" && (
-              <span id="message-error" className="text-sm text-destructive mt-1">
-                Este campo es requerido
-              </span>
-            )}
+            ></textarea>
           </div>
-
-          <div style={{ display: "none" }}>
-            <label htmlFor="honeypot">No llenar este campo</label>
-            <input
-              type="text"
-              id="honeypot"
-              name="honeypot"
-              value={formData.honeypot}
-              onChange={handleChange}
-              tabIndex={-1}
-              aria-hidden="true"
-            />
-          </div>
-
-          <button
+          <motion.button
             type="submit"
             disabled={isSubmitting}
-            className="w-full px-8 py-3 rounded-lg bg-primary text-primary-foreground font-medium flex items-center justify-center gap-2 hover:bg-primary/90 focus:outline-none focus:ring-2 focus:ring-primary disabled:opacity-50 disabled:cursor-not-allowed"
-            aria-label={isSubmitting ? "Enviando mensaje..." : "Enviar mensaje"}
+            whileHover={{ scale: 1.02 }}
+            whileTap={{ scale: 0.98 }}
+            className="w-full px-8 py-4 bg-primary text-white rounded-lg font-medium disabled:opacity-70"
+            aria-busy={isSubmitting}
           >
-            {isSubmitting ? (
-              <>
-                <span className="animate-spin">⏳</span>
-                Enviando...
-              </>
-            ) : (
-              <>
-                <Send size={20} />
-                Enviar mensaje
-              </>
-            )}
-          </button>
+            <span className="flex items-center justify-center gap-2">
+              {isSubmitting ? "Enviando..." : "Enviar Mensaje"}
+              {!isSubmitting && <Send className="w-4 h-4" aria-hidden="true" />}
+            </span>
+          </motion.button>
         </motion.form>
       </div>
     </section>
