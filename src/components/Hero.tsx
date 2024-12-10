@@ -71,7 +71,7 @@ export const Hero = () => {
           <div className="relative">
             <div className="absolute inset-0 bg-gradient-to-tr from-accent/20 to-transparent rounded-2xl" />
             <img
-              src="images/hero03.jpg"
+              src="images/hero03.webp"
               alt="Espacio de trabajo de desarrollo web profesional con múltiples pantallas y equipo moderno"
               className="rounded-2xl shadow-xl w-full object-cover"
               style={{ maxHeight: "600px" }}
