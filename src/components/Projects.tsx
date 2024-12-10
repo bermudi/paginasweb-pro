@@ -5,7 +5,10 @@ const projects = [
   {
     title: "Plataforma de comercio electrónico",
     description: "Tienda online moderna con una experiencia de compra fluida",
-    image: "https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d",
+    image: {
+      small: "/images/projects/project-1-400.webp",
+      large: "/images/projects/project-1-800.webp"
+    },
     link: "https://lasfresas.pages.dev/",
     schema: {
       "@type": "WebSite",
@@ -17,7 +20,10 @@ const projects = [
   {
     title: "Sitio web de empresa",
     description: "Sitio web corporativo con integración de CMS personalizado",
-    image: "https://images.unsplash.com/photo-1483058712412-4245e9b90334",
+    image: {
+      small: "/images/projects/project-2-400.webp",
+      large: "/images/projects/project-2-800.webp"
+    },
     link: "https://qroseguro.com/",
     schema: {
       "@type": "WebSite",
@@ -29,7 +35,10 @@ const projects = [
   {
     title: "Aplicación web",
     description: "Aplicación web completa con funciones en tiempo real",
-    image: "https://images.unsplash.com/photo-1488590528505-98d2b5aba04b",
+    image: {
+      small: "/images/projects/project-3-400.webp",
+      large: "/images/projects/project-3-800.webp"
+    },
     link: "https://respira.bermudi.dev/",
     schema: {
       "@type": "WebApplication",
@@ -99,38 +108,34 @@ export const Projects = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: index * 0.2 }}
               role="listitem"
+              className="group relative overflow-hidden rounded-2xl bg-white shadow-xl"
             >
-              <div className="group relative overflow-hidden rounded-2xl glass h-full flex flex-col">
-                <a 
-                  href={project.link}
-                  className="block aspect-video overflow-hidden"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label={`Ver proyecto: ${project.title}`}
-                >
-                  <img
-                    src={project.image}
-                    alt={`Vista previa del proyecto: ${project.title}`}
-                    className="object-cover w-full h-full transform group-hover:scale-105 transition-transform duration-300"
-                    loading="lazy"
-                    width="400"
-                    height="225"
-                  />
-                </a>
-                <div className="p-6 flex flex-col flex-1">
-                  <h3 className="text-xl font-semibold mb-2">{project.title}</h3>
-                  <p className="text-primary/80 mb-4">{project.description}</p>
-                  <div className="mt-auto">
-                    <a
-                      href={project.link}
-                      className="text-primary font-medium hover:opacity-70 transition-opacity inline-block"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      aria-label={`Ver detalles del proyecto: ${project.title}`}
-                    >
-                      Ver proyecto →
-                    </a>
-                  </div>
+              <a href={project.link} className="block aspect-[4/3] overflow-hidden">
+                <img
+                  srcSet={`${project.image.small} 400w, ${project.image.large} 800w`}
+                  sizes="(max-width: 768px) 400px, 800px"
+                  src={project.image.large}
+                  alt={project.title}
+                  width={800}
+                  height={600}
+                  loading="lazy"
+                  decoding="async"
+                  className="object-cover w-full h-full transform group-hover:scale-105 transition-transform duration-300"
+                />
+              </a>
+              <div className="p-6 flex flex-col flex-1">
+                <h3 className="text-xl font-semibold mb-2">{project.title}</h3>
+                <p className="text-primary/80 mb-4">{project.description}</p>
+                <div className="mt-auto">
+                  <a
+                    href={project.link}
+                    className="text-primary font-medium hover:opacity-70 transition-opacity inline-block"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={`Ver detalles del proyecto: ${project.title}`}
+                  >
+                    Ver proyecto →
+                  </a>
                 </div>
               </div>
             </motion.article>
