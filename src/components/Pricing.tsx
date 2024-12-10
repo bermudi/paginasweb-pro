@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import { Check, ChevronDown, ChevronUp } from "lucide-react";
 import { Addons } from "./Addons";
 import { pricingPlans } from "../data/pricing";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 interface PricingProps {
   selectedPackage: string;
@@ -20,6 +20,31 @@ export const Pricing = ({ selectedPackage, onPackageSelect, onAddonsChange }: Pr
       element.scrollIntoView({ behavior: 'smooth' });
     }
   };
+
+  const handleClickOutside = (e: MouseEvent) => {
+    const target = e.target as HTMLElement;
+    if (!target.closest('.pricing-factors-content') && !target.closest('.toggle-factors-btn')) {
+      setShowPricingFactors(false);
+    }
+  };
+
+  const handleEscapeKey = (e: KeyboardEvent) => {
+    if (e.key === 'Escape') {
+      setShowPricingFactors(false);
+    }
+  };
+
+  useEffect(() => {
+    if (showPricingFactors) {
+      document.addEventListener('mousedown', handleClickOutside);
+      document.addEventListener('keydown', handleEscapeKey);
+    }
+    
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+      document.removeEventListener('keydown', handleEscapeKey);
+    };
+  }, [showPricingFactors]);
 
   return (
     <>
@@ -77,7 +102,7 @@ export const Pricing = ({ selectedPackage, onPackageSelect, onAddonsChange }: Pr
                             e.stopPropagation();
                             setShowPricingFactors(!showPricingFactors);
                           }}
-                          className="text-sm text-primary/60 hover:text-primary flex items-center gap-1 transition-colors"
+                          className="text-sm text-primary/60 hover:text-primary flex items-center gap-1 transition-colors toggle-factors-btn"
                         >
                           {showPricingFactors ? <ChevronUp className="w-4 h-4" /> : <ChevronDown className="w-4 h-4" />}
                           {showPricingFactors ? 'Ocultar factores de precio' : 'Ver factores de precio'}
@@ -92,7 +117,7 @@ export const Pricing = ({ selectedPackage, onPackageSelect, onAddonsChange }: Pr
                           transition={{ duration: 0.2 }}
                           className={`absolute top-0 left-0 right-0 z-10 ${showPricingFactors ? 'pointer-events-auto' : 'pointer-events-none'}`}
                         >
-                          <div className="p-4 bg-white/95 dark:bg-black/95 backdrop-blur-sm rounded-lg shadow-lg">
+                          <div className="p-4 bg-white/95 dark:bg-black/95 backdrop-blur-sm rounded-lg shadow-lg pricing-factors-content">
                             <h4 className="font-medium text-sm mb-3 text-primary">Factores que influyen en el precio:</h4>
                             <ul className="space-y-2 text-sm text-primary/70">
                               <li className="flex items-center gap-2">
