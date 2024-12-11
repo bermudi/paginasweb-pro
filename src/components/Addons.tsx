@@ -155,7 +155,7 @@ export const Addons = ({ onAddonsChange, id }: AddonsProps) => {
                     className="glass rounded-xl p-6 relative overflow-hidden flex flex-col"
                   >
                     <div className="mb-4">
-                      <span className="text-xs font-medium px-2 py-1 rounded-full bg-accent/10">
+                      <span className="text-xs font-medium px-2 py-1 rounded-full bg-gray-200/80">
                         {addon.category}
                       </span>
                     </div>
