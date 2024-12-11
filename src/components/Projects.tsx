@@ -108,7 +108,7 @@ export const Projects = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: index * 0.2 }}
               role="listitem"
-              className="group relative overflow-hidden rounded-2xl bg-white shadow-xl"
+              className="group relative overflow-hidden rounded-2xl bg-white shadow-xl flex flex-col"
             >
               <a href={project.link} className="block aspect-[4/3] overflow-hidden">
                 <img
@@ -124,9 +124,11 @@ export const Projects = () => {
                 />
               </a>
               <div className="p-6 flex flex-col flex-1">
-                <h3 className="text-xl font-semibold mb-2">{project.title}</h3>
-                <p className="text-primary/80 mb-4">{project.description}</p>
-                <div className="mt-auto">
+                <div className="flex-1">
+                  <h3 className="text-xl font-semibold mb-2">{project.title}</h3>
+                  <p className="text-primary/80">{project.description}</p>
+                </div>
+                <div className="mt-6">
                   <a
                     href={project.link}
                     className="text-primary font-medium hover:opacity-70 transition-opacity inline-block"

@@ -2,7 +2,9 @@ import { motion } from "framer-motion";
 import { Check, ChevronDown, ChevronUp } from "lucide-react";
 import { Addons } from "./Addons";
 import { pricingPlans } from "../data/pricing";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
+import { useInView } from 'react-intersection-observer';
+import confetti from 'canvas-confetti';
 
 interface PricingProps {
   selectedPackage: string;
@@ -12,6 +14,74 @@ interface PricingProps {
 
 export const Pricing = ({ selectedPackage, onPackageSelect, onAddonsChange }: PricingProps) => {
   const [showPricingFactors, setShowPricingFactors] = useState(false);
+  const textRef = useRef<HTMLParagraphElement>(null);
+  const { ref: inViewRef, inView } = useInView({
+    triggerOnce: false,
+    threshold: 0.5,
+  });
+
+  // Combine refs
+  const setRefs = (element: HTMLParagraphElement) => {
+    textRef.current = element;
+    inViewRef(element);
+  };
+
+  useEffect(() => {
+    let timer: NodeJS.Timeout;
+    if (inView && textRef.current) {
+      timer = setTimeout(() => {
+        const rect = textRef.current?.getBoundingClientRect();
+        if (rect) {
+          // Create mini confetti bursts from left and right
+          const count = 3;
+          const defaults = {
+            startVelocity: 15,
+            spread: 40,
+            ticks: 50,
+            zIndex: 0,
+            disableForReducedMotion: true,
+            colors: ['#FFD700', '#87CEEB', '#98FB98', '#DDA0DD'],
+            particleCount: 8,
+            scalar: 0.5,
+            decay: 0.9,
+          };
+
+          function shootLeft() {
+            confetti({
+              ...defaults,
+              origin: {
+                x: rect.left / window.innerWidth,
+                y: rect.top / window.innerHeight
+              },
+              angle: 60 + (Math.random() - 0.5) * 20,
+            });
+          }
+
+          function shootRight() {
+            confetti({
+              ...defaults,
+              origin: {
+                x: rect.right / window.innerWidth,
+                y: rect.top / window.innerHeight
+              },
+              angle: 120 + (Math.random() - 0.5) * 20,
+            });
+          }
+
+          // Shoot confetti in sequence from both sides
+          for(let i = 0; i < count; i++) {
+            setTimeout(() => {
+              shootLeft();
+              shootRight();
+            }, i * 200);
+          }
+        }
+      }, 2000);
+    }
+    return () => {
+      if (timer) clearTimeout(timer);
+    };
+  }, [inView]);
 
   const handlePackageSelect = (packageName: string) => {
     onPackageSelect(packageName);
@@ -67,7 +137,10 @@ export const Pricing = ({ selectedPackage, onPackageSelect, onAddonsChange }: Pr
             <p className="text-primary/80 max-w-2xl mx-auto">
               Elige el diseño base y personalízalo con los complementos que necesites.
             </p>
-            <p className="text-primary max-w-2xl mx-auto mt-4 text-sm">
+            <p 
+              ref={setRefs}
+              className="text-primary max-w-2xl mx-auto mt-4 text-sm relative"
+            >
               <strong>Cada paquete incluye:</strong> dominio .com, alojamiento web con capacidad de 2GB por un año y configuración de redirección para una cuenta de correo electrónico profesional.
             </p>
           </motion.header>
