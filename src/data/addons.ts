@@ -89,7 +89,7 @@ export const addons: Addon[] = [
       "Virtual tour integration"
     ]
   },
-  // Comunidad y Social
+  // Community & Social
   {
     name: "Forum Package",
     category: "Community & Social",
@@ -129,7 +129,7 @@ export const addons: Addon[] = [
       "File attachment support"
     ]
   },
-  // Comercio Electrónico
+  // E-commerce
   {
     name: "Basic Online Store Package",
     category: "E-commerce",
@@ -193,7 +193,7 @@ export const addons: Addon[] = [
       "Escrow services"
     ]
   },
-  // Gestión Empresarial
+  // Business Management
   {
     name: "Customer Relationship Management (CRM) Package",
     category: "Business Management",
@@ -259,7 +259,7 @@ export const addons: Addon[] = [
       "Low stock alerts"
     ]
   },
-  // Atención al Cliente
+  // Customer Service
   {
     name: "Help Desk Package",
     category: "Customer Service", 
@@ -298,7 +298,7 @@ export const addons: Addon[] = [
       "CRM integration"
     ]
   },
-  // Educativo
+  // Educational
   {
     name: "Learning Management System (LMS) Package",
     category: "Educational",
@@ -338,125 +338,125 @@ export const addons: Addon[] = [
       "Anti-cheating measures"
     ]
   },
-  // Gestión de Medios
+  // Media Management
   {
-    name: "Paquete de Galería de Fotos",
-    category: "Gestión de Medios",
+    name: "Photo Gallery Package",
+    category: "Media Management",
     price: 5500,
-    description: "Sistema profesional de gestión de imágenes",
+    description: "Professional image management system",
     features: [
-      "Organización de álbumes",
-      "Carga y gestión de imágenes",
-      "Presentaciones y visualización en lightbox",
-      "Etiquetado y búsqueda de imágenes",
-      "Opciones de compartir en redes sociales"
+      "Album organization",
+      "Image upload and management",
+      "Lightbox presentations and viewing",
+      "Image tagging and search",
+      "Social media sharing options"
     ]
   },
   {
-    name: "Paquete de Plataforma de Video",
-    category: "Gestión de Medios",
+    name: "Video Platform Package",
+    category: "Media Management",
     price: 13500,
-    description: "Plataforma completa de gestión de videos",
+    description: "Complete video management platform",
     features: [
-      "Alojamiento y streaming de videos",
-      "Gestión de listas de reproducción",
-      "Canales de usuario",
-      "Comentarios y calificaciones",
-      "Opciones de monetización"
+      "Video hosting and streaming",
+      "Playlist management",
+      "User channels",
+      "Comments and ratings",
+      "Monetization options"
     ]
   },
   {
-    name: "Paquete de Gestión de Podcast",
-    category: "Gestión de Medios",
+    name: "Podcast Management Package",
+    category: "Media Management",
     price: 8500,
-    description: "Sistema especializado en gestión de podcasts",
+    description: "Specialized podcast management system",
     features: [
-      "Gestión de episodios",
-      "Generación de feed RSS",
-      "Integración de reproductor",
-      "Opciones de suscripción",
-      "Análisis y estadísticas de oyentes"
+      "Episode management",
+      "RSS feed generation",
+      "Player integration",
+      "Subscription options",
+      "Listener analytics and statistics"
     ]
   },
   {
-    name: "Paquete de Gestión de Activos Digitales",
-    category: "Gestión de Medios",
+    name: "Digital Asset Management Package",
+    category: "Media Management",
     price: 11000,
-    description: "Sistema centralizado de gestión de activos digitales",
+    description: "Centralized digital asset management system",
     features: [
-      "Biblioteca de medios centralizada",
-      "Gestión de metadatos",
-      "Control de versiones",
-      "Gestión de derechos de acceso",
-      "Integración con otros sistemas"
+      "Centralized media library",
+      "Metadata management",
+      "Version control",
+      "Access rights management",
+      "Integration with other systems"
     ]
   },
   // Comunicación
   {
-    name: "Paquete de administracíon de Correo Electrónico",
-    category: "Comunicación",
+    name: "Email Management Package",
+    category: "Communication",
     price: 1000,
-    description: "Configuración y administración de correo electrónico en Zoho/Google Workspace/Outlook",
+    description: "Email setup and administration in Zoho/Google Workspace/Outlook",
     features: [
-      "Tú pagas tu suscripción anual",
-      "Nosotros administramos el servico",
-      "Uso de dominios personalizados",
-      "Aplicación móvil de correo electrónico",
-      "Sincronización de calendarios",
-      "Calendarios grupales",
-      "Contactos y grupos"
+      "You pay your annual subscription",
+      "We manage the service",
+      "Custom domain usage",
+      "Mobile email application",
+      "Calendar synchronization",
+      "Group calendars",
+      "Contacts and groups"
     ]
   },
   {
-    name: "Paquete de Correo Electrónico Avanzado",
-    category: "Comunicación",
+    name: "Advanced Email Package",
+    category: "Communication",
     price: 9500,
-    description: "Servicio de correo electrónico privado y personalizado",
+    description: "Private and customized email service",
     features: [
-      "100 GB de almacenamiento de correo electrónico",
-      "Servidor privado de correo",
-      "Control total de tus datos",
-      "Cuentas infinitas* de correo",
-      "Uso de multiples dominios personalizados",
-      "Aplicación móvil de correo electrónico",
+      "100 GB email storage",
+      "Private mail server",
+      "Complete data control",
+      "Unlimited* email accounts",
+      "Multiple custom domain usage",
+      "Mobile email application"
     ]
   },
   {
-    name: "Paquete de Marketing por Correo Electrónico",
-    category: "Comunicación",
+    name: "Email Marketing Package",
+    category: "Communication",
     price: 8500,
-    description: "Sistema profesional de email marketing",
+    description: "Professional email marketing system",
     features: [
-      "Gestión de listas de correo",
-      "Diseñador de plantillas de correo",
-      "Programación de campañas",
-      "Seguimiento de aperturas y clics",
-      "Pruebas A/B"
+      "Mailing list management",
+      "Email template designer",
+      "Campaign scheduling",
+      "Open and click tracking",
+      "A/B testing"
     ]
   },
   {
-    name: "Paquete de Sistema de Boletines",
-    category: "Comunicación",
+    name: "Newsletter System Package",
+    category: "Communication",
     price: 5500,
-    description: "Sistema de gestión de boletines informativos",
+    description: "Newsletter management system",
     features: [
-      "Gestión de suscriptores",
-      "Creación y programación de boletines",
-      "Proceso automatizado de suscripción",
-      "Análisis e informes"
+      "Subscriber management",
+      "Newsletter creation and scheduling",
+      "Automated subscription process",
+      "Analytics and reporting"
     ]
   },
   {
-    name: "Paquete de Comunicación Interna",
-    category: "Comunicación",
+    name: "Internal Communication Package",
+    category: "Communication",
     price: 9500,
-    description: "Plataforma de comunicación empresarial interna",
+    description: "Internal business communication platform",
     features: [
-      "Noticias y anuncios de la empresa",
-      "Directorio de empleados",
-      "Compartir documentos",
-      "Sistema de mensajería interna",
-      "Calendario de eventos"
+      "Company news and announcements",
+      "Employee directory",
+      "Document sharing",
+      "Internal messaging system",
+      "Event calendar"
     ]
   },
   // Specialized Solutions
