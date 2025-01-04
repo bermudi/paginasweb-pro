@@ -67,7 +67,7 @@ export const BottomBar = ({ selectedPackage, selectedAddons }: BottomBarProps) =
           <div className="flex items-center justify-between sm:gap-4">
             <div className="text-left sm:text-right">
               <span className="text-xs sm:text-sm text-primary/60">Total:</span>
-              <span className="ml-2 text-base sm:text-lg font-bold">${totalPrice.toLocaleString()} MXN</span>
+              <span className="ml-2 text-base sm:text-lg font-bold">${totalPrice.toLocaleString()} USD</span>
             </div>
             <motion.a
               onClick={() => {
@@ -80,7 +80,7 @@ export const BottomBar = ({ selectedPackage, selectedAddons }: BottomBarProps) =
               whileTap={{ scale: 0.98 }}
               className="bg-accent text-black px-4 sm:px-6 py-2 rounded-lg text-sm sm:text-base font-medium cursor-pointer whitespace-nowrap"
             >
-              Continuar
+              Continue
             </motion.a>
           </div>
         </div>

@@ -7,335 +7,335 @@ export type Addon = {
 };
 
 export const categories = [
-  "Atención al Cliente",
-  "Comercio Electrónico",
-  "Comunicación",
-  "Comunidad y Social",
-  "Educativo",
-  "Gestión de Contenido",
-  "Gestión de Medios",
-  "Gestión Empresarial",
-  "Soluciones Especializadas",
-  "Utilidades y Herramientas",
+  "Customer Service",
+  "E-commerce",
+  "Communication",
+  "Community & Social",
+  "Educational",
+  "Content Management",
+  "Media Management",
+  "Business Management",
+  "Specialized Solutions",
+  "Utilities & Tools"
 ] as const;
 
 
 export const addons: Addon[] = [
-  // Gestión de Contenido
+  // Content Management
   {
-    name: "Paquete de Sitio Web Estático",
-    category: "Gestión de Contenido",
+    name: "Static Website Package",
+    category: "Content Management",
     price: 2500,
-    description: "Solución simple y eficiente para sitios web estáticos",
+    description: "Simple and efficient solution for static websites",
     features: [
-      "Gestión simple de 2 a 6 páginas",
-      "Optimización básica de SEO",
-      "Capacidad de respuesta móvil",
-      "Formulario de contacto simple"
+      "Simple management of 2-6 pages",
+      "Basic SEO optimization",
+      "Mobile responsiveness",
+      "Simple contact form"
     ]
   },
   {
-    name: "Paquete de Sitio Web Dinámico",
-    category: "Gestión de Contenido",
+    name: "Dynamic Website Package",
+    category: "Content Management",
     price: 8500,
-    description: "Solución completa para sitios web dinámicos",
+    description: "Complete solution for dynamic websites",
     features: [
-      "Gestión avanzada de contenido",
-      "Roles y permisos de usuario",
-      "Plantillas y temas personalizados",
-      "Soporte multilingüe",
-      "Integración con servicios de terceros"
+      "Advanced content management",
+      "User roles and permissions",
+      "Custom templates and themes",
+      "Multilingual support",
+      "Third-party service integration"
     ]
   },
   {
-    name: "Paquete Básico de Blog",
-    category: "Gestión de Contenido",
+    name: "Basic Blog Package",
+    category: "Content Management",
     price: 3500,
-    description: "Plataforma profesional de blogs",
+    description: "Professional blogging platform",
     features: [
-      "Gestión de publicaciones",
-      "Editor de contenido",
-      "Sistema de comentarios",
-      "Categorías y etiquetas",
-      "Perfiles de autor",
-      "Feed RSS"
+      "Post management",
+      "Content editor",
+      "Comment system",
+      "Categories and tags",
+      "Author profiles",
+      "RSS Feed"
     ]
   },
   {
-    name: "Paquete Avanzado de Blog",
-    category: "Gestión de Contenido",
+    name: "Advanced Blog Package",
+    category: "Content Management",
     price: 6800,
-    description: "Blog profesional con características avanzadas",
+    description: "Professional blog with advanced features",
     features: [
-      "Todas las características del Paquete Básico de Blog",
-      "Gestión de múltiples autores",
-      "Programación de publicaciones",
-      "Tipos de publicaciones personalizadas",
-      "Herramientas avanzadas de SEO",
-      "Integración con redes sociales",
-      "Panel de análisis"
+      "All Basic Blog Package features",
+      "Multiple author management",
+      "Post scheduling",
+      "Custom post types",
+      "Advanced SEO tools",
+      "Social media integration",
+      "Analytics dashboard"
     ]
   },
   {
-    name: "Paquete de Sitio Web Inmobiliario",
-    category: "Gestión de Contenido",
+    name: "Real Estate Website Package",
+    category: "Content Management",
     price: 12000,
-    description: "Plataforma especializada para inmobiliarias",
+    description: "Specialized platform for real estate agencies",
     features: [
-      "Gestión de listados de propiedades",
-      "Opciones avanzadas de búsqueda y filtro",
-      "Perfiles de agentes",
-      "Programación de citas",
-      "Integración de tours virtuales"
+      "Property listing management",
+      "Advanced search and filter options",
+      "Agent profiles",
+      "Appointment scheduling",
+      "Virtual tour integration"
     ]
   },
   // Comunidad y Social
   {
-    name: "Paquete de Foro",
-    category: "Comunidad y Social",
+    name: "Forum Package",
+    category: "Community & Social",
     price: 7500,
-    description: "Plataforma de discusión y comunidad",
+    description: "Discussion and community platform",
     features: [
-      "Registro y perfiles de usuarios",
-      "Gestión de temas y publicaciones",
-      "Herramientas de moderación",
-      "Mensajería privada",
-      "Sistema de reputación"
+      "User registration and profiles",
+      "Topic and post management",
+      "Moderation tools",
+      "Private messaging",
+      "Reputation system"
     ]
   },
   {
-    name: "Paquete de Red Social",
-    category: "Comunidad y Social",
+    name: "Social Network Package",
+    category: "Community & Social",
     price: 15000,
-    description: "Plataforma de red social personalizada",
+    description: "Custom social network platform",
     features: [
-      "Perfiles y conexiones de usuarios",
-      "Feeds de actividad",
-      "Grupos y comunidades",
-      "Compartir fotos y videos",
-      "Gestión de eventos"
+      "User profiles and connections",
+      "Activity feeds",
+      "Groups and communities",
+      "Photo and video sharing",
+      "Event management"
     ]
   },
   {
-    name: "Paquete Wiki",
-    category: "Comunidad y Social",
+    name: "Wiki Package",
+    category: "Community & Social",
     price: 6500,
-    description: "Sistema colaborativo de gestión de conocimiento",
+    description: "Collaborative knowledge management system",
     features: [
-      "Creación colaborativa de contenido",
-      "Historial de versiones y reversión",
-      "Seguimiento de contribuciones de usuarios",
-      "Enlaces internos",
-      "Soporte para adjuntar archivos"
+      "Collaborative content creation",
+      "Version history and rollback",
+      "User contribution tracking",
+      "Internal linking",
+      "File attachment support"
     ]
   },
   // Comercio Electrónico
   {
-    name: "Paquete Básico de Tienda en Línea",
-    category: "Comercio Electrónico",
+    name: "Basic Online Store Package",
+    category: "E-commerce",
     price: 9500,
-    description: "Solución básica para comercio electrónico",
+    description: "Basic e-commerce solution",
     features: [
-      "Catálogo de productos",
-      "Carrito de compras",
-      "Integración básica de pasarela de pago",
-      "Gestión de pedidos",
-      "Cuentas de clientes"
+      "Product catalog",
+      "Shopping cart",
+      "Basic payment gateway integration",
+      "Order management",
+      "Customer accounts"
     ]
   },
   {
-    name: "Paquete Avanzado de Comercio Electrónico",
-    category: "Comercio Electrónico",
+    name: "Advanced E-commerce Package",
+    category: "E-commerce",
     price: 18000,
-    description: "Solución completa para comercio electrónico",
+    description: "Complete e-commerce solution",
     features: [
-      "Todas las características del Paquete Básico de Tienda en Línea",
-      "Múltiples pasarelas de pago",
-      "Gestión de inventario",
-      "Sistema de descuentos y cupones",
-      "Reseñas y calificaciones de productos",
-      "Recuperación de carritos abandonados"
+      "All Basic Online Store Package features",
+      "Multiple payment gateways",
+      "Inventory management",
+      "Discount and coupon system",
+      "Product reviews and ratings",
+      "Abandoned cart recovery"
     ]
   },
   {
-    name: "Tienda de Descargas Digitales",
-    category: "Comercio Electrónico",
+    name: "Digital Downloads Store",
+    category: "E-commerce",
     price: 12500,
-    description: "Plataforma especializada en productos digitales",
+    description: "Specialized platform for digital products",
     features: [
-      "Gestión de productos digitales",
-      "Entrega segura de archivos",
-      "Generación de claves de licencia",
-      "Opciones de suscripción"
+      "Digital product management",
+      "Secure file delivery",
+      "License key generation",
+      "Subscription options"
     ]
   },
   {
-    name: "Paquete de Mercado",
-    category: "Comercio Electrónico",
+    name: "Marketplace Package",
+    category: "E-commerce",
     price: 25000,
-    description: "Plataforma de marketplace multivendedor",
+    description: "Multi-vendor marketplace platform",
     features: [
-      "Soporte para múltiples vendedores",
-      "Paneles de vendedor",
-      "Gestión de comisiones",
-      "Calificaciones y reseñas de vendedores"
+      "Multi-vendor support",
+      "Vendor dashboards",
+      "Commission management",
+      "Vendor ratings and reviews"
     ]
   },
   {
-    name: "Paquete de Sitio Web de Subastas",
-    category: "Comercio Electrónico",
+    name: "Auction Website Package",
+    category: "E-commerce",
     price: 28000,
-    description: "Plataforma de subastas en línea",
+    description: "Online auction platform",
     features: [
-      "Sistema de pujas",
-      "Subastas basadas en tiempo",
-      "Sistema de reputación de usuarios",
-      "Servicios de custodia"
+      "Bidding system",
+      "Time-based auctions",
+      "User reputation system",
+      "Escrow services"
     ]
   },
   // Gestión Empresarial
   {
-    name: "Paquete de Gestión de Relaciones con Clientes (CRM)",
-    category: "Gestión Empresarial",
+    name: "Customer Relationship Management (CRM) Package",
+    category: "Business Management",
     price: 15000,
-    description: "Sistema integral de gestión de relaciones con clientes",
+    description: "Comprehensive customer relationship management system",
     features: [
-      "Gestión de contactos",
-      "Seguimiento de leads",
-      "Pipeline de ventas",
-      "Integración de correo electrónico",
-      "Gestión de tareas"
+      "Contact management",
+      "Lead tracking",
+      "Sales pipeline",
+      "Email integration",
+      "Task management"
     ]
   },
   {
-    name: "Paquete de Planificación de Recursos Empresariales (ERP)",
-    category: "Gestión Empresarial",
+    name: "Enterprise Resource Planning (ERP) Package",
+    category: "Business Management",
     price: 35000,
-    description: "Sistema completo de gestión empresarial",
+    description: "Complete business management system",
     features: [
-      "Gestión contable y financiera",
-      "Gestión de recursos humanos",
-      "Gestión de inventario y cadena de suministro",
-      "Gestión de proyectos",
-      "Inteligencia empresarial e informes"
+      "Accounting and financial management",
+      "Human resources management",
+      "Inventory and supply chain management",
+      "Project management",
+      "Business intelligence and reporting"
     ]
   },
   {
-    name: "Paquete de Gestión de Recursos Humanos",
-    category: "Gestión Empresarial",
+    name: "Human Resources Management Package",
+    category: "Business Management",
     price: 18000,
-    description: "Sistema especializado en gestión de RRHH",
+    description: "Specialized HR management system",
     features: [
-      "Base de datos de empleados",
-      "Seguimiento de tiempo y asistencia",
-      "Gestión de permisos",
-      "Evaluaciones de desempeño",
-      "Integración de nómina"
+      "Employee database",
+      "Time and attendance tracking",
+      "Leave management",
+      "Performance evaluations",
+      "Payroll integration"
     ]
   },
   {
-    name: "Paquete de Gestión de Proyectos",
-    category: "Gestión Empresarial",
+    name: "Project Management Package",
+    category: "Business Management",
     price: 12000,
-    description: "Herramienta completa de gestión de proyectos",
+    description: "Complete project management tool",
     features: [
-      "Gestión de tareas y subtareas",
-      "Diagramas de Gantt",
-      "Seguimiento de tiempo",
-      "Compartir archivos y colaboración",
-      "Informes y análisis"
+      "Task and subtask management",
+      "Gantt charts",
+      "Time tracking",
+      "File sharing and collaboration",
+      "Reports and analysis"
     ]
   },
   {
-    name: "Paquete de Gestión de Inventario",
-    category: "Gestión Empresarial",
+    name: "Inventory Management Package",
+    category: "Business Management",
     price: 14000,
-    description: "Sistema de control y gestión de inventario",
+    description: "Inventory control and management system",
     features: [
-      "Seguimiento de stock",
-      "Gestión de órdenes de compra",
-      "Gestión de proveedores",
-      "Escaneo de códigos de barras",
-      "Alertas de bajo stock"
+      "Stock tracking",
+      "Purchase order management",
+      "Supplier management",
+      "Barcode scanning",
+      "Low stock alerts"
     ]
   },
   // Atención al Cliente
   {
-    name: "Paquete de Mesa de Ayuda",
-    category: "Atención al Cliente",
+    name: "Help Desk Package",
+    category: "Customer Service", 
     price: 11000,
-    description: "Sistema profesional de soporte al cliente",
+    description: "Professional customer support system",
     features: [
-      "Sistema de gestión de tickets",
-      "Base de conocimientos",
-      "Sección de FAQ",
-      "Portal del cliente",
-      "Gestión de SLA"
+      "Ticket management system",
+      "Knowledge base",
+      "FAQ section", 
+      "Customer portal",
+      "SLA management"
     ]
   },
   {
-    name: "Paquete de Chat en Vivo",
-    category: "Atención al Cliente",
+    name: "Live Chat Package",
+    category: "Customer Service",
     price: 7500,
-    description: "Solución de chat en tiempo real para atención al cliente",
+    description: "Real-time chat solution for customer service",
     features: [
-      "Widget de chat en tiempo real",
-      "Enrutamiento y cola de chats",
-      "Respuestas predefinidas",
-      "Compartir archivos en chat",
-      "Transcripciones e historial de chat"
+      "Real-time chat widget",
+      "Chat routing and queuing",
+      "Canned responses",
+      "File sharing in chat",
+      "Chat transcripts and history"
     ]
   },
   {
-    name: "Paquete de Retroalimentación y Encuestas de Clientes",
-    category: "Atención al Cliente",
+    name: "Customer Feedback and Survey Package",
+    category: "Customer Service",
     price: 6000,
-    description: "Sistema de encuestas y feedback de clientes",
+    description: "Customer survey and feedback system",
     features: [
-      "Creación y gestión de encuestas",
-      "Múltiples tipos de preguntas",
-      "Análisis de datos e informes",
-      "Integración con CRM"
+      "Survey creation and management",
+      "Multiple question types",
+      "Data analysis and reporting",
+      "CRM integration"
     ]
   },
   // Educativo
   {
-    name: "Paquete de Sistema de Gestión de Aprendizaje (LMS)",
-    category: "Educativo",
+    name: "Learning Management System (LMS) Package",
+    category: "Educational",
     price: 16000,
-    description: "Plataforma completa de aprendizaje en línea",
+    description: "Complete online learning platform",
     features: [
-      "Creación y gestión de cursos",
-      "Inscripción y seguimiento del progreso de estudiantes",
-      "Herramientas de cuestionarios y tareas",
-      "Foros de discusión",
-      "Gestión de certificaciones"
+      "Course creation and management",
+      "Student enrollment and progress tracking",
+      "Quiz and assignment tools",
+      "Discussion forums",
+      "Certificate management"
     ]
   },
   {
-    name: "Paquete de Sistema de Gestión Escolar",
-    category: "Educativo",
+    name: "School Management System Package",
+    category: "Educational",
     price: 22000,
-    description: "Sistema integral de gestión escolar",
+    description: "Comprehensive school management system",
     features: [
-      "Gestión de información de estudiantes",
-      "Seguimiento de asistencia",
-      "Libro de calificaciones y boletas",
-      "Portal para padres",
-      "Gestión de horarios"
+      "Student information management",
+      "Attendance tracking",
+      "Gradebook and report cards",
+      "Parent portal",
+      "Schedule management"
     ]
   },
   {
-    name: "Paquete de Sistema de Exámenes en Línea",
-    category: "Educativo",
+    name: "Online Examination System Package",
+    category: "Educational",
     price: 9500,
-    description: "Plataforma especializada en evaluaciones en línea",
+    description: "Specialized online assessment platform",
     features: [
-      "Creación y programación de exámenes",
-      "Múltiples tipos de preguntas",
-      "Calificación automatizada",
-      "Análisis de resultados e informes",
-      "Medidas anti-trampa"
+      "Exam creation and scheduling",
+      "Multiple question types",
+      "Automated grading",
+      "Results analysis and reporting",
+      "Anti-cheating measures"
     ]
   },
   // Gestión de Medios
@@ -459,188 +459,188 @@ export const addons: Addon[] = [
       "Calendario de eventos"
     ]
   },
-  // Soluciones Especializadas
+  // Specialized Solutions
   {
-    name: "Paquete de Reserva de Citas",
-    category: "Soluciones Especializadas",
+    name: "Appointment Booking Package",
+    category: "Specialized Solutions",
     price: 7500,
-    description: "Sistema de programación y gestión de citas",
+    description: "Appointment scheduling and management system",
     features: [
-      "Sistema de programación en línea",
-      "Gestión de calendario",
-      "Recordatorios automatizados",
-      "Integración de pagos",
-      "Gestión de personal"
+      "Online scheduling system",
+      "Calendar management",
+      "Automated reminders",
+      "Payment integration",
+      "Staff management"
     ]
   },
   {
-    name: "Paquete de Gestión de Eventos",
-    category: "Soluciones Especializadas",
+    name: "Event Management Package",
+    category: "Specialized Solutions",
     price: 12500,
-    description: "Plataforma completa de gestión de eventos",
+    description: "Complete event management platform",
     features: [
-      "Creación de eventos y venta de entradas",
-      "Gestión de asistentes",
-      "Sistema de check-in",
-      "Gestión de patrocinios",
-      "Análisis de eventos"
+      "Event creation and ticket sales",
+      "Attendee management",
+      "Check-in system",
+      "Sponsorship management",
+      "Event analytics"
     ]
   },
   {
-    name: "Paquete de Gestión de Membresías",
-    category: "Soluciones Especializadas",
+    name: "Membership Management Package",
+    category: "Specialized Solutions",
     price: 9500,
-    description: "Sistema de gestión de miembros y suscripciones",
+    description: "Member and subscription management system",
     features: [
-      "Registro y perfiles de miembros",
-      "Gestión de suscripciones",
-      "Contenido exclusivo para miembros",
-      "Recordatorios de renovación",
-      "Directorio de miembros"
+      "Member registration and profiles",
+      "Subscription management",
+      "Exclusive member content",
+      "Renewal reminders",
+      "Member directory"
     ]
   },
   {
-    name: "Paquete de Anuncios Clasificados",
-    category: "Soluciones Especializadas",
+    name: "Classified Ads Package",
+    category: "Specialized Solutions",
     price: 11000,
-    description: "Plataforma de anuncios clasificados en línea",
+    description: "Online classified ads platform",
     features: [
-      "Publicación y gestión de anuncios",
-      "Navegación por categoría y ubicación",
-      "Calificaciones y reseñas de usuarios",
-      "Listados destacados",
-      "Sistema de mensajería"
+      "Ad publishing and management",
+      "Category and location navigation",
+      "User ratings and reviews",
+      "Featured listings",
+      "Messaging system"
     ]
   },
   {
-    name: "Paquete de Bolsa de Trabajo",
-    category: "Soluciones Especializadas",
+    name: "Job Board Package",
+    category: "Specialized Solutions",
     price: 13500,
-    description: "Portal de empleo y gestión de candidatos",
+    description: "Job portal and candidate management",
     features: [
-      "Gestión de publicación de empleos",
-      "Base de datos de currículums",
-      "Seguimiento de candidatos",
-      "Perfiles de empleadores",
-      "Alertas de trabajo"
+      "Job posting management",
+      "Resume database",
+      "Candidate tracking",
+      "Employer profiles",
+      "Job alerts"
     ]
   },
   {
-    name: "Paquete de Gestión de Restaurantes",
-    category: "Soluciones Especializadas",
+    name: "Restaurant Management Package",
+    category: "Specialized Solutions",
     price: 14500,
-    description: "Sistema integral para gestión de restaurantes",
+    description: "Comprehensive restaurant management system",
     features: [
-      "Gestión de menú",
-      "Reservas de mesa",
-      "Sistema de pedidos en línea",
-      "Gestión de pedidos de cocina",
-      "Sistema de retroalimentación de clientes"
+      "Menu management",
+      "Table reservations",
+      "Online ordering system",
+      "Kitchen order management",
+      "Customer feedback system"
     ]
   },
   {
-    name: "Paquete de Gestión de Iglesias",
-    category: "Soluciones Especializadas",
+    name: "Church Management Package",
+    category: "Specialized Solutions",
     price: 8500,
-    description: "Sistema especializado para gestión de iglesias",
+    description: "Specialized church management system",
     features: [
-      "Base de datos de miembros",
-      "Planificación de eventos y servicios",
-      "Seguimiento de donaciones",
-      "Gestión de voluntarios",
-      "Organización de grupos pequeños"
+      "Member database",
+      "Event and service planning",
+      "Donation tracking",
+      "Volunteer management",
+      "Small group organization"
     ]
   },
   {
-    name: "Paquete de Sistema de Gestión de Biblioteca",
-    category: "Soluciones Especializadas",
+    name: "Library Management System Package",
+    category: "Specialized Solutions",
     price: 11500,
-    description: "Sistema completo de gestión bibliotecaria",
+    description: "Complete library management system",
     features: [
-      "Catálogo de libros",
-      "Gestión de usuarios",
-      "Sistema de préstamo/devolución",
-      "Cálculo de multas",
-      "Catálogo público de acceso en línea (OPAC)"
+      "Book catalog",
+      "User management",
+      "Loan/return system",
+      "Fine calculation",
+      "Online Public Access Catalog (OPAC)"
     ]
   },
   {
-    name: "Paquete de Gestión de Práctica Médica",
-    category: "Soluciones Especializadas",
+    name: "Medical Practice Management Package",
+    category: "Specialized Solutions",
     price: 18500,
-    description: "Sistema especializado para consultorios médicos",
+    description: "Specialized system for medical practices",
     features: [
-      "Gestión de registros de pacientes",
-      "Programación de citas",
-      "Facturación y reclamaciones de seguros",
-      "Gestión de recetas",
-      "Integración de telemedicina"
+      "Patient records management",
+      "Appointment scheduling",
+      "Insurance billing and claims",
+      "Prescription management",
+      "Telemedicine integration"
     ]
   },
-  // Utilidades y Herramientas
+  // Utilities & Tools
   {
-    name: "Paquete de Herramientas SEO",
-    category: "Utilidades y Herramientas",
+    name: "SEO Tools Package",
+    category: "Utilities & Tools",
     price: 7500,
-    description: "Suite completa de herramientas SEO",
+    description: "Complete suite of SEO tools",
     features: [
-      "Investigación de palabras clave",
-      "Análisis SEO en página",
-      "Monitoreo de backlinks",
-      "Herramientas de auditoría de sitio",
-      "Seguimiento de ranking"
+      "Keyword research",
+      "On-page SEO analysis",
+      "Backlink monitoring",
+      "Site audit tools",
+      "Rank tracking"
     ]
   },
   {
-    name: "Paquete de Análisis e Informes",
-    category: "Utilidades y Herramientas",
+    name: "Analytics and Reporting Package",
+    category: "Utilities & Tools",
     price: 8500,
-    description: "Sistema avanzado de análisis y reportes",
+    description: "Advanced analytics and reporting system",
     features: [
-      "Análisis de tráfico web",
-      "Seguimiento de comportamiento de usuarios",
-      "Seguimiento de conversiones",
-      "Generación de informes personalizados",
-      "Herramientas de visualización de datos"
+      "Web traffic analysis",
+      "User behavior tracking",
+      "Conversion tracking",
+      "Custom report generation",
+      "Data visualization tools"
     ]
   },
   {
-    name: "Paquete de Constructor de Formularios",
-    category: "Utilidades y Herramientas",
+    name: "Form Builder Package",
+    category: "Utilities & Tools",
     price: 5500,
-    description: "Herramienta profesional de creación de formularios",
+    description: "Professional form creation tool",
     features: [
-      "Creación de formularios con arrastrar y soltar",
-      "Múltiples tipos de campos",
-      "Lógica condicional",
-      "Análisis de formularios",
-      "Integración con otros sistemas"
+      "Drag and drop form creation",
+      "Multiple field types",
+      "Conditional logic",
+      "Form analytics",
+      "System integration"
     ]
   },
   {
-    name: "Paquete de Gestión de Documentos",
-    category: "Utilidades y Herramientas",
+    name: "Document Management Package",
+    category: "Utilities & Tools",
     price: 9500,
-    description: "Sistema completo de gestión documental",
+    description: "Complete document management system",
     features: [
-      "Almacenamiento y organización de archivos",
-      "Control de versiones",
-      "Edición colaborativa",
-      "Control de acceso y permisos",
-      "Búsqueda de texto completo"
+      "File storage and organization",
+      "Version control",
+      "Collaborative editing",
+      "Access control and permissions",
+      "Full-text search"
     ]
   },
   {
-    name: "Paquete de Respaldo y Seguridad",
-    category: "Utilidades y Herramientas",
+    name: "Backup and Security Package",
+    category: "Utilities & Tools",
     price: 11500,
-    description: "Sistema integral de seguridad y respaldo",
+    description: "Comprehensive security and backup system",
     features: [
-      "Copias de seguridad automatizadas",
-      "Escaneo de malware",
-      "Protección de firewall",
-      "Autenticación de dos factores",
-      "Gestión de certificados SSL"
+      "Automated backups",
+      "Malware scanning",
+      "Firewall protection",
+      "Two-factor authentication",
+      "SSL certificate management"
     ]
   }
 ];

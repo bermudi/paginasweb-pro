@@ -3,8 +3,8 @@ import { useEffect } from "react";
 
 const projects = [
   {
-    title: "Plataforma de comercio electrónico",
-    description: "Tienda online moderna con una experiencia de compra fluida",
+    title: "E-commerce Platform",
+    description: "Modern online store with a smooth shopping experience",
     image: {
       small: "/images/projects/project-1-400.webp",
       large: "/images/projects/project-1-800.webp"
@@ -18,8 +18,8 @@ const projects = [
     }
   },
   {
-    title: "Sitio web de empresa",
-    description: "Sitio web corporativo con integración de CMS personalizado",
+    title: "Corporate Website",
+    description: "Corporate website with custom CMS integration",
     image: {
       small: "/images/projects/project-2-400.webp",
       large: "/images/projects/project-2-800.webp"
@@ -33,8 +33,8 @@ const projects = [
     }
   },
   {
-    title: "Aplicación web",
-    description: "Aplicación web completa con funciones en tiempo real",
+    title: "Web Application",
+    description: "Complete web application with real-time features",
     image: {
       small: "/images/projects/project-3-400.webp",
       large: "/images/projects/project-3-800.webp"
@@ -76,7 +76,7 @@ export const Projects = () => {
     <section 
       id="projects" 
       className="section-padding bg-secondary"
-      aria-label="Proyectos destacados"
+      aria-label="Featured projects"
     >
       <div className="max-w-6xl mx-auto">
         <motion.header
@@ -87,18 +87,18 @@ export const Projects = () => {
           className="text-center mb-16"
         >
           <span className="px-4 py-2 rounded-full bg-accent text-sm font-medium mb-6 inline-block" role="text">
-            Trabajo destacado
+            Featured Work
           </span>
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">Proyectos recientes</h2>
+          <h2 className="text-3xl md:text-4xl font-bold mb-4">Recent Projects</h2>
           <p className="text-primary/80 max-w-2xl mx-auto">
-            Explora algunos de mis últimos proyectos de desarrollo web, mostrando un diseño moderno y excelencia técnica.
+            Explore some of my latest web development projects, showcasing modern design and technical excellence.
           </p>
         </motion.header>
 
         <div 
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
           role="list"
-          aria-label="Lista de proyectos"
+          aria-label="List of projects"
         >
           {projects.map((project, index) => (
             <motion.article
@@ -134,9 +134,9 @@ export const Projects = () => {
                     className="text-primary font-medium hover:opacity-70 transition-opacity inline-block"
                     target="_blank"
                     rel="noopener noreferrer"
-                    aria-label={`Ver detalles del proyecto: ${project.title}`}
+                    aria-label={`View project details: ${project.title}`}
                   >
-                    Ver proyecto →
+                    View project →
                   </a>
                 </div>
               </div>

@@ -95,13 +95,13 @@ export const Addons = ({ onAddonsChange, id }: AddonsProps) => {
           className="text-center mb-12"
         >
           <span className="px-4 py-2 rounded-full bg-accent text-sm font-medium mb-6 inline-block">
-            Complementos
+            Add-ons
           </span>
           <h2 className="text-3xl md:text-4xl font-bold mb-4">
-            Personaliza tu solución
+            Customize Your Solution
           </h2>
           <p className="text-primary/80 max-w-2xl mx-auto">
-            Añade funcionalidades específicas para crear la solución perfecta para tu negocio
+            Add specific functionalities to create the perfect solution for your business
           </p>
         </motion.div>
 
@@ -110,7 +110,7 @@ export const Addons = ({ onAddonsChange, id }: AddonsProps) => {
             <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
             <input
               type="text"
-              placeholder="Buscar complementos..."
+              placeholder="Search add-ons..."
               value={searchQuery}
               onChange={(e) => {
                 handleSearch(e.target.value);
@@ -126,7 +126,7 @@ export const Addons = ({ onAddonsChange, id }: AddonsProps) => {
               }}
               className="appearance-none w-full md:w-64 px-4 py-2 rounded-lg border border-gray-200 focus:outline-none focus:ring-2 focus:ring-accent pr-10"
             >
-              <option value="">Todas las categorías</option>
+              <option value="">All categories</option>
               {categories.map((category) => (
                 <option key={category} value={category}>
                   {category}
@@ -139,7 +139,7 @@ export const Addons = ({ onAddonsChange, id }: AddonsProps) => {
 
         {filteredAddons.length === 0 ? (
           <div className="text-center py-12">
-            <p className="text-primary/60">No se encontraron complementos que coincidan con tu búsqueda.</p>
+            <p className="text-primary/60">No add-ons found matching your search.</p>
           </div>
         ) : (
           <>

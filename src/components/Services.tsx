@@ -5,35 +5,35 @@ import { useEffect } from "react";
 const services = [
   {
     icon: <Code className="w-6 h-6" />,
-    title: "Desarrollo personalizado",
+    title: "Custom Development",
     description:
-      "Soluciones web a medida, creadas desde cero para satisfacer tus necesidades específicas",
+      "Tailored web solutions, built from scratch to meet your specific needs",
     schema: {
       "@type": "Service",
-      "name": "Desarrollo personalizado",
-      "description": "Soluciones web a medida, creadas desde cero para satisfacer tus necesidades específicas"
+      "name": "Custom Development",
+      "description": "Tailored web solutions, built from scratch to meet your specific needs"
     }
   },
   {
     icon: <Laptop className="w-6 h-6" />,
-    title: "Diseño receptivo",
+    title: "Responsive Design",
     description:
-      "Sitios web hermosos y funcionales que funcionan perfectamente en todos los dispositivos",
+      "Beautiful and functional websites that work flawlessly across all devices",
     schema: {
       "@type": "Service",
-      "name": "Diseño receptivo",
-      "description": "Sitios web hermosos y funcionales que funcionan perfectamente en todos los dispositivos"
+      "name": "Responsive Design",
+      "description": "Beautiful and functional websites that work flawlessly across all devices"
     }
   },
   {
     icon: <Globe className="w-6 h-6" />,
-    title: "Soluciones de comercio electrónico",
+    title: "E-commerce Solutions",
     description:
-      "Tiendas online con procesamiento seguro de pagos y gestión de inventario",
+      "Online stores with secure payment processing and inventory management",
     schema: {
       "@type": "Service",
-      "name": "Soluciones de comercio electrónico",
-      "description": "Tiendas online con procesamiento seguro de pagos y gestión de inventario"
+      "name": "E-commerce Solutions",
+      "description": "Online stores with secure payment processing and inventory management"
     }
   },
 ];
@@ -64,7 +64,7 @@ export const Services = () => {
   return (
     <section 
       className="section-padding"
-      aria-label="Servicios ofrecidos"
+      aria-label="Services offered"
     >
       <div className="max-w-6xl mx-auto">
         <motion.header
@@ -75,18 +75,18 @@ export const Services = () => {
           className="text-center mb-16"
         >
           <span className="px-4 py-2 rounded-full bg-accent text-sm font-medium mb-6 inline-block" role="text">
-            Servicios
+            Services
           </span>
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">Lo que ofrezco</h2>
+          <h2 className="text-3xl md:text-4xl font-bold mb-4">What I Offer</h2>
           <p className="text-primary/80 max-w-2xl mx-auto">
-            Servicios profesionales de desarrollo web adaptados a tus necesidades, con enfoque en el rendimiento y la experiencia del usuario.
+            Professional web development services tailored to your needs, focusing on performance and user experience.
           </p>
         </motion.header>
 
         <div 
           className="grid grid-cols-1 md:grid-cols-3 gap-8"
           role="list"
-          aria-label="Lista de servicios"
+          aria-label="List of services"
         >
           {services.map((service, index) => (
             <motion.article

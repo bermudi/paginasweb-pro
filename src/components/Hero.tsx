@@ -4,7 +4,7 @@ export const Hero = () => {
   return (
     <section 
       className="min-h-screen flex items-center justify-center section-padding relative overflow-hidden"
-      aria-label="Introducción principal"
+      aria-label="Main introduction"
       role="banner"
     >
       {/* Fondo degradado */}
@@ -36,15 +36,15 @@ export const Hero = () => {
           className="text-center lg:text-left lg:w-1/2"
         >
           <span className="px-4 py-2 rounded-full bg-accent text-sm font-medium mb-6 inline-block">
-            Disponible para Proyectos
+            Available for Projects
           </span>
           <h1 className="text-4xl md:text-6xl font-bold mb-6 tracking-tight">
-            Creando Experiencias Digitales
-            <br /> con Propósito
+            Creating Digital Experiences
+            <br /> with Purpose
           </h1>
           <p className="text-lg md:text-xl text-primary/80 max-w-2xl mx-auto lg:mx-0 mb-8">
-            Creo sitios web personalizados que ayudan a las empresas a lograr sus objetivos a través de
-            prácticas modernas de diseño y desarrollo.
+            I create custom websites that help businesses achieve their goals through
+            modern design and development practices.
           </p>
           <motion.button
             whileHover={{ scale: 1.05 }}
@@ -57,7 +57,7 @@ export const Hero = () => {
               });
             }}
           >
-            Ver mi trabajo
+            View my work
           </motion.button>
         </motion.div>
 
@@ -72,7 +72,7 @@ export const Hero = () => {
             <div className="absolute inset-0 bg-gradient-to-tr from-accent/20 to-transparent rounded-2xl" />
             <img
               src="images/hero03.webp"
-              alt="Espacio de trabajo de desarrollo web profesional con múltiples pantallas y equipo moderno"
+              alt="Professional web development workspace with multiple screens and modern equipment"
               className="rounded-2xl shadow-xl w-full object-cover"
               style={{ maxHeight: "600px" }}
               loading="eager"

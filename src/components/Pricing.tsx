@@ -120,7 +120,7 @@ export const Pricing = ({ selectedPackage, onPackageSelect, onAddonsChange }: Pr
     <>
       <section 
         className="section-padding bg-accent/5"
-        aria-label="Planes de precios"
+        aria-label="Pricing plans"
       >
         <div className="max-w-6xl mx-auto">
           <motion.header
@@ -131,24 +131,24 @@ export const Pricing = ({ selectedPackage, onPackageSelect, onAddonsChange }: Pr
             className="text-center mb-16"
           >
             <span className="px-4 py-2 rounded-full bg-accent text-sm font-medium mb-6 inline-block" role="text">
-              Precios
+              Pricing
             </span>
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">Diseño que se adapta a ti</h2>
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">Design that adapts to you</h2>
             <p className="text-primary/80 max-w-2xl mx-auto">
-              Elige el diseño base y personalízalo con los complementos que necesites.
+              Choose the base design and customize it with the add-ons you need.
             </p>
             <p 
               ref={setRefs}
               className="text-primary max-w-2xl mx-auto mt-4 text-sm relative"
             >
-              <strong>Cada paquete incluye:</strong> dominio .com, alojamiento web con capacidad de 2GB por un año y configuración de redirección para una cuenta de correo electrónico profesional.
+              <strong>Each package includes:</strong> .com domain, 2GB web hosting for one year and email forwarding setup for a professional email account.
             </p>
           </motion.header>
 
           <div 
             className="grid grid-cols-1 md:grid-cols-3 gap-8"
             role="list"
-            aria-label="Lista de planes de precios"
+            aria-label="List of pricing plans"
           >
             {pricingPlans.map((plan, index) => (
               <motion.article
@@ -165,7 +165,7 @@ export const Pricing = ({ selectedPackage, onPackageSelect, onAddonsChange }: Pr
                   <p className="text-primary/80 mb-4">{plan.description}</p>
                   <div className="flex items-baseline mb-6" aria-label={`Precio: ${plan.price.toLocaleString()} pesos por proyecto`}>
                     <span className="text-4xl font-bold">${plan.price.toLocaleString()}</span>
-                    <span className="text-primary/60 ml-2">/proyecto{index === pricingPlans.length - 1 ? '*' : ''}</span>
+                    <span className="text-primary/60 ml-2">/project{index === pricingPlans.length - 1 ? '*' : ''}</span>
                   </div>
                   <div className="relative">
                     <ul 
@@ -189,7 +189,7 @@ export const Pricing = ({ selectedPackage, onPackageSelect, onAddonsChange }: Pr
                           className="text-sm text-primary/60 hover:text-primary flex items-center gap-1 transition-colors toggle-factors-btn"
                         >
                           {showPricingFactors ? <ChevronUp className="w-4 h-4" /> : <ChevronDown className="w-4 h-4" />}
-                          {showPricingFactors ? 'Ocultar factores de precio' : 'Ver factores de precio'}
+                          {showPricingFactors ? 'Hide pricing factors' : 'View pricing factors'}
                         </button>
 
                         <motion.div
@@ -202,31 +202,31 @@ export const Pricing = ({ selectedPackage, onPackageSelect, onAddonsChange }: Pr
                           className={`absolute top-0 left-0 right-0 z-10 ${showPricingFactors ? 'pointer-events-auto' : 'pointer-events-none'}`}
                         >
                           <div className="p-4 bg-white/95 dark:bg-black/95 backdrop-blur-sm rounded-lg shadow-lg pricing-factors-content">
-                            <h4 className="font-medium text-sm mb-3 text-primary">Factores que influyen en el precio:</h4>
+                            <h4 className="font-medium text-sm mb-3 text-primary">Factors that influence the price:</h4>
                             <ul className="space-y-2 text-sm text-primary/70">
                               <li className="flex items-center gap-2">
                                 <div className="w-1.5 h-1.5 rounded-full bg-accent/60"></div>
-                                <span>Complejidad del diseño visual</span>
+                                <span>Visual design complexity</span>
                               </li>
                               <li className="flex items-center gap-2">
                                 <div className="w-1.5 h-1.5 rounded-full bg-accent/60"></div>
-                                <span>Tiempo de desarrollo requerido</span>
+                                <span>Required development time</span>
                               </li>
                               <li className="flex items-center gap-2">
                                 <div className="w-1.5 h-1.5 rounded-full bg-accent/60"></div>
-                                <span>Nivel de personalización</span>
+                                <span>Level of customization</span>
                               </li>
                               <li className="flex items-center gap-2">
                                 <div className="w-1.5 h-1.5 rounded-full bg-accent/60"></div>
-                                <span>Tipos de efectos</span>
+                                <span>Types of effects</span>
                               </li>
                               <li className="flex items-center gap-2">
                                 <div className="w-1.5 h-1.5 rounded-full bg-accent/60"></div>
-                                <span>Tipo de medios (imágenes/sonido/video)</span>
+                                <span>Media types (images/sound/video)</span>
                               </li>
                               <li className="flex items-center gap-2">
                                 <div className="w-1.5 h-1.5 rounded-full bg-accent/60"></div>
-                                <span>Ausencia/Presencia de <span className="italic">wireframes</span> (Figma, Adobe XD, Sketch, etc)</span>
+                                <span>Absence/Presence of <span className="italic">wireframes</span> (Figma, Adobe XD, Sketch, etc)</span>
                               </li>
                             </ul>
                           </div>
@@ -244,9 +244,9 @@ export const Pricing = ({ selectedPackage, onPackageSelect, onAddonsChange }: Pr
                     : 'bg-primary text-white hover:bg-primary/90'
                     }`}
                   aria-pressed={selectedPackage === plan.name}
-                  aria-label={selectedPackage === plan.name ? 'Paquete seleccionado' : `Seleccionar paquete ${plan.name}`}
+                  aria-label={selectedPackage === plan.name ? 'Package selected' : `Select package ${plan.name}`}
                 >
-                  {selectedPackage === plan.name ? 'Paquete Seleccionado' : 'Empezar ahora'}
+                  {selectedPackage === plan.name ? 'Package Selected' : 'Get Started'}
                 </motion.button>
               </motion.article>
             ))}

@@ -8,42 +8,42 @@ export interface PricingPlan {
 
 export const pricingPlans: PricingPlan[] = [
   {
-    name: "Diseño Web Básico",
-    description: "Diseño web esencial y profesional",
+    name: "Basic Web Design",
+    description: "Essential and professional web design",
     price: 6500,
     features: [
-      "Diseño web moderno y limpio",
-      "Paleta de colores corporativa",
-      "Tipografía profesional",
-      "Diseño adaptable a dispositivos móviles",
-      "Iconografía básica",
-      "Layout simple y efectivo"
+      "Modern and clean web design",
+      "Corporate color palette",
+      "Professional typography",
+      "Mobile-responsive design",
+      "Basic iconography",
+      "Simple and effective layout"
     ]
   },
   {
-    name: "Diseño Web Avanzado",
-    description: "Diseño web avanzado y distintivo",
+    name: "Advanced Web Design",
+    description: "Advanced and distinctive web design",
     price: 12500,
     features: [
-      "Diseño web premium personalizado",
-      "Identidad visual única",
-      "Animaciones y transiciones elegantes",
-      "Diseño responsivo avanzado",
-      "Sistema de diseño coherente",
-      "Elementos visuales personalizados"
+      "Custom premium web design",
+      "Unique visual identity",
+      "Elegant animations and transitions",
+      "Advanced responsive design",
+      "Coherent design system",
+      "Custom visual elements"
     ]
   },
   {
-    name: "Diseño web Inmersivo",
-    description: "Diseño web exclusivo de alta gama",
+    name: "Immersive Web Design",
+    description: "Exclusive high-end web design",
     price: 25000,
     features: [
-      "Diseño web de lujo totalmente único",
-      "Branding completo integrado",
-      "Micro-interacciones personalizadas",
-      "Diseño UX/UI premium",
-      "Ilustraciones y gráficos exclusivos",
-      "Experiencia visual inmersiva"
+      "Totally unique luxury web design",
+      "Integrated complete branding",
+      "Custom micro-interactions",
+      "Premium UX/UI design",
+      "Exclusive illustrations and graphics",
+      "Immersive visual experience"
     ]
   }
 ];
