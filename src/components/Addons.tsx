@@ -160,12 +160,12 @@ export const Addons = ({ onAddonsChange, id }: AddonsProps) => {
                       </span>
                     </div>
                     <h3 className="text-xl font-semibold mb-2">{addon.name}</h3>
-                    <p className="text-primary/80 mb-4">{addon.description}</p>
+                    <p className="text-primary/80 mb-4 min-h-[3rem]">{addon.description}</p>
                     <div className="flex items-baseline mb-4">
                       <span className="text-2xl font-bold">${addon.price.toLocaleString()}</span>
                       <span className="text-primary/60 ml-2">/complemento</span>
                     </div>
-                    <ul className="space-y-2 flex-grow pb-4">
+                    <ul className="space-y-2 flex-grow mb-6">
                       {addon.features.map((feature, featureIndex) => (
                         <li key={featureIndex} className="flex items-center">
                           <Check className="w-4 h-4 text-green-500 mr-2" />
