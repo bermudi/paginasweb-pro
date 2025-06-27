@@ -13,7 +13,7 @@ const useOrientation = () => {
   useEffect(() => {
     const mediaQuery = window.matchMedia("(orientation: portrait)");
     const handleChange = (e: MediaQueryListEvent) => setIsPortrait(e.matches);
-    
+
     mediaQuery.addEventListener("change", handleChange);
     return () => mediaQuery.removeEventListener("change", handleChange);
   }, []);
@@ -31,7 +31,9 @@ export const Addons = ({ onAddonsChange, id }: AddonsProps) => {
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
   const [selectedAddons, setSelectedAddons] = useState<string[]>([]);
   const [currentPage, setCurrentPage] = useState(1);
+  const [cardHeight, setCardHeight] = useState<number | null>(null);
   const sectionRef = useRef<HTMLElement>(null);
+  const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
   const isPortrait = useOrientation();
   const ITEMS_PER_PAGE = isPortrait ? ITEMS_PER_PAGE_PORTRAIT : ITEMS_PER_PAGE_LANDSCAPE;
 
@@ -84,6 +86,24 @@ export const Addons = ({ onAddonsChange, id }: AddonsProps) => {
     sectionRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
   };
 
+  // Calculate the tallest card height
+  useEffect(() => {
+    const calculateMaxHeight = () => {
+      let maxHeight = 0;
+      cardRefs.current.forEach(card => {
+        if (card) {
+          const height = card.scrollHeight;
+          if (height > maxHeight) maxHeight = height;
+        }
+      });
+      setCardHeight(maxHeight || null);
+    };
+
+    calculateMaxHeight();
+    window.addEventListener('resize', calculateMaxHeight);
+    return () => window.removeEventListener('resize', calculateMaxHeight);
+  }, [filteredAddons, currentPage]);
+
   return (
     <section id={id} ref={sectionRef} className="py-16 bg-accent/5">
       <div className="max-w-6xl mx-auto px-4">
@@ -97,7 +117,7 @@ export const Addons = ({ onAddonsChange, id }: AddonsProps) => {
           <span className="px-4 py-2 rounded-full bg-accent text-sm font-medium mb-6 inline-block">
             Complementos
           </span>
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">
+          <h2 className="text-3xl font-bold mb-4">
             Personaliza tu solución
           </h2>
           <p className="text-primary/80 max-w-2xl mx-auto">
@@ -145,13 +165,15 @@ export const Addons = ({ onAddonsChange, id }: AddonsProps) => {
           <>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 auto-rows-fr">
               <AnimatePresence mode="wait">
-                {paginatedAddons.map((addon) => (
+                {paginatedAddons.map((addon, index) => (
                   <motion.div
                     key={addon.name}
                     initial={{ opacity: 0, scale: 0.95 }}
                     animate={{ opacity: 1, scale: 1 }}
                     exit={{ opacity: 0, scale: 0.95 }}
                     transition={{ duration: 0.2 }}
+                    ref={(el) => (cardRefs.current[index] = el)}
+                    style={{ height: cardHeight }}
                     className="glass rounded-xl p-6 relative overflow-hidden flex flex-col"
                   >
                     <div className="mb-4">
@@ -177,11 +199,10 @@ export const Addons = ({ onAddonsChange, id }: AddonsProps) => {
                       onClick={() => handleAddonToggle(addon.name)}
                       whileHover={{ scale: 1.02 }}
                       whileTap={{ scale: 0.98 }}
-                      className={`w-full py-2 px-4 rounded-lg font-medium flex items-center justify-center gap-2 text-sm md:text-base ${
-                        selectedAddons.includes(addon.name)
+                      className={`w-full py-2 px-4 rounded-lg font-medium flex items-center justify-center gap-2 text-sm md:text-base ${selectedAddons.includes(addon.name)
                           ? 'bg-accent text-black'
                           : 'bg-primary text-white hover:bg-primary/90'
-                      }`}
+                        }`}
                     >
                       {selectedAddons.includes(addon.name) ? (
                         <>
