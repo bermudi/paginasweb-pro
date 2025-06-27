@@ -96,7 +96,7 @@ export const Projects = () => {
         </motion.header>
 
         <div 
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 auto-rows-fr"
           role="list"
           aria-label="Lista de proyectos"
         >
@@ -108,35 +108,36 @@ export const Projects = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: index * 0.2 }}
               role="listitem"
-              className="group relative overflow-hidden rounded-2xl bg-white shadow-xl flex flex-col"
+              className="group relative overflow-hidden rounded-2xl bg-white shadow-xl flex flex-col h-full"
             >
-              <a href={project.link} className="block aspect-[4/3] overflow-hidden">
+              <a href={project.link} className="block relative pb-[75%] overflow-hidden">
                 <img
                   srcSet={`${project.image.small} 400w, ${project.image.large} 800w`}
-                  sizes="(max-width: 768px) 400px, 800px"
+                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                   src={project.image.large}
                   alt={project.title}
-                  width={800}
-                  height={600}
                   loading="lazy"
                   decoding="async"
-                  className="object-cover w-full h-full transform group-hover:scale-105 transition-transform duration-300"
+                  className="absolute inset-0 object-cover w-full h-full transform group-hover:scale-105 transition-transform duration-300"
                 />
               </a>
-              <div className="p-6 flex flex-col flex-1">
-                <div className="flex-1">
-                  <h3 className="text-xl font-semibold mb-2">{project.title}</h3>
-                  <p className="text-primary/80">{project.description}</p>
+              <div className="p-4 md:p-6 flex flex-col flex-grow">
+                <div className="flex-grow">
+                  <h3 className="text-lg md:text-xl font-semibold mb-2 line-clamp-2">{project.title}</h3>
+                  <p className="text-sm md:text-base text-primary/80 line-clamp-3">
+                    {project.description}
+                  </p>
                 </div>
-                <div className="mt-6">
+                <div className="mt-4 md:mt-6">
                   <a
                     href={project.link}
-                    className="text-primary font-medium hover:opacity-70 transition-opacity inline-block"
+                    className="text-primary font-medium hover:opacity-70 transition-opacity inline-flex items-center gap-1 text-sm md:text-base"
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label={`Ver detalles del proyecto: ${project.title}`}
                   >
-                    Ver proyecto →
+                    Ver proyecto
+                    <span className="transition-transform group-hover:translate-x-1">→</span>
                   </a>
                 </div>
               </div>

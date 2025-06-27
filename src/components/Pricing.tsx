@@ -239,10 +239,11 @@ export const Pricing = ({ selectedPackage, onPackageSelect, onAddonsChange }: Pr
                   onClick={() => handlePackageSelect(plan.name)}
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
-                  className={`mt-auto w-full py-3 px-6 rounded-lg font-medium transition-colors ${selectedPackage === plan.name
-                    ? 'bg-accent text-black'
-                    : 'bg-primary text-white hover:bg-primary/90'
-                    }`}
+                  className={`w-full py-3 px-4 md:px-6 rounded-lg font-medium transition-colors mt-6 ${
+                    selectedPackage === plan.name
+                      ? 'bg-accent text-black'
+                      : 'bg-primary text-white hover:bg-primary/90'
+                  }`}
                   aria-pressed={selectedPackage === plan.name}
                   aria-label={selectedPackage === plan.name ? 'Paquete seleccionado' : `Seleccionar paquete ${plan.name}`}
                 >

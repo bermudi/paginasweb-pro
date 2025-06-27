@@ -1,6 +1,6 @@
+import React, { useEffect } from "react";
 import { motion } from "framer-motion";
-import { Code, Laptop, Globe, Check } from "lucide-react";
-import { useEffect } from "react";
+import { Code, Laptop, Globe } from "lucide-react";
 
 const services = [
   {
@@ -84,7 +84,7 @@ export const Services = () => {
         </motion.header>
 
         <div 
-          className="grid grid-cols-1 md:grid-cols-3 gap-8"
+          className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 md:gap-8 auto-rows-fr"
           role="list"
           aria-label="Lista de servicios"
         >
@@ -95,14 +95,20 @@ export const Services = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: index * 0.2 }}
-              className="glass rounded-2xl p-8"
+              className="glass rounded-2xl p-6 md:p-8 flex flex-col min-h-[280px]"
               role="listitem"
             >
-              <div className="mb-6 inline-block p-3 bg-accent rounded-xl" aria-hidden="true">
-                {service.icon}
+              <div className="mb-4 md:mb-6 inline-block p-3 bg-accent rounded-xl w-fit">
+                {React.cloneElement(service.icon, { className: "w-5 h-5 md:w-6 md:h-6" })}
               </div>
-              <h3 className="text-xl font-semibold mb-4">{service.title}</h3>
-              <p className="text-primary/80">{service.description}</p>
+              <div className="flex flex-col flex-grow">
+                <h3 className="text-lg md:text-xl font-semibold mb-3 md:mb-4 line-clamp-2">
+                  {service.title}
+                </h3>
+                <p className="text-sm md:text-base text-primary/80 line-clamp-4">
+                  {service.description}
+                </p>
+              </div>
             </motion.article>
           ))}
         </div>

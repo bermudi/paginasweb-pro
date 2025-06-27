@@ -177,7 +177,7 @@ export const Addons = ({ onAddonsChange, id }: AddonsProps) => {
                       onClick={() => handleAddonToggle(addon.name)}
                       whileHover={{ scale: 1.02 }}
                       whileTap={{ scale: 0.98 }}
-                      className={`w-full py-2 px-4 rounded-lg font-medium flex items-center justify-center gap-2 ${
+                      className={`w-full py-2 px-4 rounded-lg font-medium flex items-center justify-center gap-2 text-sm md:text-base ${
                         selectedAddons.includes(addon.name)
                           ? 'bg-accent text-black'
                           : 'bg-primary text-white hover:bg-primary/90'
