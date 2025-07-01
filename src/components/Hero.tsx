@@ -117,21 +117,23 @@ export const Hero = () => {
       
       {/* Indicador de desplazamiento */}
       <motion.div 
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
+        className="absolute bottom-8 left-0 right-0 flex justify-center"
         initial={{ opacity: 0, y: 10 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 1, duration: 0.8 }}
       >
-        <span className="text-sm text-muted-foreground">Desliza para ver más</span>
-        <motion.div 
-          className="w-6 h-10 border-2 border-muted-foreground/30 rounded-full p-1"
-          animate={{ y: [0, 10, 0] }}
-          transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-        >
+        <div className="flex flex-col items-center gap-2">
+          <span className="text-sm text-muted-foreground">Desliza para ver más</span>
           <motion.div 
-            className="w-1 h-2 bg-muted-foreground/70 rounded-full mx-auto"
-          />
-        </motion.div>
+            className="w-6 h-10 border-2 border-muted-foreground/30 rounded-full p-1"
+            animate={{ y: [0, 10, 0] }}
+            transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+          >
+            <motion.div 
+              className="w-1 h-2 bg-muted-foreground/70 rounded-full mx-auto"
+            />
+          </motion.div>
+        </div>
       </motion.div>
     </section>
   );
