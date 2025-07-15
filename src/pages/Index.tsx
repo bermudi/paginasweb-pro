@@ -13,8 +13,8 @@ const Index = () => {
   return (
     <main className="overflow-hidden">
       <Hero />
-      <Projects />
       <Services />
+      <Projects />
       <Pricing selectedPackage={selectedPackage} onPackageSelect={setSelectedPackage} onAddonsChange={setSelectedAddons} />
       <Contact selectedPackage={selectedPackage} selectedAddons={selectedAddons} />
       <BottomBar selectedPackage={selectedPackage} selectedAddons={selectedAddons} />
