@@ -1,6 +1,67 @@
 import React, { useEffect, useRef } from 'react';
 import { motion, useAnimation, useInView } from 'framer-motion';
 
+// Van Animation Styles
+const vanAnimationStyles = `
+  @keyframes vanBounce {
+    0% { transform: translateY(0px); }
+    60% { transform: translateY(-5px); }
+    80% { transform: translateY(-7px); }
+    100% { transform: translateY(0px); }
+  }
+  
+  @keyframes vanWheelRotate {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+  
+  @keyframes vanSmokeFloat {
+    0% {
+      transform: translateX(0px) scale(1);
+      opacity: 0.6;
+    }
+    100% {
+      transform: translateX(-80px) scale(3);
+      opacity: 0.1;
+    }
+  }
+  
+  @keyframes vanShadowPulse {
+    0% { transform: scaleX(1) scaleY(1); opacity: 0.4; }
+    60% { transform: scaleX(1.1) scaleY(0.8); opacity: 0.3; }
+    80% { transform: scaleX(1.15) scaleY(0.7); opacity: 0.25; }
+    100% { transform: scaleX(1) scaleY(1); opacity: 0.4; }
+  }
+  
+  .van-wrapper {
+    animation: vanBounce 1s ease-in-out infinite;
+    transform-origin: center bottom;
+  }
+  
+  .van-wheel-front, .van-wheel-back {
+    animation: vanWheelRotate 0.6s linear infinite;
+  }
+  
+  .van-shadow {
+    animation: vanShadowPulse 1s ease-in-out infinite;
+    transform-origin: center center;
+  }
+  
+  .smoke-puff {
+    animation: vanSmokeFloat 1.2s ease-out infinite;
+  }
+`;
+
+// Inject styles
+if (typeof document !== 'undefined') {
+  const styleElement = document.createElement('style');
+  styleElement.textContent = vanAnimationStyles;
+  if (!document.head.querySelector('style[data-van-animations]')) {
+    styleElement.setAttribute('data-van-animations', 'true');
+    document.head.appendChild(styleElement);
+  }
+}
+
 // Collapsible Section Component
 interface CollapsibleSectionProps {
   title: string;
@@ -339,12 +400,22 @@ export const CarAnalogy = () => {
                     <path fill="#F9F8DE" d="M213.4,161.9l0-67.7c-73.1,0.3-134.6,1.1-136.6,2.7c-5,4-28.1,49.6-28.1,58.1c0,2,0,4.6,0,7.4L213.4,161.9z" />
                     <path fill="#F57D41" d="M213.4,161.2l0.4,76.3h-29.5l-16.5-30h-42.5l-18.5,30h-56l-2-54.9c0,0,0-11.8,0-21.1L213.4,161.2z" />
                     <polygon fill="#F57D41" stroke="#EA5514" strokeWidth="2" points="205.8,160.4 205.8,196.4 116.1,197.6 107.8,215.4 86.3,215.4 85.9,160.4" />
+                    
+                    {/* Front Windshield - Fixed */}
+                    <path fill="#BDE6E3" stroke="#DEDCC9" strokeWidth="2" d="M86.9,161.4 L87.3,150.4 L106.8,98.7 L206.8,97.9 L206.8,161.4" />
+                    
+                    {/* Front Door Details - Added */}
+                    <path fill="#F9F8DE" d="M118.6,106.4l-3.6-0.1l-3.6,2.1l-10.1,30.1c0,0-0.8,4.4,0,6.8s6.5,3,6.5,3s93.2,0,95,0s2-2.9,2-4.3c0-1.4,0-36.4,0-36.4l-0.4-1.6l-1.1,0.3H118.6z" />
+                    <path fill="#BDE6E3" d="M76.8,103.7c0,0,9,2.2,11.5,3.3s2.5,4,2.5,4s-12.8,29.8-14,32.2s-7,5.3-7,5.3h-17l-2-1c0,0,3.1-10.8,8.8-23.1c4.7-10.1,11.1-19.4,12.2-19.9C74.3,103.3,76.8,103.7,76.8,103.7z" />
+                    
+                    {/* Door Handle */}
+                    <path fill="#595757" d="M201.3,176.2h-12c-0.8,0-1.5-0.7-1.5-1.5v-1.1c0-0.8,0.7-1.5,1.5-1.5h12c0.8,0,1.5,0.7,1.5,1.5v1.1C202.8,175.6,202.1,176.2,201.3,176.2z" />
 
                     {/* Main Body */}
                     <path fill="#F9F8DE" d="M271.8,161.4l205-1c0,0,0-16.6,0-19.4c0-10.6-9.1-42.6-14.1-46.1c-3-2.1-139.9-3.1-250.9-2.7v54.2l0.6,15H271.8z" />
                     <polygon fill="#F57D41" points="476.8,159.3 476.8,237.4 447.3,237.4 437.8,222.4 376.3,222.4 366.8,237.4 212.8,237.4 212.1,159.9" />
 
-                    {/* Windows */}
+                    {/* Side Windows */}
                     <path fill="#BDE6E3" d="M260.8,147.4h-29c-6.6,0-12-5.4-12-12v-19.5c0-6.6,5.4-12,12-12h29c6.6,0,12,5.4,12,12v19.5C272.8,142,267.4,147.4,260.8,147.4z" />
                     <path fill="#BDE6E3" d="M325.3,147.4h-29c-6.6,0-12-5.4-12-12v-19.5c0-6.6,5.4-12,12-12h29c6.6,0,12,5.4,12,12v19.5C337.3,142,331.9,147.4,325.3,147.4z" />
                     <path fill="#BDE6E3" d="M388.8,146.9h-29c-6.6,0-12-5.4-12-12v-19.5c0-6.6,5.4-12,12-12h29c6.6,0,12,5.4,12,12v19.5C400.8,141.5,395.4,146.9,388.8,146.9z" />
@@ -368,14 +439,14 @@ export const CarAnalogy = () => {
                     {/* Front Wheel */}
                     <circle cx="146.3" cy="245.9" r="24" fill="#898989" />
                     <circle cx="146.6" cy="246.2" r="11" fill="#FFFFFF" />
-                    <g className="inner-wheel" style={{ transformOrigin: '146.3px 245.9px' }}>
+                    <g className="van-wheel-front" style={{ transformOrigin: '146.3px 245.9px' }}>
                       <path fill="#C9CACA" d="M146.8,239c-4.1,0-7.3,3.2-7.3,7.2c0,4,3.3,7.2,7.3,7.2c0-2.3,0-4.7,0-7c2.8,0,4.7,0,7.3,0c0-0.1,0-0.2,0-0.2C154.1,242.2,150.9,239,146.8,239z" />
                     </g>
 
                     {/* Back Wheel */}
                     <circle cx="408.3" cy="245.9" r="24" fill="#898989" />
                     <circle cx="408.6" cy="246.2" r="11" fill="#FFFFFF" />
-                    <g className="inner-wheel" style={{ transformOrigin: '408.3px 245.9px' }}>
+                    <g className="van-wheel-back" style={{ transformOrigin: '408.3px 245.9px' }}>
                       <path fill="#C9CACA" d="M408.8,239c-4.1,0-7.3,3.2-7.3,7.2c0,4,3.3,7.2,7.3,7.2c0-2.3,0-4.7,0-7c2.8,0,4.7,0,7.3,0c0-0.1,0-0.2,0-0.2C416.1,242.2,412.9,239,408.8,239z" />
                     </g>
                   </g>
