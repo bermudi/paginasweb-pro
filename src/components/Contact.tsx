@@ -1,32 +1,23 @@
 import { useState, FormEvent } from "react";
 import { motion } from "framer-motion";
 import { Send, Phone } from "lucide-react";
-import { pricingPlans } from "../data/pricing";
-import { addons } from "../data/addons";
 
 interface FormData {
   name: string;
   email: string;
   phone: string;
   message: string;
-  selectedPackage?: string;
-  selectedAddons?: string[];
   honeypot: string;
 }
 
-interface ContactProps {
-  selectedPackage?: string;
-  selectedAddons?: string[];
-}
+interface ContactProps {}
 
-export const Contact = ({ selectedPackage = "", selectedAddons = [] }: ContactProps) => {
+export const Contact = ({}: ContactProps = {}) => {
   const [formData, setFormData] = useState<FormData>({
     name: "",
     email: "",
     phone: "",
     message: "",
-    selectedPackage,
-    selectedAddons,
     honeypot: "",
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -46,34 +37,16 @@ export const Contact = ({ selectedPackage = "", selectedAddons = [] }: ContactPr
           accessKey: 'ffd6c7c4-cd5e-43f2-a018-bb7b36cd217c',
           name: formData.name,
           email: formData.email,
-          message: `${selectedPackage && selectedPackage !== "" ? `
-Package: ${selectedPackage}
-Price: $${pricingPlans.find(p => p.name === selectedPackage)?.price.toLocaleString()} MXN
-
-${selectedAddons.length > 0 ? `Addons:
-${selectedAddons.map(addon => {
-  const addonData = addons.find(a => a.name === addon);
-  return `- ${addon}: $${addonData?.price.toLocaleString()} MXN`;
-}).join('\n')}
-
-` : ''}Total: $${(
-  (pricingPlans.find(p => p.name === selectedPackage)?.price || 0) +
-  selectedAddons.reduce((total, addonName) => {
-    const addon = addons.find(a => a.name === addonName);
-    return total + (addon?.price || 0);
-  }, 0)
-).toLocaleString()} MXN
-
-` : ''}Message:
+          message: `Message:
 ${formData.message}`,
-          subject: `New Project Request - ${selectedPackage}`,
+          subject: `New Project Request`,
           replyTo: formData.email,
           honeypot: formData.honeypot,
         }),
       });
 
       if (response.ok) {
-        setFormData({ name: "", email: "", phone: "", message: "", selectedPackage, selectedAddons, honeypot: "" });
+        setFormData({ name: "", email: "", phone: "", message: "", honeypot: "" });
         alert("Mensaje enviado con éxito!");
       } else {
         throw new Error('Error al enviar el mensaje');
@@ -86,29 +59,9 @@ ${formData.message}`,
   };
 
   const handleWhatsAppClick = () => {
-    const packageInfo = selectedPackage ? `
-Package: ${selectedPackage}
-Price: $${pricingPlans.find(p => p.name === selectedPackage)?.price.toLocaleString()} MXN` : '';
-
-    const addonsInfo = selectedAddons.length > 0 ? `
-Addons:
-${selectedAddons.map(addon => {
-  const addonData = addons.find(a => a.name === addon);
-  return `- ${addon}: $${addonData?.price.toLocaleString()} MXN`;
-}).join('\n')}` : '';
-
-    const total = selectedPackage ? `
-Total: $${(
-  (pricingPlans.find(p => p.name === selectedPackage)?.price || 0) +
-  selectedAddons.reduce((total, addonName) => {
-    const addon = addons.find(a => a.name === addonName);
-    return total + (addon?.price || 0);
-  }, 0)
-).toLocaleString()} MXN` : '';
-
     const message = `Hola, mi nombre es ${formData.name}
 Email: ${formData.email}
-Teléfono: ${formData.phone}${packageInfo}${addonsInfo}${total}
+Teléfono: ${formData.phone}
 
 Mensaje:
 ${formData.message}`;
@@ -150,69 +103,7 @@ ${formData.message}`;
           </p>
         </motion.header>
 
-        {(selectedPackage && selectedPackage !== "" || selectedAddons.length > 0) && (
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="mb-8 p-6 rounded-xl bg-accent/5 border border-accent/10"
-            role="region"
-            aria-label="Resumen de selección"
-          >
-            <h3 className="text-xl font-semibold mb-4">Tu selección:</h3>
-            {selectedPackage && selectedPackage !== "" && (
-              <div className="mb-4">
-                <div className="flex items-center justify-between mb-2">
-                  <span className="font-medium">Paquete seleccionado:</span>
-                  <span className="font-semibold">
-                    ${pricingPlans.find(p => p.name === selectedPackage)?.price.toLocaleString()} MXN
-                  </span>
-                </div>
-                <span className="px-3 py-1 rounded-full bg-accent/20 text-sm">
-                  {selectedPackage}
-                </span>
-              </div>
-            )}
-            {selectedAddons && selectedAddons.length > 0 && (
-              <div>
-                <div className="flex items-center justify-between mb-2">
-                  <span className="font-medium">Complementos seleccionados:</span>
-                  <span className="font-semibold">
-                    ${selectedAddons.reduce((total, addonName) => {
-                      const addon = addons.find(a => a.name === addonName);
-                      return total + (addon?.price || 0);
-                    }, 0).toLocaleString()} MXN
-                  </span>
-                </div>
-                <div className="mt-2 flex flex-wrap gap-2">
-                  {selectedAddons.map((addon, index) => (
-                    <span
-                      key={index}
-                      className="px-3 py-1 rounded-full bg-accent/20 text-sm"
-                    >
-                      {addon}
-                    </span>
-                  ))}
-                </div>
-              </div>
-            )}
-            {(selectedPackage && selectedPackage !== "" || selectedAddons.length > 0) && (
-              <div className="mt-4 pt-4 border-t border-accent/10">
-                <div className="flex items-center justify-between">
-                  <span className="font-semibold">Total:</span>
-                  <span className="font-bold text-lg">
-                    ${(
-                      (pricingPlans.find(p => p.name === selectedPackage)?.price || 0) +
-                      selectedAddons.reduce((total, addonName) => {
-                        const addon = addons.find(a => a.name === addonName);
-                        return total + (addon?.price || 0);
-                      }, 0)
-                    ).toLocaleString()} MXN
-                  </span>
-                </div>
-              </div>
-            )}
-          </motion.div>
-        )}
+
 
         <motion.form
           onSubmit={handleSubmit}
