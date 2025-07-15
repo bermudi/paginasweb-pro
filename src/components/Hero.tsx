@@ -2,14 +2,14 @@ import { motion } from "framer-motion";
 
 export const Hero = () => {
   return (
-    <section 
+    <section
       className="min-h-screen flex items-center justify-center section-padding relative overflow-hidden"
       aria-label="Introducción principal"
       role="banner"
     >
       {/* Fondo degradado */}
       <div className="absolute inset-0 bg-gradient-to-br from-accent via-background to-muted" />
-      
+
       {/* Círculos decorativos 
       <div className="absolute inset-0 overflow-hidden">
         <motion.div
@@ -24,11 +24,11 @@ export const Hero = () => {
           transition={{ duration: 2, repeat: Infinity, repeatType: "reverse", delay: 0.5 }}
           className="absolute -bottom-1/4 -left-1/4 w-1/2 h-1/2 rounded-full bg-accent"
         />
-      </div> Círculos decorativos */} 
+      </div> Círculos decorativos */}
 
       {/* Contenido principal */}
       <div className="relative z-10 max-w-7xl mx-auto px-8 py-12 flex flex-col lg:flex-row items-center gap-12 bg-background/80 backdrop-blur-sm rounded-2xl shadow-lg border border-primary/10">
-      {/* Contenido de texto */}
+        {/* Contenido de texto */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -36,7 +36,7 @@ export const Hero = () => {
           className="text-center lg:text-left lg:w-1/2"
         >
           <span className="px-4 py-2 rounded-full bg-accent text-sm font-medium mb-6 inline-block">
-            Disponible para Proyectos
+            Desarrollo web Profesional
           </span>
           <h1 className="text-4xl md:text-6xl font-bold mb-6 tracking-tight">
             Creando Experiencias Digitales
@@ -44,21 +44,36 @@ export const Hero = () => {
           </h1>
           <p className="text-lg md:text-xl text-primary/80 max-w-2xl mx-auto lg:mx-0 mb-8">
             Creo sitios web personalizados que ayudan a las empresas a lograr sus objetivos a través de
-            prácticas modernas de diseño y desarrollo.
+            prácticas modernas de diseño y desarrollo. Cada proyecto es único, por eso creamos propuestas a medida.
           </p>
-          <motion.button
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            className="px-8 py-4 bg-primary text-white rounded-lg font-medium"
-            onClick={() => {
-              document.getElementById('projects')?.scrollIntoView({ 
-                behavior: 'smooth',
-                block: 'start'
-              });
-            }}
-          >
-            Ver mi trabajo
-          </motion.button>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+            <motion.button
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="px-8 py-4 bg-primary text-white rounded-lg font-medium"
+              onClick={() => {
+                document.getElementById('projects')?.scrollIntoView({
+                  behavior: 'smooth',
+                  block: 'start'
+                });
+              }}
+            >
+              Ver proyectos
+            </motion.button>
+            <motion.button
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="px-8 py-4 bg-accent text-white rounded-lg font-medium"
+              onClick={() => {
+                document.getElementById('contact')?.scrollIntoView({
+                  behavior: 'smooth',
+                  block: 'start'
+                });
+              }}
+            >
+              Obtener Cotización Gratuita
+            </motion.button>
+          </div>
         </motion.div>
 
         {/* Sección de imagen */}
