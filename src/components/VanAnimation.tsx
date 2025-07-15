@@ -1,27 +1,42 @@
 import React from 'react';
+import './VanAnimation.css';
 
 /**
  * VanAnimation renders the animated van with surfboard, wheels, smoke, and all SVG details.
  * Animation styles are expected to be imported via CSS.
  */
-const VanAnimation: React.FC = () => {
-  return (
-    <div className="van-container relative h-48 overflow-hidden rounded-lg bg-gradient-to-b from-teal-300 to-teal-200 mt-6">
-      {/* Smoke Animation */}
-      <div className="absolute bottom-16 right-[15%] z-0">
-        <div className="smoke-puff w-2 h-2 bg-gray-400 rounded-full opacity-60" style={{ animationDelay: '0s' }} />
-        <div className="smoke-puff w-2 h-2 bg-gray-300 rounded-full opacity-50 absolute top-0 right-1" style={{ animationDelay: '0.3s' }} />
-        <div className="smoke-puff w-2 h-2 bg-gray-200 rounded-full opacity-40 absolute top-0 right-2" style={{ animationDelay: '0.6s' }} />
-      </div>
+/**
+ * Props for VanAnimation component.
+ * @param animationSpeed Animation speed multiplier (1 = normal, 0.5 = faster)
+ * @param primaryColor Main van color (default: #F57D41)
+ */
+interface VanAnimationProps {
+  animationSpeed?: number;
+  primaryColor?: string;
+}
 
+/**
+ * Animated Van SVG with surfboard, wheels, smoke, and shadow.
+ * Modular, accessible, and customizable.
+ */
+const VanAnimation: React.FC<VanAnimationProps> = ({ animationSpeed = 1, primaryColor = '#F57D41' }) => {
+  return (
+    <div className="van-container">
+      {/* Road Line for context */}
+      <div className="road-line" aria-hidden="true" />
+      {/* Smoke Animation as SVG */}
+      <Smoke animationSpeed={animationSpeed} />
+      {/* Main Van SVG */}
       <svg
-        className="van-main absolute bottom-0 left-1/2 transform -translate-x-1/2 z-10"
-        width="200"
-        height="120"
-        viewBox="0 50 545.6 313.5"
+        className="van-main"
+        viewBox="0 0 545.6 313.5"
+        width="100%"
+        height="auto"
+        aria-label="Animated camper van with surfboard and smoke"
+        role="img"
       >
         {/* Shadow */}
-        <ellipse className="van-shadow" cx="277" cy="290" rx="120" ry="8" fill="#000" />
+        <Shadow animationSpeed={animationSpeed} />
 
         <g className="van-wrapper">
           {/* Surf Board */}
@@ -74,25 +89,62 @@ const VanAnimation: React.FC = () => {
           </g>
 
           {/* Wheels */}
-          <g>
-            {/* Front Wheel */}
-            <circle cx="146.3" cy="245.9" r="24" fill="#898989" />
-            <circle cx="146.6" cy="246.2" r="11" fill="#FFFFFF" />
-            <g className="van-wheel-front" style={{ transformOrigin: '146.3px 245.9px' }}>
-              <path fill="#C9CACA" d="M146.8,239c-4.1,0-7.3,3.2-7.3,7.2c0,4,3.3,7.2,7.3,7.2c0-2.3,0-4.7,0-7c2.8,0,4.7,0,7.3,0c0-0.1,0-0.2,0-0.2C154.1,242.2,150.9,239,146.8,239z" />
-            </g>
-
-            {/* Back Wheel */}
-            <circle cx="408.3" cy="245.9" r="24" fill="#898989" />
-            <circle cx="408.6" cy="246.2" r="11" fill="#FFFFFF" />
-            <g className="van-wheel-back" style={{ transformOrigin: '408.3px 245.9px' }}>
-              <path fill="#C9CACA" d="M408.8,239c-4.1,0-7.3,3.2-7.3,7.2c0,4,3.3,7.2,7.3,7.2c0-2.3,0-4.7,0-7c2.8,0,4.7,0,7.3,0c0-0.1,0-0.2,0-0.2C416.1,242.2,412.9,239,408.8,239z" />
-            </g>
-          </g>
+          <Wheel cx={146.3} cy={245.9} animationSpeed={animationSpeed} />
+          <Wheel cx={408.3} cy={245.9} animationSpeed={animationSpeed} />
         </g>
       </svg>
     </div>
   );
 };
+
+/**
+ * SVG Wheel component for VanAnimation.
+ * @param cx Center x
+ * @param cy Center y
+ * @param animationSpeed Animation speed multiplier
+ */
+const Wheel: React.FC<{ cx: number; cy: number; animationSpeed: number }> = ({ cx, cy, animationSpeed }) => (
+  <g
+    className="van-wheel"
+    style={{ transformOrigin: `${cx}px ${cy}px`, animationDuration: `${0.6 / animationSpeed}s` }}
+    aria-hidden="true"
+  >
+    <circle cx={cx} cy={cy} r={24} fill="#898989" />
+    <circle cx={cx + 0.3} cy={cy + 0.3} r={11} fill="#FFFFFF" />
+    <path
+      fill="#C9CACA"
+      d={`M${cx + 0.5},${cy - 6.9}c-4.1,0-7.3,3.2-7.3,7.2c0,4,3.3,7.2,7.3,7.2c0-2.3,0-4.7,0-7c2.8,0,4.7,0,7.3,0c0-0.1,0-0.2,0-0.2C${cx + 7.3},${cy - 3.7},${cx + 4.1},${cy - 6.9},${cx + 0.5},${cy - 6.9}z`}
+    />
+  </g>
+);
+
+/**
+ * SVG Smoke animation for VanAnimation.
+ * @param animationSpeed Animation speed multiplier
+ */
+const Smoke: React.FC<{ animationSpeed: number }> = ({ animationSpeed }) => (
+  <svg className="smoke-group" width="60" height="60" viewBox="0 0 60 60" aria-hidden="true">
+    <circle className="smoke-puff" cx="15" cy="45" r="8" style={{ animationDuration: `${1.5 / animationSpeed}s` }} />
+    <circle className="smoke-puff smoke-puff2" cx="30" cy="50" r="6" style={{ animationDuration: `${1.5 / animationSpeed}s` }} />
+    <circle className="smoke-puff smoke-puff3" cx="45" cy="55" r="4" style={{ animationDuration: `${1.5 / animationSpeed}s` }} />
+  </svg>
+);
+
+/**
+ * SVG Shadow for VanAnimation.
+ * @param animationSpeed Animation speed multiplier
+ */
+const Shadow: React.FC<{ animationSpeed: number }> = ({ animationSpeed }) => (
+  <ellipse
+    className="van-shadow"
+    cx="277"
+    cy="290"
+    rx="120"
+    ry="8"
+    fill="#000"
+    style={{ animationDuration: `${1 / animationSpeed}s` }}
+    aria-hidden="true"
+  />
+);
 
 export default VanAnimation;

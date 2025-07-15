@@ -107,7 +107,7 @@ export const CarAnalogy = () => {
             </p>
 
             {/* Bouncy Car Animation */}
-            <div className="car-container relative h-48 overflow-hidden rounded-lg bg-gradient-to-b from-emerald-200 to-emerald-100 mt-6">
+            <div className="car-container relative h-60 overflow-hidden rounded-lg bg-gradient-to-b from-emerald-200 to-emerald-100 mt-6">
               <BouncyCarAnimation />
             </div>
           </motion.div>

@@ -15,7 +15,7 @@ const BouncyCarAnimation: React.FC = () => {
 
   // Animation sequence logic (identical to CarAnalogy.tsx)
   const runAnimationSequence = async () => {
-    carControls.set({ y: -80, scale: 1, x: -150 });
+    carControls.set({ y: -80, scale: 1, x: -200 });
     shadowControls.set({ opacity: 0.2, scaleX: 0.5, scaleY: 0.5 });
     tyreControls.set({ y: -30, scaleX: 1 });
     chassisControls.set({ y: 0 });
@@ -54,11 +54,11 @@ const BouncyCarAnimation: React.FC = () => {
       <motion.div
         className="absolute bottom-0 left-1/2"
         animate={carControls}
-        initial={{ y: -80, x: -150 }}
+        initial={{ y: -80, x: -180 }}
       >
         <svg
-          width="300"
-          height="200"
+          width="400"
+          height="250"
           viewBox="200 150 420 350"
           className="overflow-visible"
         >
