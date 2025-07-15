@@ -5,7 +5,6 @@ import BouncyCarAnimation from './BouncyCarAnimation';
 import CollapsibleSection from './CollapsibleSection';
 import './CarAnalogyAnimations.css';
 
-
 export const CarAnalogy = () => {
   useEffect(() => {
     // Schema.org JSON-LD for SEO
@@ -28,6 +27,14 @@ export const CarAnalogy = () => {
     };
   }, []);
 
+  // Función helper para reduced motion
+  const getTransition = (baseTransition) => {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      return { ...baseTransition, duration: 0, repeat: 0 };
+    }
+    return baseTransition;
+  };
+
   return (
     <section className="py-20 bg-gradient-to-b from-white to-gray-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -46,7 +53,6 @@ export const CarAnalogy = () => {
             Construir un sitio web es una aventura emocionante, pero para asegurar un viaje sin contratiempos, es esencial tener claridad en los roles y responsabilidades. Piensa en crear un sitio web como comprar el coche de tus sueños.
           </p>
         </motion.div>
-
 
         {/* Magazine-Style Content Sections */}
         <div className="grid lg:grid-cols-2 gap-12 mb-16">
@@ -220,7 +226,7 @@ export const CarAnalogy = () => {
           </CollapsibleSection>
         </motion.div>
 
-        {/* Cómo trabajamos section */}
+        {/* Cómo trabajamos section with adjusted animations */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -231,55 +237,167 @@ export const CarAnalogy = () => {
           <h3 className="text-3xl font-bold text-gray-900 mb-8 text-center">
             Cómo Trabajamos: Tu Viaje al Éxito Digital
           </h3>
-          
+
           <p className="text-gray-600 text-center mb-8">
             Un proceso claro y transparente que garantiza resultados excepcionales en cada proyecto, como una ruta bien planificada para tu viaje digital.
           </p>
-          
+
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             {/* Step 1 */}
-            <div className="bg-blue-50 rounded-xl p-6 border border-blue-100 relative overflow-hidden">
-              <div className="absolute top-0 right-0 w-16 h-16 bg-blue-100 rounded-full -mr-8 -mt-8 flex items-center justify-center">
+            <motion.div
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              className="bg-blue-50 rounded-xl p-6 border border-blue-100 relative overflow-hidden cursor-pointer"
+              whileHover={{
+                x: 8,
+                scale: 1.05,
+                boxShadow: "0 8px 20px -4px rgba(59, 130, 246, 0.3)",
+                borderColor: "#93c5fd"
+              }}
+              transition={getTransition({ duration: 0.3, ease: "easeInOut" })}
+            >
+              <motion.div
+                initial={{ scale: 0.9 }}
+                className="absolute top-0 right-0 w-16 h-16 bg-blue-100 rounded-full -mr-8 -mt-8 flex items-center justify-center"
+                animate={{
+                  scale: [1, 1.1, 1],
+                }}
+                transition={getTransition({
+                  repeat: Infinity,
+                  duration: 3,
+                  ease: "easeInOut"
+                })}
+                whileHover={{
+                  scale: 1.2,
+                  rotate: 5,
+                  backgroundColor: "#bfdbfe"
+                }}
+              >
                 <span className="text-2xl font-bold text-blue-600 ml-2 mb-2">1</span>
-              </div>
+              </motion.div>
               <h4 className="text-xl font-bold text-gray-900 mb-3">Consulta y Análisis</h4>
               <p className="text-gray-600">
                 Como un buen mecánico, primero diagnosticamos tus necesidades exactas antes de proponer soluciones. Entendemos tus objetivos de negocio para crear la solución perfecta.
               </p>
-            </div>
-            
+            </motion.div>
+
             {/* Step 2 */}
-            <div className="bg-green-50 rounded-xl p-6 border border-green-100 relative overflow-hidden">
-              <div className="absolute top-0 right-0 w-16 h-16 bg-green-100 rounded-full -mr-8 -mt-8 flex items-center justify-center">
+            <motion.div
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              className="bg-green-50 rounded-xl p-6 border border-green-100 relative overflow-hidden cursor-pointer"
+              whileHover={{
+                x: 8,
+                scale: 1.05,
+                boxShadow: "0 8px 20px -4px rgba(16, 185, 129, 0.3)",
+                borderColor: "#6ee7b7"
+              }}
+              transition={getTransition({ duration: 0.3, ease: "easeInOut" })}
+            >
+              <motion.div
+                initial={{ scale: 0.9 }}
+                className="absolute top-0 right-0 w-16 h-16 bg-green-100 rounded-full -mr-8 -mt-8 flex items-center justify-center"
+                animate={{
+                  scale: [1, 1.1, 1],
+                }}
+                transition={getTransition({
+                  repeat: Infinity,
+                  duration: 3,
+                  ease: "easeInOut"
+                })}
+                whileHover={{
+                  scale: 1.2,
+                  rotate: 5,
+                  backgroundColor: "#a7f3d0"
+                }}
+              >
                 <span className="text-2xl font-bold text-green-600 ml-2 mb-2">2</span>
-              </div>
+              </motion.div>
               <h4 className="text-xl font-bold text-gray-900 mb-3">Propuesta y Cotización</h4>
               <p className="text-gray-600">
                 Como elegir el modelo y características de tu vehículo, desarrollamos una propuesta detallada con cronograma y presupuesto transparente.
               </p>
-            </div>
-            
+            </motion.div>
+
             {/* Step 3 */}
-            <div className="bg-purple-50 rounded-xl p-6 border border-purple-100 relative overflow-hidden">
-              <div className="absolute top-0 right-0 w-16 h-16 bg-purple-100 rounded-full -mr-8 -mt-8 flex items-center justify-center">
+            <motion.div
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              className="bg-purple-50 rounded-xl p-6 border border-purple-100 relative overflow-hidden cursor-pointer"
+              whileHover={{
+                x: 8,
+                scale: 1.05,
+                boxShadow: "0 8px 20px -4px rgba(139, 92, 246, 0.3)",
+                borderColor: "#c4b5fd"
+              }}
+              transition={getTransition({ duration: 0.3, ease: "easeInOut" })}
+            >
+              <motion.div
+                initial={{ scale: 0.9 }}
+                className="absolute top-0 right-0 w-16 h-16 bg-purple-100 rounded-full -mr-8 -mt-8 flex items-center justify-center"
+                animate={{
+                  scale: [1, 1.1, 1],
+                }}
+                transition={getTransition({
+                  repeat: Infinity,
+                  duration: 3,
+                  ease: "easeInOut"
+                })}
+                whileHover={{
+                  scale: 1.2,
+                  rotate: 5,
+                  backgroundColor: "#ddd6fe"
+                }}
+              >
                 <span className="text-2xl font-bold text-purple-600 ml-2 mb-2">3</span>
-              </div>
+              </motion.div>
               <h4 className="text-xl font-bold text-gray-900 mb-3">Desarrollo</h4>
               <p className="text-gray-600">
                 Como ingenieros construyendo tu vehículo a medida, creamos tu proyecto con las mejores prácticas y tecnologías actuales para un rendimiento óptimo.
               </p>
-            </div>
-            
+            </motion.div>
+
             {/* Step 4 */}
-            <div className="bg-amber-50 rounded-xl p-6 border border-amber-100 relative overflow-hidden">
-              <div className="absolute top-0 right-0 w-16 h-16 bg-amber-100 rounded-full -mr-8 -mt-8 flex items-center justify-center">
+            <motion.div
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              className="bg-amber-50 rounded-xl p-6 border border-amber-100 relative overflow-hidden cursor-pointer"
+              whileHover={{
+                x: 8,
+                scale: 1.05,
+                boxShadow: "0 8px 20px -4px rgba(245, 158, 11, 0.3)",
+                borderColor: "#fcd34d"
+              }}
+              transition={getTransition({ duration: 0.3, ease: "easeInOut" })}
+            >
+              <motion.div
+                initial={{ scale: 0.9 }}
+                className="absolute top-0 right-0 w-16 h-16 bg-amber-100 rounded-full -mr-8 -mt-8 flex items-center justify-center"
+                animate={{
+                  scale: [1, 1.1, 1],
+                }}
+                transition={getTransition({
+                  repeat: Infinity,
+                  duration: 3,
+                  ease: "easeInOut"
+                })}
+                whileHover={{
+                  scale: 1.2,
+                  rotate: 5,
+                  backgroundColor: "#fde68a"
+                }}
+              >
                 <span className="text-2xl font-bold text-amber-600 ml-2 mb-2">4</span>
-              </div>
+              </motion.div>
               <h4 className="text-xl font-bold text-gray-900 mb-3">Lanzamiento y Soporte</h4>
               <p className="text-gray-600">
                 Como la entrega de llaves y servicio postventa, lanzamos tu proyecto y brindamos soporte continuo para asegurar su crecimiento y óptimo funcionamiento.
               </p>
-            </div>
+            </motion.div>
           </div>
         </motion.div>
 
