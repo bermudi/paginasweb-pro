@@ -59,103 +59,120 @@ const BouncyCarAnimation = () => {
   const chassisControls = useAnimation();
   const headlightControls = useAnimation();
   
+  // Function to run the animation sequence
+  const runAnimationSequence = async () => {
+    // Reset animation state
+    carControls.set({
+      y: -80, // Start from higher position
+      scale: 1,
+      x: 0, // Ensure proper centering
+    });
+    
+    shadowControls.set({
+      opacity: 0.2,
+      scaleX: 0.5,
+      scaleY: 0.5,
+    });
+    
+    tyreControls.set({
+      y: -30,
+      scaleX: 1,
+    });
+    
+    chassisControls.set({
+      y: 0,
+    });
+    
+    headlightControls.set({
+      scale: 0,
+    });
+    
+    // Initial bounce
+    await Promise.all([
+      carControls.start({
+        y: -20, // Stop at a higher position
+        transition: { duration: 1.2, ease: [0.76, 0, 0.24, 1] } // Custom ease similar to Anticipate
+      }),
+      shadowControls.start({
+        opacity: 0.4,
+        scaleX: 1,
+        scaleY: 1,
+        transition: { duration: 1, ease: "easeInOut" }
+      }),
+      tyreControls.start({
+        y: 0,
+        transition: { duration: 0.5, ease: "easeInOut", delay: 0.2 }
+      }),
+      headlightControls.start({
+        scale: 1,
+        transition: { duration: 1, ease: "easeInOut" }
+      })
+    ]);
+    
+    // Tyre squish effect
+    await tyreControls.start({
+      scaleX: 1.1,
+      transition: { duration: 0.2, ease: "easeOut" }
+    });
+    
+    // Chassis bounce
+    await chassisControls.start({
+      y: 5,
+      transition: { duration: 0.2, ease: "easeIn" }
+    });
+    
+    await chassisControls.start({
+      y: 0,
+      transition: { duration: 0.4 }
+    });
+    
+    // Tyre return to normal
+    await tyreControls.start({
+      scaleX: 1,
+      transition: { duration: 2, type: "spring", stiffness: 100, damping: 8 }
+    });
+    
+    // Hide shadow for driving effect
+    await shadowControls.start({
+      opacity: 0,
+      transition: { duration: 0.3 }
+    });
+    
+    // Drive forward and disappear
+    await carControls.start({
+      y: 600,
+      scale: 1.82,
+      transition: { duration: 2, ease: "easeIn" }
+    });
+    
+    // Small delay before restarting the animation
+    await new Promise(resolve => setTimeout(resolve, 500));
+    
+    // Restart the animation for looping
+    runAnimationSequence();
+  };
+  
   useEffect(() => {
     if (isInView) {
-      // Reset animation state
-      carControls.set({
-        y: -30,
-        scale: 1,
-      });
-      
-      shadowControls.set({
-        opacity: 0.2,
-        scaleX: 0.5,
-        scaleY: 0.5,
-      });
-      
-      tyreControls.set({
-        y: -30,
-        scaleX: 1,
-      });
-      
-      chassisControls.set({
-        y: 0,
-      });
-      
-      headlightControls.set({
-        scale: 0,
-      });
-      
-      // Start animation sequence
-      const sequence = async () => {
-        // Initial bounce
-        await Promise.all([
-          carControls.start({
-            y: 0,
-            transition: { duration: 1.2, ease: [0.76, 0, 0.24, 1] } // Custom ease similar to Anticipate
-          }),
-          shadowControls.start({
-            opacity: 0.4,
-            scaleX: 1,
-            scaleY: 1,
-            transition: { duration: 1, ease: "easeInOut" }
-          }),
-          tyreControls.start({
-            y: 0,
-            transition: { duration: 0.5, ease: "easeInOut", delay: 0.2 }
-          }),
-          headlightControls.start({
-            scale: 1,
-            transition: { duration: 1, ease: "easeInOut" }
-          })
-        ]);
-        
-        // Tyre squish effect
-        await tyreControls.start({
-          scaleX: 1.1,
-          transition: { duration: 0.2, ease: "easeOut" }
-        });
-        
-        // Chassis bounce
-        await chassisControls.start({
-          y: 5,
-          transition: { duration: 0.2, ease: "easeIn" }
-        });
-        
-        await chassisControls.start({
-          y: 0,
-          transition: { duration: 0.4 }
-        });
-        
-        // Tyre return to normal
-        await tyreControls.start({
-          scaleX: 1,
-          transition: { duration: 2, type: "spring", stiffness: 100, damping: 8 }
-        });
-        
-        // Hide shadow for driving effect
-        await shadowControls.start({
-          opacity: 0,
-          transition: { duration: 0.3 }
-        });
-        
-        // Drive forward and disappear
-        await carControls.start({
-          y: 600,
-          scale: 1.82,
-          transition: { duration: 2, ease: "easeIn" }
-        });
-      };
-      
-      sequence();
+      runAnimationSequence();
     }
-  }, [isInView, carControls, shadowControls, tyreControls, chassisControls, headlightControls]);
+    
+    // Cleanup function to cancel animations when component unmounts
+    return () => {
+      carControls.stop();
+      shadowControls.stop();
+      tyreControls.stop();
+      chassisControls.stop();
+      headlightControls.stop();
+    };
+  }, [isInView]); // Only re-run when isInView changes
 
   return (
     <div ref={carRef} className="relative w-full h-full">
       <motion.div 
         className="absolute bottom-0 left-1/2 transform -translate-x-1/2"
         animate={carControls}
+        initial={{ y: -80, x: 0 }}
       >
         <svg
           width="250"
