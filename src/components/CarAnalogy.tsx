@@ -80,6 +80,7 @@ export const CarAnalogy = () => {
                     
                     .wheel-front, .wheel-back {
                       animation: wheel-rotate 0.6s linear infinite;
+                      transform-origin: center;
                     }
                     @keyframes wheel-rotate {
                       from { transform: rotate(0deg); }
@@ -114,13 +115,14 @@ export const CarAnalogy = () => {
                         opacity: 0.8; 
                       }
                       100% { 
-                        transform: translateX(-80px) scale(3); 
-                        opacity: 0.1; 
+                        transform: translateX(-100px) scale(4); 
+                        opacity: 0.05; 
                       }
                     }
 
                     .inner-wheel {
                       animation: inner-spin 0.6s linear infinite reverse;
+                      transform-origin: center;
                     }
                     @keyframes inner-spin {
                       from { transform: rotate(0deg); }
@@ -129,15 +131,15 @@ export const CarAnalogy = () => {
                   `}
                 </style>
 
-                {/* Smoke Animation */}
-                <div className="absolute top-16 right-8">
-                  <div className="smoke-puff w-2 h-2 bg-gray-400 rounded-full opacity-60" style={{ animationDelay: '0s' }}></div>
-                  <div className="smoke-puff w-2 h-2 bg-gray-300 rounded-full opacity-50 absolute top-0" style={{ animationDelay: '0.3s' }}></div>
-                  <div className="smoke-puff w-2 h-2 bg-gray-200 rounded-full opacity-40 absolute top-0" style={{ animationDelay: '0.6s' }}></div>
+                {/* Smoke Animation - positioned behind the van */}
+                <div className="absolute top-20 left-12 z-0">
+                  <div className="smoke-puff w-3 h-3 bg-gray-400 rounded-full opacity-60" style={{ animationDelay: '0s' }}></div>
+                  <div className="smoke-puff w-3 h-3 bg-gray-300 rounded-full opacity-50 absolute top-0" style={{ animationDelay: '0.3s' }}></div>
+                  <div className="smoke-puff w-3 h-3 bg-gray-200 rounded-full opacity-40 absolute top-0" style={{ animationDelay: '0.6s' }}></div>
                 </div>
 
                 <svg
-                  className="van-main absolute bottom-0 left-1/2 transform -translate-x-1/2"
+                  className="van-main absolute bottom-0 left-1/2 transform -translate-x-1/2 z-10"
                   width="280"
                   height="160"
                   viewBox="0 0 545.6 313.5"
@@ -188,14 +190,18 @@ export const CarAnalogy = () => {
                     {/* Wheels */}
                     <g>
                       {/* Front Wheel */}
-                      <circle className="wheel-front" cx="146.3" cy="245.9" r="34" fill="#898989" />
+                      <circle cx="146.3" cy="245.9" r="34" fill="#898989" />
                       <circle cx="146.6" cy="246.2" r="15.7" fill="#FFFFFF" />
-                      <path className="inner-wheel" fill="#C9CACA" d="M146.8,239c-4.1,0-7.3,3.2-7.3,7.2c0,4,3.3,7.2,7.3,7.2c0-2.3,0-4.7,0-7c2.8,0,4.7,0,7.3,0c0-0.1,0-0.2,0-0.2C154.1,242.2,150.9,239,146.8,239z" />
+                      <g className="inner-wheel" style={{ transformOrigin: '146.3px 245.9px' }}>
+                        <path fill="#C9CACA" d="M146.8,239c-4.1,0-7.3,3.2-7.3,7.2c0,4,3.3,7.2,7.3,7.2c0-2.3,0-4.7,0-7c2.8,0,4.7,0,7.3,0c0-0.1,0-0.2,0-0.2C154.1,242.2,150.9,239,146.8,239z" />
+                      </g>
                       
                       {/* Back Wheel */}
-                      <circle className="wheel-back" cx="408.3" cy="245.9" r="34" fill="#898989" />
+                      <circle cx="408.3" cy="245.9" r="34" fill="#898989" />
                       <circle cx="408.6" cy="246.2" r="15.7" fill="#FFFFFF" />
-                      <path className="inner-wheel" fill="#C9CACA" d="M408.8,239c-4.1,0-7.3,3.2-7.3,7.2c0,4,3.3,7.2,7.3,7.2c0-2.3,0-4.7,0-7c2.8,0,4.7,0,7.3,0c0-0.1,0-0.2,0-0.2C416.1,242.2,412.9,239,408.8,239z" />
+                      <g className="inner-wheel" style={{ transformOrigin: '408.3px 245.9px' }}>
+                        <path fill="#C9CACA" d="M408.8,239c-4.1,0-7.3,3.2-7.3,7.2c0,4,3.3,7.2,7.3,7.2c0-2.3,0-4.7,0-7c2.8,0,4.7,0,7.3,0c0-0.1,0-0.2,0-0.2C416.1,242.2,412.9,239,408.8,239z" />
+                      </g>
                     </g>
                   </g>
                 </svg>
