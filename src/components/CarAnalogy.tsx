@@ -220,6 +220,69 @@ export const CarAnalogy = () => {
           </CollapsibleSection>
         </motion.div>
 
+        {/* Cómo trabajamos section */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.5 }}
+          viewport={{ once: true }}
+          className="bg-white rounded-2xl shadow-lg p-8 border border-gray-100 mb-12"
+        >
+          <h3 className="text-3xl font-bold text-gray-900 mb-8 text-center">
+            Cómo Trabajamos: Tu Viaje al Éxito Digital
+          </h3>
+          
+          <p className="text-gray-600 text-center mb-8">
+            Un proceso claro y transparente que garantiza resultados excepcionales en cada proyecto, como una ruta bien planificada para tu viaje digital.
+          </p>
+          
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {/* Step 1 */}
+            <div className="bg-blue-50 rounded-xl p-6 border border-blue-100 relative overflow-hidden">
+              <div className="absolute top-0 right-0 w-16 h-16 bg-blue-100 rounded-full -mr-8 -mt-8 flex items-center justify-center">
+                <span className="text-2xl font-bold text-blue-600 ml-2 mb-2">1</span>
+              </div>
+              <h4 className="text-xl font-bold text-gray-900 mb-3">Consulta y Análisis</h4>
+              <p className="text-gray-600">
+                Como un buen mecánico, primero diagnosticamos tus necesidades exactas antes de proponer soluciones. Entendemos tus objetivos de negocio para crear la solución perfecta.
+              </p>
+            </div>
+            
+            {/* Step 2 */}
+            <div className="bg-green-50 rounded-xl p-6 border border-green-100 relative overflow-hidden">
+              <div className="absolute top-0 right-0 w-16 h-16 bg-green-100 rounded-full -mr-8 -mt-8 flex items-center justify-center">
+                <span className="text-2xl font-bold text-green-600 ml-2 mb-2">2</span>
+              </div>
+              <h4 className="text-xl font-bold text-gray-900 mb-3">Propuesta y Cotización</h4>
+              <p className="text-gray-600">
+                Como elegir el modelo y características de tu vehículo, desarrollamos una propuesta detallada con cronograma y presupuesto transparente.
+              </p>
+            </div>
+            
+            {/* Step 3 */}
+            <div className="bg-purple-50 rounded-xl p-6 border border-purple-100 relative overflow-hidden">
+              <div className="absolute top-0 right-0 w-16 h-16 bg-purple-100 rounded-full -mr-8 -mt-8 flex items-center justify-center">
+                <span className="text-2xl font-bold text-purple-600 ml-2 mb-2">3</span>
+              </div>
+              <h4 className="text-xl font-bold text-gray-900 mb-3">Desarrollo</h4>
+              <p className="text-gray-600">
+                Como ingenieros construyendo tu vehículo a medida, creamos tu proyecto con las mejores prácticas y tecnologías actuales para un rendimiento óptimo.
+              </p>
+            </div>
+            
+            {/* Step 4 */}
+            <div className="bg-amber-50 rounded-xl p-6 border border-amber-100 relative overflow-hidden">
+              <div className="absolute top-0 right-0 w-16 h-16 bg-amber-100 rounded-full -mr-8 -mt-8 flex items-center justify-center">
+                <span className="text-2xl font-bold text-amber-600 ml-2 mb-2">4</span>
+              </div>
+              <h4 className="text-xl font-bold text-gray-900 mb-3">Lanzamiento y Soporte</h4>
+              <p className="text-gray-600">
+                Como la entrega de llaves y servicio postventa, lanzamos tu proyecto y brindamos soporte continuo para asegurar su crecimiento y óptimo funcionamiento.
+              </p>
+            </div>
+          </div>
+        </motion.div>
+
         {/* Call to Action */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
