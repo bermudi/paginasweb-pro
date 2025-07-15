@@ -1,39 +1,42 @@
 import { motion } from "framer-motion";
-import { Code, Laptop, Globe, Check } from "lucide-react";
+import { Monitor, ShoppingCart, Layers, Check } from "lucide-react";
 import { useEffect } from "react";
 
 const services = [
   {
-    icon: <Code className="w-6 h-6" />,
-    title: "Desarrollo personalizado",
+    icon: <Monitor className="w-6 h-6" />,
+    title: "Desarrollo Web Personalizado",
     description:
-      "Soluciones web a medida, creadas desde cero para satisfacer tus necesidades específicas",
+      "Sitios web únicos creados desde cero para satisfacer las necesidades específicas de tu negocio.",
+    features: ["Diseño responsive", "Optimización SEO", "Panel de administración"],
     schema: {
       "@type": "Service",
-      "name": "Desarrollo personalizado",
-      "description": "Soluciones web a medida, creadas desde cero para satisfacer tus necesidades específicas"
+      "name": "Desarrollo Web Personalizado",
+      "description": "Sitios web únicos creados desde cero para satisfacer las necesidades específicas de tu negocio"
     }
   },
   {
-    icon: <Laptop className="w-6 h-6" />,
-    title: "Diseño receptivo",
+    icon: <ShoppingCart className="w-6 h-6" />,
+    title: "Tiendas Online",
     description:
-      "Sitios web hermosos y funcionales que funcionan perfectamente en todos los dispositivos",
+      "E-commerce completos con pasarelas de pago, gestión de inventario y herramientas de marketing.",
+    features: ["Pasarelas de pago", "Gestión de productos", "Analytics integrado"],
     schema: {
       "@type": "Service",
-      "name": "Diseño receptivo",
-      "description": "Sitios web hermosos y funcionales que funcionan perfectamente en todos los dispositivos"
+      "name": "Tiendas Online",
+      "description": "E-commerce completos con pasarelas de pago, gestión de inventario y herramientas de marketing"
     }
   },
   {
-    icon: <Globe className="w-6 h-6" />,
-    title: "Soluciones de comercio electrónico",
+    icon: <Layers className="w-6 h-6" />,
+    title: "Aplicaciones Web",
     description:
-      "Tiendas online con procesamiento seguro de pagos y gestión de inventario",
+      "Aplicaciones web interactivas y funcionales para optimizar los procesos de tu empresa.",
+    features: ["Interfaz intuitiva", "Escalabilidad", "Integración API"],
     schema: {
       "@type": "Service",
-      "name": "Soluciones de comercio electrónico",
-      "description": "Tiendas online con procesamiento seguro de pagos y gestión de inventario"
+      "name": "Aplicaciones Web",
+      "description": "Aplicaciones web interactivas y funcionales para optimizar los procesos de tu empresa"
     }
   },
 ];
@@ -62,7 +65,7 @@ export const Services = () => {
   }, []);
 
   return (
-    <section 
+    <section
       className="section-padding"
       aria-label="Servicios ofrecidos"
     >
@@ -77,13 +80,14 @@ export const Services = () => {
           <span className="px-4 py-2 rounded-full bg-accent text-sm font-medium mb-6 inline-block" role="text">
             Servicios
           </span>
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">Lo que ofrezco</h2>
+          <h2 className="text-3xl md:text-4xl font-bold mb-4">¡Descubre Nuestro Arsenal Digital!</h2>
           <p className="text-primary/80 max-w-2xl mx-auto">
-            Servicios profesionales de desarrollo web adaptados a tus necesidades, con enfoque en el rendimiento y la experiencia del usuario.
+            Servicios profesionales de desarrollo web adaptados a tus necesidades, con enfoque en el rendimiento y la
+            experiencia del usuario. Trabajamos desde la conception hasta el lanzamiento y mantenimiento.
           </p>
         </motion.header>
 
-        <div 
+        <div
           className="grid grid-cols-1 md:grid-cols-3 gap-8"
           role="list"
           aria-label="Lista de servicios"
@@ -102,7 +106,15 @@ export const Services = () => {
                 {service.icon}
               </div>
               <h3 className="text-xl font-semibold mb-4">{service.title}</h3>
-              <p className="text-primary/80">{service.description}</p>
+              <p className="text-primary/80 mb-6">{service.description}</p>
+              <ul className="space-y-2">
+                {service.features.map((feature, featureIndex) => (
+                  <li key={featureIndex} className="flex items-center text-sm text-primary/70">
+                    <Check className="w-4 h-4 text-accent mr-2 flex-shrink-0" />
+                    {feature}
+                  </li>
+                ))}
+              </ul>
             </motion.article>
           ))}
         </div>
