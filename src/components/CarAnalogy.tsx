@@ -112,11 +112,11 @@ export const CarAnalogy = () => {
                     @keyframes smoke-drift {
                       0% { 
                         transform: translateX(0) scale(0.5); 
-                        opacity: 0.8; 
+                        opacity: 0.7; 
                       }
                       100% { 
-                        transform: translateX(-100px) scale(4); 
-                        opacity: 0.05; 
+                        transform: translateX(-20px) translateY(-10px) scale(1.5); 
+                        opacity: 0; 
                       }
                     }
 
@@ -131,11 +131,11 @@ export const CarAnalogy = () => {
                   `}
                 </style>
 
-                {/* Smoke Animation - positioned behind the van */}
-                <div className="absolute top-20 left-12 z-0">
-                  <div className="smoke-puff w-3 h-3 bg-gray-400 rounded-full opacity-60" style={{ animationDelay: '0s' }}></div>
-                  <div className="smoke-puff w-3 h-3 bg-gray-300 rounded-full opacity-50 absolute top-0" style={{ animationDelay: '0.3s' }}></div>
-                  <div className="smoke-puff w-3 h-3 bg-gray-200 rounded-full opacity-40 absolute top-0" style={{ animationDelay: '0.6s' }}></div>
+                {/* Smoke Animation - positioned at the back of the van */}
+                <div className="absolute bottom-16 right-[15%] z-0">
+                  <div className="smoke-puff w-2 h-2 bg-gray-400 rounded-full opacity-60" style={{ animationDelay: '0s' }}></div>
+                  <div className="smoke-puff w-2 h-2 bg-gray-300 rounded-full opacity-50 absolute top-0 right-1" style={{ animationDelay: '0.3s' }}></div>
+                  <div className="smoke-puff w-2 h-2 bg-gray-200 rounded-full opacity-40 absolute top-0 right-2" style={{ animationDelay: '0.6s' }}></div>
                 </div>
 
                 <svg
