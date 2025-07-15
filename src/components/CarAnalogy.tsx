@@ -83,11 +83,10 @@ export const CarAnalogy = () => {
           className="text-center mb-16"
         >
           <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-            Building a Website is Like Buying a Car
+            ¡Bienvenido a tu Viaje Web: Construyamos y Conduzcamos Juntos!
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-            Understanding the web development process through a familiar analogy that clarifies
-            roles, responsibilities, and expectations for everyone involved.
+            Construir un sitio web es una aventura emocionante, pero para asegurar un viaje sin contratiempos, es esencial tener claridad en los roles y responsabilidades. Piensa en crear un sitio web como comprar el coche de tus sueños.
           </p>
         </motion.div>
 
@@ -108,13 +107,13 @@ export const CarAnalogy = () => {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
                 </svg>
               </div>
-              <h3 className="text-2xl font-bold text-gray-900">The Digital Journey</h3>
+              <h3 className="text-2xl font-bold text-gray-900">El Viaje Digital</h3>
             </div>
             <p className="text-gray-600 mb-6 leading-relaxed">
-              Like a well-equipped van ready for adventure, your website should be prepared for any digital journey. From carrying your brand's message to navigating the competitive landscape.
+              Imagina que entras a una agencia de autos. Estás emocionado por los diseños elegantes, los motores potentes y la promesa de un viaje suave. Firmas los papeles, te entregan las llaves y estás listo para salir a la carretera.
             </p>
             <p className="text-gray-600 mb-6 leading-relaxed">
-              Building a website follows the same thoughtful process as choosing the right vehicle. We'll help you identify your destination and select the perfect digital vehicle for your journey.
+              Pero luego, te volteas hacia el vendedor y le dices: "Entonces... ¿tú me vas a llevar a todos lados, verdad?" Suena gracioso, pero esto pasa a menudo en el desarrollo web. Los clientes piden un sitio web hecho a medida, pero a veces esperan que el desarrollador no solo construya el "coche", sino que también lo conduzca y lo mantenga por ellos.
             </p>
 
             {/* Van Animation */}
@@ -210,13 +209,13 @@ export const CarAnalogy = () => {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
                 </svg>
               </div>
-              <h3 className="text-2xl font-bold text-gray-900">Peak Performance</h3>
+              <h3 className="text-2xl font-bold text-gray-900">Nuestra Ruta al Éxito</h3>
             </div>
             <p className="text-gray-600 mb-6 leading-relaxed">
-              Your website should perform like a finely-tuned sports car - fast, responsive, and reliable. Every component working in perfect harmony to deliver an exceptional user experience.
+              Para evitar confusiones, definamos claramente nuestros roles y aseguremos que tu viaje digital sea tan emocionante como lo imaginaste al "entrar a la agencia". Tu sitio web debe funcionar como un automóvil deportivo perfectamente afinado: rápido, receptivo y confiable.
             </p>
             <p className="text-gray-600 mb-6 leading-relaxed">
-              Just as you expect your car to start every time and handle smoothly, your customers expect your website to load quickly and function flawlessly across all devices.
+              Así como esperas que tu coche arranque cada vez y funcione sin problemas, tus clientes esperan que tu sitio web cargue rápidamente y funcione a la perfección en todos los dispositivos. Estamos aquí para construir el "coche" de tus sueños y enseñarte a conducirlo, o conducirlo por ti si esa es tu preferencia.
             </p>
 
             {/* Bouncy Car Animation */}
@@ -256,104 +255,104 @@ export const CarAnalogy = () => {
           className="bg-white rounded-2xl shadow-lg p-8 border border-gray-100 mb-12"
         >
           <h3 className="text-3xl font-bold text-gray-900 mb-8 text-center">
-            Your Role vs. Our Role: A Detailed Breakdown
+            ¿Quién Hace Qué? Definiendo Roles y Responsabilidades
           </h3>
 
-          <CollapsibleSection title="What You Bring to the Table" defaultOpen={true}>
+          <CollapsibleSection title="Tu Rol: Lo Que Aportas al Proyecto" defaultOpen={true}>
             <div className="space-y-4">
               <div className="flex items-start">
                 <div className="w-2 h-2 bg-blue-500 rounded-full mt-2 mr-3 flex-shrink-0"></div>
                 <div>
-                  <h5 className="font-semibold text-gray-900 mb-1">Your Business Vision</h5>
-                  <p className="text-gray-600">Just like knowing whether you need a family SUV or a sports car, you understand your business goals, target audience, and brand identity.</p>
+                  <h5 className="font-semibold text-gray-900 mb-1">Tu Visión de Negocio</h5>
+                  <p className="text-gray-600">Así como decides si necesitas una SUV familiar o un deportivo, tú tienes claro tus objetivos de negocio, tu público meta y la identidad de tu marca.</p>
                 </div>
               </div>
               <div className="flex items-start">
                 <div className="w-2 h-2 bg-blue-500 rounded-full mt-2 mr-3 flex-shrink-0"></div>
                 <div>
-                  <h5 className="font-semibold text-gray-900 mb-1">Content & Materials</h5>
-                  <p className="text-gray-600">You provide the text, images, logos, and other content - the equivalent of telling us your preferred car color and features.</p>
+                  <h5 className="font-semibold text-gray-900 mb-1">Contenido y Materiales</h5>
+                  <p className="text-gray-600">Tú nos entregas los textos, imágenes, logotipos y demás contenido; es como decirnos el color y los accesorios que quieres para tu coche.</p>
                 </div>
               </div>
               <div className="flex items-start">
                 <div className="w-2 h-2 bg-blue-500 rounded-full mt-2 mr-3 flex-shrink-0"></div>
                 <div>
-                  <h5 className="font-semibold text-gray-900 mb-1">Feedback & Decisions</h5>
-                  <p className="text-gray-600">Like test-driving different models, you review our work and provide feedback to ensure we're building exactly what you need.</p>
+                  <h5 className="font-semibold text-gray-900 mb-1">Retroalimentación y Decisiones</h5>
+                  <p className="text-gray-600">Así como pruebas diferentes modelos, revisas nuestro trabajo y das tu opinión para asegurarnos de que estamos creando justo lo que necesitas.</p>
                 </div>
               </div>
             </div>
           </CollapsibleSection>
 
-          <CollapsibleSection title="What We Handle for You">
+          <CollapsibleSection title="Mi Rol: Lo Que Manejo Por Ti">
             <div className="space-y-4">
               <div className="flex items-start">
                 <div className="w-2 h-2 bg-green-500 rounded-full mt-2 mr-3 flex-shrink-0"></div>
                 <div>
-                  <h5 className="font-semibold text-gray-900 mb-1">Technical Implementation</h5>
-                  <p className="text-gray-600">We handle all the coding, hosting, security, and technical aspects - like the car dealer handling financing, paperwork, and delivery.</p>
+                  <h5 className="font-semibold text-gray-900 mb-1">Implementación Técnica</h5>
+                  <p className="text-gray-600">Nosotros nos encargamos de toda la programación, hospedaje, seguridad y lo técnico; como la agencia que gestiona el financiamiento, los papeles y la entrega del auto.</p>
                 </div>
               </div>
               <div className="flex items-start">
                 <div className="w-2 h-2 bg-green-500 rounded-full mt-2 mr-3 flex-shrink-0"></div>
                 <div>
-                  <h5 className="font-semibold text-gray-900 mb-1">Design & User Experience</h5>
-                  <p className="text-gray-600">We create intuitive, beautiful designs that work perfectly across all devices - ensuring your digital vehicle runs smoothly on every road.</p>
+                  <h5 className="font-semibold text-gray-900 mb-1">Diseño y Experiencia de Usuario</h5>
+                  <p className="text-gray-600">Creamos diseños atractivos e intuitivos que funcionan perfecto en cualquier dispositivo, asegurando que tu vehículo digital ruede suave en cualquier camino.</p>
                 </div>
               </div>
               <div className="flex items-start">
                 <div className="w-2 h-2 bg-green-500 rounded-full mt-2 mr-3 flex-shrink-0"></div>
                 <div>
-                  <h5 className="font-semibold text-gray-900 mb-1">Optimization & Performance</h5>
-                  <p className="text-gray-600">We optimize for speed, search engines, and conversions - like a mechanic fine-tuning your engine for peak performance.</p>
+                  <h5 className="font-semibold text-gray-900 mb-1">Optimización y Rendimiento</h5>
+                  <p className="text-gray-600">Optimizamos para velocidad, buscadores y conversiones; como un mecánico afinando tu motor para el mejor desempeño.</p>
                 </div>
               </div>
             </div>
           </CollapsibleSection>
 
-          <CollapsibleSection title="Common Expectations vs. Reality">
+          <CollapsibleSection title="Evitando Baches en el Camino: Expectativas vs. Realidad">
             <div className="space-y-6">
               <div className="bg-red-50 border border-red-200 rounded-lg p-4">
-                <h5 className="font-semibold text-red-800 mb-2">❌ Unrealistic Expectation</h5>
-                <p className="text-red-700 mb-2">"I want a website like Amazon, but I only have $500 and need it next week."</p>
-                <p className="text-red-600 text-sm">This is like wanting a luxury car with a bicycle budget and expecting instant delivery.</p>
+                <h5 className="font-semibold text-red-800 mb-2">❌ Expectativa Irreal</h5>
+                <p className="text-red-700 mb-2">"Quiero una página como Amazon, pero solo tengo $500 y la necesito para la próxima semana."</p>
+                <p className="text-red-600 text-sm">Esto es como querer un auto de lujo con presupuesto de bicicleta y esperar entrega inmediata.</p>
               </div>
               <div className="bg-green-50 border border-green-200 rounded-lg p-4">
-                <h5 className="font-semibold text-green-800 mb-2">✅ Realistic Approach</h5>
-                <p className="text-green-700 mb-2">"I need a professional website that showcases my services and converts visitors into customers. What's possible within my budget?"</p>
-                <p className="text-green-600 text-sm">This allows us to recommend the best solution for your specific needs and budget.</p>
+                <h5 className="font-semibold text-green-800 mb-2">✅ Enfoque Realista</h5>
+                <p className="text-green-700 mb-2">"Necesito una página profesional que muestre mis servicios y convierta visitantes en clientes. ¿Qué se puede hacer con mi presupuesto?"</p>
+                <p className="text-green-600 text-sm">Esto nos permite recomendarte la mejor solución para tus necesidades y presupuesto.</p>
               </div>
             </div>
           </CollapsibleSection>
 
-          <CollapsibleSection title="The Development Process">
+          <CollapsibleSection title="Tu Manual del Propietario: El Proceso de Desarrollo">
             <div className="space-y-4">
               <div className="flex items-center">
                 <div className="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center mr-4 text-blue-600 font-bold">1</div>
                 <div>
-                  <h5 className="font-semibold text-gray-900">Discovery & Planning</h5>
-                  <p className="text-gray-600">Like discussing your needs with a car salesperson before looking at options.</p>
+                  <h5 className="font-semibold text-gray-900">Descubrimiento y Planeación</h5>
+                  <p className="text-gray-600">Como platicar tus necesidades con el vendedor antes de ver opciones.</p>
                 </div>
               </div>
               <div className="flex items-center">
                 <div className="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center mr-4 text-blue-600 font-bold">2</div>
                 <div>
-                  <h5 className="font-semibold text-gray-900">Design & Prototyping</h5>
-                  <p className="text-gray-600">Creating mockups and wireframes - your website's equivalent of a test drive.</p>
+                  <h5 className="font-semibold text-gray-900">Diseño y Prototipado</h5>
+                  <p className="text-gray-600">Creamos bocetos y prototipos; es como el test drive de tu página web.</p>
                 </div>
               </div>
               <div className="flex items-center">
                 <div className="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center mr-4 text-blue-600 font-bold">3</div>
                 <div>
-                  <h5 className="font-semibold text-gray-900">Development & Testing</h5>
-                  <p className="text-gray-600">Building and testing your website - like manufacturing and quality control.</p>
+                  <h5 className="font-semibold text-gray-900">Desarrollo y Pruebas</h5>
+                  <p className="text-gray-600">Construimos y probamos tu página; como fabricar y hacer control de calidad de un auto.</p>
                 </div>
               </div>
               <div className="flex items-center">
                 <div className="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center mr-4 text-blue-600 font-bold">4</div>
                 <div>
-                  <h5 className="font-semibold text-gray-900">Launch & Support</h5>
-                  <p className="text-gray-600">Going live and providing ongoing maintenance - like delivery and warranty service.</p>
+                  <h5 className="font-semibold text-gray-900">Lanzamiento y Soporte</h5>
+                  <p className="text-gray-600">Publicamos tu sitio y damos mantenimiento; como la entrega y la garantía de tu coche.</p>
                 </div>
               </div>
             </div>
@@ -370,19 +369,17 @@ export const CarAnalogy = () => {
         >
           <div className="bg-gradient-to-r from-blue-50 to-purple-50 rounded-2xl p-12 border border-gray-100">
             <h3 className="text-3xl font-bold text-gray-900 mb-6">
-              Ready to Start Your Digital Journey?
+              ¿Listo para Encender el Motor? ¡Vamos!
             </h3>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto mb-8 leading-relaxed">
-              Just like choosing the right vehicle for your journey, selecting the right web development
-              partner is crucial. We'll help you navigate from concept to launch, ensuring your digital
-              presence performs at its peak.
+              Para asegurar un viaje suave desde el principio, aclaremos algunas cosas antes de empezar: ¿Tienes listos los textos e imágenes? ¿Quién gestionará el dominio y hospedaje? ¿Prefieres un plan de mantenimiento o tomarás el volante para las actualizaciones? Al definir estos roles ahora, evitaremos desvíos y construiremos un sitio web que te lleve exactamente a donde quieres ir.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <button className="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-8 rounded-lg transition-colors duration-200">
-                Start Your Project
+                ¡Comencemos Ahora!
               </button>
               <button className="border border-gray-300 hover:border-gray-400 text-gray-700 font-semibold py-3 px-8 rounded-lg transition-colors duration-200">
-                Learn More
+                Conoce Más
               </button>
             </div>
           </div>
