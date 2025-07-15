@@ -22,8 +22,6 @@ interface VanAnimationProps {
 const VanAnimation: React.FC<VanAnimationProps> = ({ animationSpeed = 1, primaryColor = '#F57D41' }) => {
   return (
     <div className="van-container">
-      {/* Road Line for context */}
-      <div className="road-line" aria-hidden="true" />
       {/* Smoke Animation as SVG */}
       <Smoke animationSpeed={animationSpeed} />
       {/* Main Van SVG */}
@@ -35,9 +33,6 @@ const VanAnimation: React.FC<VanAnimationProps> = ({ animationSpeed = 1, primary
         aria-label="Animated camper van with surfboard and smoke"
         role="img"
       >
-        {/* Shadow */}
-        <Shadow animationSpeed={animationSpeed} />
-
         <g className="van-wrapper">
           {/* Surf Board */}
           <g className="surf-board">
