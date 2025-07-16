@@ -170,7 +170,6 @@ const FAQ: React.FC = () => {
     }
   ];
 
-  // Categories with display names and descriptions
   const categories: Category[] = [
     { id: 'all', name: 'Todas las categorías', description: 'Explora todas las preguntas frecuentes' },
     { id: 'tecnico', name: 'Términos Técnicos', description: 'Explicaciones claras sobre términos técnicos' },
@@ -182,7 +181,6 @@ const FAQ: React.FC = () => {
     { id: 'conceptos', name: 'Conceptos Digitales', description: 'Explicaciones sobre conceptos digitales importantes' }
   ];
 
-  // Filter FAQs based on search query and active category
   const filteredFAQs = faqItems.filter(item => {
     const matchesSearch = item.question.toLowerCase().includes(searchQuery.toLowerCase()) ||
       item.answer.toLowerCase().includes(searchQuery.toLowerCase());
@@ -190,10 +188,8 @@ const FAQ: React.FC = () => {
     return matchesSearch && matchesCategory;
   });
 
-  // Get current category data
   const currentCategory = categories.find(cat => cat.id === activeCategory) || categories[0];
 
-  // Toggle FAQ item open/closed
   const toggleItem = (index: number) => {
     setOpenItems(prev =>
       prev.includes(index)
@@ -202,46 +198,53 @@ const FAQ: React.FC = () => {
     );
   };
 
-  // Animation variants
+  // Animation variants for the list and items
   const containerVariants = {
-    hidden: { },
-    visible: { }
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.05,
+      },
+    },
   };
 
   const itemVariants = {
-    hidden: { },
-    visible: { }
+    hidden: { y: 20, opacity: 0 },
+    visible: {
+      y: 0,
+      opacity: 1,
+      transition: {
+        type: 'spring',
+        stiffness: 100,
+        damping: 15
+      },
+    },
   };
 
+  // Animation variants for the accordion content
   const contentVariants = {
     hidden: {
       opacity: 0,
       height: 0,
-      marginTop: 0,
-      marginBottom: 0,
-      paddingTop: 0,
-      paddingBottom: 0,
+      transition: { duration: 0.3, ease: 'easeInOut' }
     },
     visible: {
       opacity: 1,
       height: 'auto',
-      marginTop: '0.5rem',
-      marginBottom: '0.5rem',
-      paddingTop: '0.5rem',
-      paddingBottom: '1.5rem',
-      transition: {
-        duration: 0.3,
-        ease: 'easeInOut'
-      }
+      transition: { duration: 0.4, ease: 'easeInOut' }
     }
   };
 
   return (
     <section id="faq" className="py-16 md:py-24 bg-gradient-to-b from-white to-gray-50">
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
-        <motion.header
-          initial={false}
-          variants={containerVariants}
+        <AnimatePresence mode="wait">
+          <motion.header
+          key={activeCategory} // Animate header on category change
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, ease: 'easeOut' }}
           className="text-center mb-12"
         >
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
@@ -251,6 +254,7 @@ const FAQ: React.FC = () => {
             {currentCategory.description}
           </p>
         </motion.header>
+        </AnimatePresence>
 
         {/* Search and Filter */}
         <div className="max-w-3xl mx-auto mb-10">
@@ -260,7 +264,7 @@ const FAQ: React.FC = () => {
             </div>
             <input
               type="text"
-              className="block w-full pl-10 pr-3 py-3 border border-gray-300 rounded-lg bg-white text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2"
+              className="block w-full pl-10 pr-3 py-3 border border-gray-300 rounded-lg bg-white text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 transition-shadow"
               placeholder="Buscar preguntas..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
@@ -275,6 +279,7 @@ const FAQ: React.FC = () => {
                 onClick={() => {
                   setActiveCategory(category.id);
                   setSearchQuery('');
+                  setOpenItems([]); // UX Refinement: Reset open items on category change
                 }}
                 className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${activeCategory === category.id
                   ? 'bg-accent text-primary shadow-md'
@@ -293,14 +298,19 @@ const FAQ: React.FC = () => {
         {/* FAQ Items */}
         <motion.div
           className="max-w-3xl mx-auto space-y-4"
-          initial={false}
+          key={activeCategory} // Re-run animation when category changes
+          variants={containerVariants}
+          initial="hidden"
+          animate="visible"
+          layout // Animate layout changes for the container itself
         >
           {filteredFAQs.length > 0 ? (
             filteredFAQs.map((faq, index) => (
               <motion.div
-                key={index}
-                className="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden"
-                initial={false}
+                key={faq.question} // Use a stable key
+                className="bg-white rounded-xl shadow-sm hover:shadow-lg border border-gray-100 overflow-hidden transition-shadow duration-300"
+                variants={itemVariants}
+                layout="position" // Animate position changes on filter
               >
                 <button
                   className="w-full px-6 py-5 text-left flex justify-between items-center focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 rounded-lg"
@@ -308,13 +318,11 @@ const FAQ: React.FC = () => {
                   aria-expanded={openItems.includes(index)}
                   aria-controls={`faq-content-${index}`}
                 >
-                  <h3 className="text-lg font-medium text-gray-900">
+                  <h3 id={`faq-question-${index}`} className="text-lg font-medium text-gray-900">
                     {faq.question}
                   </h3>
                   <motion.span
-                    animate={{
-                      rotate: openItems.includes(index) ? 180 : 0
-                    }}
+                    animate={{ rotate: openItems.includes(index) ? 180 : 0 }}
                     transition={{ duration: 0.3 }}
                     aria-hidden="true"
                   >
@@ -330,14 +338,16 @@ const FAQ: React.FC = () => {
                       animate="visible"
                       exit="hidden"
                       variants={contentVariants}
-                      className="px-6 pb-6 pt-0 text-gray-600"
+                      className="overflow-hidden" // Prevents content overflow during animation
                       role="region"
-                      aria-labelledby={`faq-question-${index}`}
+                      aria-labelledby={`faq-question-${index}`} // A11y Improvement
                     >
-                      <div className="prose prose-indigo max-w-none">
-                        <ReactMarkdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]}>
-                          {faq.answer}
-                        </ReactMarkdown>
+                      <div className="px-6 pb-6 pt-2 text-gray-600">
+                        <div className="prose prose-indigo max-w-none">
+                          <ReactMarkdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]}>
+                            {faq.answer}
+                          </ReactMarkdown>
+                        </div>
                       </div>
                     </motion.div>
                   )}
@@ -347,7 +357,9 @@ const FAQ: React.FC = () => {
           ) : (
             <motion.div
               className="text-center py-12"
-              variants={itemVariants}
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.2 }}
             >
               <p className="text-gray-500">No se encontraron preguntas que coincidan con tu búsqueda.</p>
               <button
@@ -381,6 +393,7 @@ const FAQ: React.FC = () => {
               whileTap={{ scale: 0.95 }}
               className="px-8 py-3 bg-primary-600 text-white rounded-lg font-medium focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2"
               onClick={() => {
+                // This is a standard way to handle same-page scrolling in simple applications.
                 const contactSection = document.getElementById('contact');
                 if (contactSection) {
                   contactSection.scrollIntoView({
