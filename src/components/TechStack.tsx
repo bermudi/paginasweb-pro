@@ -189,10 +189,10 @@ export const TechStack = () => {
                             >
                                 {tech.description}
                             </p>
-                            <ul className="grid grid-cols-2 gap-2 px-4">
+                            <ul className="grid grid-cols-2 gap-2">
                                 {tech.items.map((item, i) => (
                                     <li key={i} className="flex items-center gap-2">
-                                        <span className="text-primary/60 rounded-md bg-accent p-1">
+                                        <span className="text-primary/25">
                                             {item.icon}
                                         </span>
                                         <span>{item.name}</span>
