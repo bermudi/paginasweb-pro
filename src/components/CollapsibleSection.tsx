@@ -5,6 +5,10 @@ export interface CollapsibleSectionProps {
   title: string;
   children: React.ReactNode;
   defaultOpen?: boolean;
+  id?: string;
+  activeSection?: string | null;
+  onToggle?: (id: string) => void;
+  singleOpenMode?: boolean;
 }
 
 /**
@@ -13,14 +17,28 @@ export interface CollapsibleSectionProps {
 const CollapsibleSection: React.FC<CollapsibleSectionProps> = ({
   title,
   children,
-  defaultOpen = false
+  defaultOpen = false,
+  id = '',
+  activeSection = null,
+  onToggle,
+  singleOpenMode = false
 }) => {
-  const [isOpen, setIsOpen] = React.useState(defaultOpen);
+  // Use local state only when not in single open mode
+  const [localIsOpen, setLocalIsOpen] = React.useState(defaultOpen);
+  
+  // Determine if section is open based on mode
+  const isOpen = singleOpenMode ? activeSection === id : localIsOpen;
 
   return (
     <div className="border border-gray-200 rounded-lg overflow-hidden mb-4">
       <button
-        onClick={() => setIsOpen(!isOpen)}
+        onClick={() => {
+          if (singleOpenMode && onToggle) {
+            onToggle(id);
+          } else {
+            setLocalIsOpen(!localIsOpen);
+          }
+        }}
         className="w-full px-6 py-4 text-left bg-gray-50 hover:bg-gray-100 transition-colors duration-200 flex items-center justify-between"
       >
         <h4 className="text-lg font-semibold text-gray-900">{title}</h4>

@@ -107,16 +107,38 @@ export const TechStack = () => {
         script.text = JSON.stringify(schema);
         document.head.appendChild(script);
 
-        // Equalize description heights
-        const maxHeight = Math.max(...descriptionRefs.current.map(el => el?.getBoundingClientRect().height || 0));
+        // Equalize description heights with resize observer for responsiveness
+        const equalizeHeights = () => {
+            // Reset heights first
+            descriptionRefs.current.forEach(el => {
+                if (el) el.style.height = 'auto';
+            });
+            
+            // Calculate and set max height
+            setTimeout(() => {
+                const maxHeight = Math.max(...descriptionRefs.current.map(el => el?.scrollHeight || 0));
+                descriptionRefs.current.forEach(el => {
+                    if (el) el.style.height = `${maxHeight}px`;
+                });
+            }, 100);
+        };
+
+        // Initial equalization
+        equalizeHeights();
+
+        // Set up resize observer
+        const resizeObserver = new ResizeObserver(equalizeHeights);
         descriptionRefs.current.forEach(el => {
-            if (el) {
-                el.style.height = `${maxHeight}px`;
-            }
+            if (el) resizeObserver.observe(el);
         });
+
+        // Handle window resize events
+        window.addEventListener('resize', equalizeHeights);
 
         return () => {
             document.head.removeChild(script);
+            resizeObserver.disconnect();
+            window.removeEventListener('resize', equalizeHeights);
         };
     }, []);
 
@@ -174,7 +196,7 @@ export const TechStack = () => {
                         <motion.div
                             key={index}
                             variants={itemVariants}
-                            className="bg-background rounded-xl p-6 shadow-lg border border-primary/10 hover:border-primary/30 transition-all"
+                            className="bg-background rounded-xl p-6 shadow-lg border border-primary/10 hover:border-primary/30 transition-all flex flex-col h-full"
                             whileHover={{ y: -5, transition: { duration: 0.2 } }}
                         >
                             <div className="flex items-center gap-4 mb-4">
@@ -185,11 +207,11 @@ export const TechStack = () => {
                             </div>
                             <p
                                 ref={(el) => (descriptionRefs.current[index] = el)}
-                                className="text-primary/80 mb-4"
+                                className="text-primary/80 mb-4 flex-grow"
                             >
                                 {tech.description}
                             </p>
-                            <ul className="grid grid-cols-2 gap-2">
+                            <ul className="grid grid-cols-2 gap-2 mt-auto">
                                 {tech.items.map((item, i) => (
                                     <li key={i} className="flex items-center gap-2">
                                         <span className="text-primary/25">
