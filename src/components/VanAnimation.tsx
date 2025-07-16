@@ -83,10 +83,11 @@ const VanAnimation: React.FC<VanAnimationProps> = ({ animationSpeed = 1 }) => {
             <line stroke="#595757" strokeWidth="3" x1="407.8" y1="191.9" x2="447.8" y2="191.9" />
           </g>
 
-          {/* Wheels */}
-          <Wheel cx={146.3} cy={245.9} animationSpeed={animationSpeed} />
-          <Wheel cx={408.3} cy={245.9} animationSpeed={animationSpeed} />
         </g>
+
+        {/* Wheels are now outside the bouncing wrapper */}
+        <Wheel cx={146.3} cy={245.9} animationSpeed={animationSpeed} />
+        <Wheel cx={408.3} cy={245.9} animationSpeed={animationSpeed} />
       </svg>
     </div>
   );
