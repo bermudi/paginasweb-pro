@@ -29,7 +29,7 @@ export const Hero = () => {
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentImageIndex((prevIndex) => (prevIndex + 1) % heroImages.length);
-    }, 5000); // Change image every 5 seconds
+    }, 10000); // Change image every 5 seconds
 
     return () => clearInterval(interval);
   }, []);
@@ -96,30 +96,33 @@ export const Hero = () => {
         <motion.div
           initial={{ opacity: 0, x: 20 }}
           animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
+          transition={{ duration: 2, delay: 0.2 }}
           className="lg:w-1/2"
         >
-          <div className="relative" style={{ height: "600px" }}>
+          <div className="relative">
             <div className="absolute inset-0 bg-gradient-to-tr from-accent/20 to-transparent rounded-2xl z-10" />
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={currentImageIndex}
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                transition={{ duration: 1 }}
-                className="absolute inset-0"
-              >
-                <img
-                  src={heroImages[currentImageIndex].src}
-                  alt={heroImages[currentImageIndex].alt}
-                  className="rounded-2xl shadow-xl w-full h-full object-cover"
-                  loading={currentImageIndex === 0 ? "eager" : "lazy"}
-                  width="800"
-                  height="600"
-                />
-              </motion.div>
-            </AnimatePresence>
+            <div className="relative">
+              {heroImages.map((image, index) => (
+                <motion.div
+                  key={index}
+                  className="absolute inset-0"
+                  style={{ display: index === 0 ? 'block' : 'block', position: index === 0 ? 'relative' : 'absolute', top: 0 }}
+                  initial={{ opacity: index === 0 ? 1 : 0 }}
+                  animate={{ opacity: index === currentImageIndex ? 1 : 0 }}
+                  transition={{ duration: 1 }}
+                >
+                  <img
+                    src={image.src}
+                    alt={image.alt}
+                    className="rounded-2xl shadow-xl w-full object-cover"
+                    style={{ maxHeight: "600px" }}
+                    loading={index === 0 ? "eager" : "lazy"}
+                    width="800"
+                    height="600"
+                  />
+                </motion.div>
+              ))}
+            </div>
           </div>
         </motion.div>
       </div>
