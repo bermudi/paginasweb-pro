@@ -99,7 +99,7 @@ export const Services = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: index * 0.2 }}
-              className="glass rounded-2xl p-8"
+              className="glass rounded-2xl p-8 shadow-[10px_10px_20px_rgba(0,0,0,0.1)] hover:shadow-[5px_5px_10px_rgba(0,0,0,0.15)] transition-shadow duration-300"
               role="listitem"
             >
               <div className="mb-6 inline-block p-3 bg-accent rounded-xl" aria-hidden="true">
@@ -118,7 +118,7 @@ export const Services = () => {
             </motion.article>
           ))}
         </div>
-        
+
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -126,7 +126,7 @@ export const Services = () => {
           transition={{ duration: 0.6, delay: 0.4 }}
           className="mt-16 text-center"
         >
-          <div className="inline-block glass rounded-2xl px-8 py-6">
+          <div className="inline-block glass rounded-2xl px-8 py-6 shadow-[10px_10px_20px_-10px_rgba(0,0,0,0.1)] hover:shadow-[5px_5px_10px_-5px_rgba(0,0,0,0.15)] transition-shadow duration-300">
             <h3 className="text-xl font-semibold mb-2">¡También hacemos software de escritorio a la medida!</h3>
             <p className="text-primary/80">¿Necesitas una aplicación de escritorio personalizada? ¡Pregúntanos!</p>
           </div>
