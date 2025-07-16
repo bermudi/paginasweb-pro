@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronDown, Search } from 'lucide-react';
 import ReactMarkdown from 'react-markdown';
@@ -236,8 +236,17 @@ const FAQ: React.FC = () => {
     }
   };
 
+  const faqSectionRef = useRef<HTMLElement>(null);
+
+  // Scroll to FAQ section when component mounts if URL has #faq
+  useEffect(() => {
+    if (window.location.hash === '#faq' && faqSectionRef.current) {
+      faqSectionRef.current.scrollIntoView({ behavior: 'smooth' });
+    }
+  }, []);
+
   return (
-    <section id="faq" className="py-16 md:py-24 bg-gradient-to-b from-white to-gray-50">
+    <section id="faq" ref={faqSectionRef} className="py-16 md:py-24 bg-gradient-to-b from-white to-gray-50">
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
         <AnimatePresence mode="wait">
           <motion.header
