@@ -1,11 +1,11 @@
 import React, { useEffect } from 'react';
 import { motion } from 'framer-motion';
 import VanAnimation from './VanAnimation';
-import BouncyCarAnimation from './BouncyCarAnimation';
+import CarAnimation from './CarAnimation';
 import CollapsibleSection from './CollapsibleSection';
-import './CarAnalogyAnimations.css';
+import './SalesmanAnalogyAnimations.css';
 
-export const CarAnalogy = () => {
+export const SalesmanAnalogy = () => {
   useEffect(() => {
     // Schema.org JSON-LD for SEO
     const script = document.createElement('script');
@@ -108,7 +108,7 @@ export const CarAnalogy = () => {
 
             {/* Bouncy Car Animation */}
             <div className="car-container relative h-60 overflow-hidden rounded-lg bg-gradient-to-b from-emerald-200 to-emerald-100 mt-6">
-              <BouncyCarAnimation />
+              <CarAnimation />
             </div>
           </motion.div>
         </div>
