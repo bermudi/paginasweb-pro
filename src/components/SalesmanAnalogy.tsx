@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import VanAnimation from './VanAnimation';
 import CarAnimation from './CarAnimation';
 import CollapsibleSection from './CollapsibleSection';
+import CollapsibleSectionGroup from './CollapsibleSectionGroup';
 import './SalesmanAnalogyAnimations.css';
 
 interface TabProps {
@@ -172,7 +173,8 @@ export const SalesmanAnalogy = () => {
             ¿Quién Hace Qué? Definiendo Roles y Responsabilidades
           </h3>
 
-          <CollapsibleSection title="Tu Rol: Lo Que Aportas al Proyecto" defaultOpen={true}>
+          <CollapsibleSectionGroup defaultOpenSection="tu-rol">
+            <CollapsibleSection id="tu-rol" title="Tu Rol: Lo Que Aportas al Proyecto" defaultOpen={true}>
             <div className="space-y-4">
               <div className="flex items-start">
                 <div className="w-2 h-2 bg-accent rounded-full mt-2 mr-3 flex-shrink-0"></div>
@@ -198,7 +200,7 @@ export const SalesmanAnalogy = () => {
             </div>
           </CollapsibleSection>
 
-          <CollapsibleSection title="Mi Rol: Lo Que Manejo Por Ti">
+          <CollapsibleSection id="mi-rol" title="Mi Rol: Lo Que Manejo Por Ti">
             <div className="space-y-4">
               <div className="flex items-start">
                 <div className="w-2 h-2 bg-accent rounded-full mt-2 mr-3 flex-shrink-0"></div>
@@ -224,7 +226,7 @@ export const SalesmanAnalogy = () => {
             </div>
           </CollapsibleSection>
 
-          <CollapsibleSection title="Evitando Baches en el Camino: Expectativas vs. Realidad">
+          <CollapsibleSection id="expectativas" title="Evitando Baches en el Camino: Expectativas vs. Realidad">
             <div className="space-y-6">
               <p className="text-primary/80 mb-4">
                 Quiero pasar de ser un "chofer renuente" a tu confiable "instructor de manejo". Así es como podemos asegurar un viaje sin frustraciones:
@@ -264,7 +266,7 @@ export const SalesmanAnalogy = () => {
             </div>
           </CollapsibleSection>
 
-          <CollapsibleSection title="Tu Manual del Propietario: El Proceso de Desarrollo">
+          <CollapsibleSection id="proceso" title="Tu Manual del Propietario: El Proceso de Desarrollo">
             <div className="space-y-4">
               <div className="flex items-center">
                 <div className="w-8 h-8 bg-accent rounded-xl flex items-center justify-center mr-4 text-primary font-bold">1</div>
@@ -297,7 +299,7 @@ export const SalesmanAnalogy = () => {
             </div>
           </CollapsibleSection>
 
-          <CollapsibleSection title="Creación de Contenido: Llenando el Coche con Equipaje">
+          <CollapsibleSection id="contenido" title="Creación de Contenido: Llenando el Coche con Equipaje">
             <div className="space-y-4">
               <div className="flex items-start">
                 <div className="w-2 h-2 bg-accent rounded-full mt-2 mr-3 flex-shrink-0"></div>
@@ -316,7 +318,7 @@ export const SalesmanAnalogy = () => {
             </div>
           </CollapsibleSection>
 
-          <CollapsibleSection title="Gestión de Dominio y Hospedaje: Preparando tu Garaje">
+          <CollapsibleSection id="dominio" title="Gestión de Dominio y Hospedaje: Preparando tu Garaje">
             <div className="space-y-4">
               <div className="flex items-start">
                 <div className="w-2 h-2 bg-accent rounded-full mt-2 mr-3 flex-shrink-0"></div>
@@ -335,7 +337,7 @@ export const SalesmanAnalogy = () => {
             </div>
           </CollapsibleSection>
 
-          <CollapsibleSection title="Mantenimiento y Actualizaciones: Conduciendo y Manteniendo el Coche">
+          <CollapsibleSection id="mantenimiento" title="Mantenimiento y Actualizaciones: Conduciendo y Manteniendo el Coche">
             <div className="space-y-4">
               <div className="flex items-start">
                 <div className="w-2 h-2 bg-accent rounded-full mt-2 mr-3 flex-shrink-0"></div>
@@ -353,6 +355,7 @@ export const SalesmanAnalogy = () => {
               </div>
             </div>
           </CollapsibleSection>
+          </CollapsibleSectionGroup>
         </motion.div>
 
         {/* Cómo trabajamos section with adjusted animations */}
