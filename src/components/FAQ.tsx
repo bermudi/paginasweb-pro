@@ -43,7 +43,7 @@ const FAQ: React.FC = () => {
       answer: "Una API (Application Programming Interface) es un puente que permite que diferentes sistemas de software se comuniquen entre sí. Al integrarlas en tu web, podemos añadir funcionalidades avanzadas de terceros. Por ejemplo: Integrar un sistema de reservas de citas directamente en tu página, conectar tu tienda online con tu sistema de inventario, mostrar un mapa interactivo de Google Maps con tus ubicaciones, o procesar pagos de forma segura a través de plataformas como Stripe o PayPal.",
       category: "tecnico"
     },
-    
+
     // Proceso y Colaboración
     {
       question: "En su analogía, mencionan que el cliente provee el contenido ('equipaje'). ¿Qué pasa si no tengo textos o imágenes profesionales?",
@@ -60,14 +60,14 @@ const FAQ: React.FC = () => {
       answer: "**Tú.** Una vez que el proyecto ha sido completado y el pago final ha sido realizado, te entregamos todos los archivos y accesos. El código fuente, el diseño y todo el trabajo realizado te pertenecen por completo. Creemos en la transparencia y en empoderar a nuestros clientes, no en atarlos a nuestro servicio.",
       category: "proceso"
     },
-    
+
     // Valor y Beneficios
     {
       question: "¿Cuál es la diferencia real entre un sitio web personalizado con ustedes y usar una plantilla de plataformas como Wix, Squarespace o Shopify?",
       answer: "Las plataformas de plantillas son como comprar un coche de producción en serie; son funcionales, pero limitadas. Un sitio personalizado con nosotros es como mandar a construir un coche a medida. Las ventajas clave son: **Diseño Único:** Tu sitio no se parecerá a ningún otro. Reflejará al 100% la identidad de tu marca. **Rendimiento Superior:** Optimizamos cada línea de código para una velocidad máxima, algo que las plantillas genéricas no pueden ofrecer. **Escalabilidad sin Límites:** Tu sitio podrá crecer tanto como tu negocio lo necesite, sin las restricciones funcionales de una plataforma cerrada. **Propiedad Total:** Eres dueño de tu sitio. No estás 'alquilando' un espacio en una plataforma de la que no puedes salir. **Asesoría Experta:** Tienes un socio tecnológico directo que entiende tus objetivos de negocio.",
       category: "valor"
     },
-    
+
     // Diseño y Experiencia
     {
       question: "El proceso incluye una etapa de 'Diseño y Prototipado'. ¿Qué sucede si no me gusta la propuesta inicial de diseño?",
@@ -84,7 +84,7 @@ const FAQ: React.FC = () => {
       answer: "Es una pregunta fundamental. Mientras que plataformas como WordPress son excelentes para blogs o sitios sencillos, nuestro enfoque con frameworks modernos te ofrece ventajas clave para un proyecto profesional y a largo plazo: **Experiencia de Usuario Superior:** Los sitios se sienten increíblemente rápidos y fluidos, más parecidos a una aplicación de escritorio que a una página web tradicional. **Seguridad Reforzada:** Al no depender de un ecosistema de plugins de terceros, la superficie de ataque para hackers se reduce drásticamente. **Rendimiento Inigualable:** Construimos solo lo que necesitas, sin el código innecesario que a menudo ralentiza los sitios basados en plantillas o constructores visuales. **Escalabilidad Real:** Tu sitio estará preparado para crecer. Añadir funcionalidades complejas en el futuro es mucho más sencillo y limpio. Básicamente, elegimos construirte un motor de alto rendimiento a medida, en lugar de adaptar uno de producción masiva.",
       category: "diseno"
     },
-    
+
     // Soporte y Mantenimiento
     {
       question: "¿Cómo será la comunicación durante el desarrollo del proyecto?",
@@ -106,7 +106,7 @@ const FAQ: React.FC = () => {
       answer: "Es importante aclarar este punto. Nuestra optimización SEO se enfoca en la parte **técnica y estructural** del sitio: nos aseguramos de que la página sea rápida, que Google pueda leerla y entenderla correctamente, que las etiquetas estén bien puestas y que la experiencia móvil sea impecable. La creación de contenido (estrategia de blog, redacción) y el marketing en redes sociales son disciplinas separadas. Si bien son cruciales para una estrategia SEO completa, no están incluidas en el paquete de desarrollo estándar, pero podemos asesorarte o cotizarlas como un servicio adicional.",
       category: "soporte"
     },
-    
+
     // Pagos y Facturación
     {
       question: "¿Cómo es el esquema de pagos para un proyecto?",
@@ -138,7 +138,7 @@ const FAQ: React.FC = () => {
       answer: "¡Por supuesto! Siempre estaremos disponibles para ayudarte. Las solicitudes de trabajo que no están cubiertas por un plan de mantenimiento se gestionan bajo un esquema de **soporte por horas**. Es una opción flexible y perfecta si solo necesitas ajustes ocasionales. Te enviaremos una cotización por el tiempo estimado antes de realizar cualquier trabajo.",
       category: "pagos"
     },
-    
+
     // Conceptos Digitales
     {
       question: "¿Qué es el DNS y por qué a veces hablan de 'tiempo de propagación'?",
@@ -181,8 +181,8 @@ const FAQ: React.FC = () => {
 
   // Filter FAQs based on search query and active category
   const filteredFAQs = faqItems.filter(item => {
-    const matchesSearch = item.question.toLowerCase().includes(searchQuery.toLowerCase()) || 
-                         item.answer.toLowerCase().includes(searchQuery.toLowerCase());
+    const matchesSearch = item.question.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      item.answer.toLowerCase().includes(searchQuery.toLowerCase());
     const matchesCategory = activeCategory === 'all' || item.category === activeCategory;
     return matchesSearch && matchesCategory;
   });
@@ -192,8 +192,8 @@ const FAQ: React.FC = () => {
 
   // Toggle FAQ item open/closed
   const toggleItem = (index: number) => {
-    setOpenItems(prev => 
-      prev.includes(index) 
+    setOpenItems(prev =>
+      prev.includes(index)
         ? prev.filter(i => i !== index)
         : [...prev, index]
     );
@@ -212,15 +212,15 @@ const FAQ: React.FC = () => {
 
   const itemVariants = {
     hidden: { opacity: 0, y: 20 },
-    visible: { 
-      opacity: 1, 
+    visible: {
+      opacity: 1,
       y: 0,
       transition: { duration: 0.3 }
     }
   };
 
   const contentVariants = {
-    hidden: { 
+    hidden: {
       opacity: 0,
       height: 0,
       marginTop: 0,
@@ -253,7 +253,7 @@ const FAQ: React.FC = () => {
           className="text-center mb-12"
         >
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-            Preguntas Frecuentes
+            {currentCategory.name}
           </h2>
           <p className="text-lg text-gray-600 max-w-3xl mx-auto">
             {currentCategory.description}
@@ -284,11 +284,10 @@ const FAQ: React.FC = () => {
                   setActiveCategory(category.id);
                   setSearchQuery('');
                 }}
-                className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${
-                  activeCategory === category.id
-                    ? 'bg-primary-600 text-white shadow-md'
-                    : 'bg-white text-gray-700 hover:bg-gray-100 border border-gray-200'
-                }`}
+                className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${activeCategory === category.id
+                  ? 'bg-accent text-primary shadow-md'
+                  : 'bg-white text-gray-700 hover:bg-gray-100 border border-gray-200'
+                  }`}
                 whileHover={{ scale: 1.03 }}
                 whileTap={{ scale: 0.98 }}
                 aria-pressed={activeCategory === category.id}
@@ -300,7 +299,7 @@ const FAQ: React.FC = () => {
         </div>
 
         {/* FAQ Items */}
-        <motion.div 
+        <motion.div
           className="max-w-3xl mx-auto space-y-4"
           variants={containerVariants}
           initial="hidden"
@@ -309,8 +308,8 @@ const FAQ: React.FC = () => {
         >
           {filteredFAQs.length > 0 ? (
             filteredFAQs.map((faq, index) => (
-              <motion.div 
-                key={index} 
+              <motion.div
+                key={index}
                 className="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden"
                 variants={itemVariants}
               >
@@ -346,11 +345,11 @@ const FAQ: React.FC = () => {
                       role="region"
                       aria-labelledby={`faq-question-${index}`}
                     >
-                      <div 
+                      <div
                         className="prose prose-indigo max-w-none"
-                        dangerouslySetInnerHTML={{ 
+                        dangerouslySetInnerHTML={{
                           __html: faq.answer.replace(/\n/g, '<br />')
-                        }} 
+                        }}
                       />
                     </motion.div>
                   )}
@@ -358,12 +357,12 @@ const FAQ: React.FC = () => {
               </motion.div>
             ))
           ) : (
-            <motion.div 
+            <motion.div
               className="text-center py-12"
               variants={itemVariants}
             >
               <p className="text-gray-500">No se encontraron preguntas que coincidan con tu búsqueda.</p>
-              <button 
+              <button
                 onClick={() => {
                   setSearchQuery('');
                   setActiveCategory('all');

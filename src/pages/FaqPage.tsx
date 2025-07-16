@@ -1,12 +1,12 @@
 import { FAQ } from "@/components/FAQ";
-import { Hero } from "@/components/Hero";
+import { FAQHero } from "@/components/FAQHero";
 
 const FaqPage = () => {
   return (
-    <div className="container mx-auto px-4 py-16">
-      <Hero />
+    <main className="overflow-hidden">
+      <FAQHero />
       <FAQ />
-    </div>
+    </main>
   );
 };
 
