@@ -19,7 +19,7 @@ interface VanAnimationProps {
  * Animated Van SVG with surfboard, wheels, smoke, and shadow.
  * Modular, accessible, and customizable.
  */
-const VanAnimation: React.FC<VanAnimationProps> = ({ animationSpeed = 1, primaryColor = '#F57D41' }) => {
+const VanAnimation: React.FC<VanAnimationProps> = ({ animationSpeed = 1 }) => {
   return (
     <div className="van-container">
       {/* Smoke Animation as SVG */}
@@ -125,21 +125,5 @@ const Smoke: React.FC<{ animationSpeed: number }> = ({ animationSpeed }) => (
   </svg>
 );
 
-/**
- * SVG Shadow for VanAnimation.
- * @param animationSpeed Animation speed multiplier
- */
-const Shadow: React.FC<{ animationSpeed: number }> = ({ animationSpeed }) => (
-  <ellipse
-    className="van-shadow"
-    cx="277"
-    cy="290"
-    rx="120"
-    ry="8"
-    fill="#000"
-    style={{ animationDuration: `${1 / animationSpeed}s` }}
-    aria-hidden="true"
-  />
-);
 
 export default VanAnimation;
