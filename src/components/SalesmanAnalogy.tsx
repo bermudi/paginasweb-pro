@@ -14,15 +14,18 @@ interface TabProps {
 
 const Tab: React.FC<TabProps> = ({ title, icon, isActive, onClick }) => {
   return (
-    <button
+    <motion.button
       onClick={onClick}
-      className={`flex items-center justify-center gap-2 px-4 py-3 rounded-t-lg transition-all duration-300 ${isActive 
-        ? 'bg-white text-blue-700 font-semibold border-t border-l border-r border-blue-200' 
-        : 'bg-blue-100/50 text-blue-600 hover:bg-blue-100'}`}
+      whileHover={{ scale: 1.02 }}
+      whileTap={{ scale: 0.98 }}
+      className={`flex items-center justify-center gap-2 px-6 py-4 rounded-xl transition-all duration-300 font-medium ${isActive
+          ? 'bg-white text-primary shadow-lg border border-primary/10'
+          : 'glass text-primary/70 hover:text-primary hover:bg-white/60'
+        }`}
     >
       <span className="w-5 h-5">{icon}</span>
       <span>{title}</span>
-    </button>
+    </motion.button>
   );
 };
 
@@ -33,17 +36,22 @@ interface TabContentProps {
 
 const TabContent: React.FC<TabContentProps> = ({ isActive, children }) => {
   if (!isActive) return null;
-  
+
   return (
-    <div className="bg-white border border-blue-200 rounded-b-lg rounded-tr-lg p-6 animate-fadeIn">
+    <motion.div
+      initial={{ opacity: 0, y: 10 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.3 }}
+      className="glass rounded-2xl p-8 shadow-lg border border-white/20"
+    >
       {children}
-    </div>
+    </motion.div>
   );
 };
 
 export const SalesmanAnalogy = () => {
   const [activeTab, setActiveTab] = useState<number>(0);
-  
+
   useEffect(() => {
     // Schema.org JSON-LD for SEO
     const script = document.createElement('script');
@@ -100,20 +108,20 @@ export const SalesmanAnalogy = () => {
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
-            className="bg-white rounded-2xl shadow-lg p-8 border border-gray-100"
+            className="glass rounded-2xl p-8 shadow-lg border border-white/20"
           >
             <div className="flex items-center mb-6">
-              <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mr-4">
-                <svg className="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <div className="w-12 h-12 bg-accent rounded-xl flex items-center justify-center mr-4">
+                <svg className="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
                 </svg>
               </div>
               <h3 className="text-2xl font-bold text-gray-900">El Viaje Digital</h3>
             </div>
-            <p className="text-gray-600 mb-6 leading-relaxed">
+            <p className="text-primary/80 mb-6 leading-relaxed">
               Imagina que entras a una agencia de autos. Estás emocionado por los diseños elegantes, los motores potentes y la promesa de un viaje suave. Firmas los papeles, te entregan las llaves y estás listo para salir a la carretera.
             </p>
-            <p className="text-gray-600 mb-6 leading-relaxed">
+            <p className="text-primary/80 mb-6 leading-relaxed">
               Pero luego, te volteas hacia el vendedor y le dices: "Entonces... ¿tú me vas a llevar a todos lados, verdad?" Suena gracioso, pero esto pasa a menudo en el desarrollo web. Los clientes piden un sitio web hecho a medida, pero a veces esperan que el desarrollador no solo construya el "coche", sino que también lo conduzca y lo mantenga por ellos.
             </p>
 
@@ -127,20 +135,20 @@ export const SalesmanAnalogy = () => {
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
             viewport={{ once: true }}
-            className="bg-white rounded-2xl shadow-lg p-8 border border-gray-100"
+            className="glass rounded-2xl p-8 shadow-lg border border-white/20"
           >
             <div className="flex items-center mb-6">
-              <div className="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mr-4">
-                <svg className="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <div className="w-12 h-12 bg-accent rounded-xl flex items-center justify-center mr-4">
+                <svg className="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
                 </svg>
               </div>
               <h3 className="text-2xl font-bold text-gray-900">Nuestra Ruta al Éxito</h3>
             </div>
-            <p className="text-gray-600 mb-6 leading-relaxed">
+            <p className="text-primary/80 mb-6 leading-relaxed">
               Para evitar confusiones, definamos claramente nuestros roles y aseguremos que tu viaje digital sea tan emocionante como lo imaginaste al "entrar a la agencia". Tu sitio web debe funcionar como un automóvil deportivo perfectamente afinado: rápido, receptivo y confiable.
             </p>
-            <p className="text-gray-600 mb-6 leading-relaxed">
+            <p className="text-primary/80 mb-6 leading-relaxed">
               Así como esperas que tu coche arranque cada vez y funcione sin problemas, tus clientes esperan que tu sitio web cargue rápidamente y funcione a la perfección en todos los dispositivos. Estamos aquí para construir el "coche" de tus sueños y enseñarte a conducirlo, o conducirlo por ti si esa es tu preferencia.
             </p>
 
@@ -157,7 +165,7 @@ export const SalesmanAnalogy = () => {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.4 }}
           viewport={{ once: true }}
-          className="bg-white rounded-2xl shadow-lg p-8 border border-gray-100 mb-12"
+          className="glass rounded-2xl p-8 shadow-lg border border-white/20 mb-12"
         >
           <h3 className="text-3xl font-bold text-gray-900 mb-8 text-center">
             ¿Quién Hace Qué? Definiendo Roles y Responsabilidades
@@ -166,24 +174,24 @@ export const SalesmanAnalogy = () => {
           <CollapsibleSection title="Tu Rol: Lo Que Aportas al Proyecto" defaultOpen={true}>
             <div className="space-y-4">
               <div className="flex items-start">
-                <div className="w-2 h-2 bg-blue-500 rounded-full mt-2 mr-3 flex-shrink-0"></div>
+                <div className="w-2 h-2 bg-accent rounded-full mt-2 mr-3 flex-shrink-0"></div>
                 <div>
                   <h5 className="font-semibold text-gray-900 mb-1">Tu Visión de Negocio</h5>
-                  <p className="text-gray-600">Así como decides si necesitas una SUV familiar o un deportivo, tú tienes claro tus objetivos de negocio, tu público meta y la identidad de tu marca.</p>
+                  <p className="text-primary/80">Así como decides si necesitas una SUV familiar o un deportivo, tú tienes claro tus objetivos de negocio, tu público meta y la identidad de tu marca.</p>
                 </div>
               </div>
               <div className="flex items-start">
-                <div className="w-2 h-2 bg-blue-500 rounded-full mt-2 mr-3 flex-shrink-0"></div>
+                <div className="w-2 h-2 bg-accent rounded-full mt-2 mr-3 flex-shrink-0"></div>
                 <div>
                   <h5 className="font-semibold text-gray-900 mb-1">Contenido y Materiales</h5>
-                  <p className="text-gray-600">Tú nos entregas los textos, imágenes, logotipos y demás contenido; es como decirnos el color y los accesorios que quieres para tu coche.</p>
+                  <p className="text-primary/80">Tú nos entregas los textos, imágenes, logotipos y demás contenido; es como decirnos el color y los accesorios que quieres para tu coche.</p>
                 </div>
               </div>
               <div className="flex items-start">
-                <div className="w-2 h-2 bg-blue-500 rounded-full mt-2 mr-3 flex-shrink-0"></div>
+                <div className="w-2 h-2 bg-accent rounded-full mt-2 mr-3 flex-shrink-0"></div>
                 <div>
                   <h5 className="font-semibold text-gray-900 mb-1">Retroalimentación y Decisiones</h5>
-                  <p className="text-gray-600">Así como pruebas diferentes modelos, revisas nuestro trabajo y das tu opinión para asegurarnos de que estamos creando justo lo que necesitas.</p>
+                  <p className="text-primary/80">Así como pruebas diferentes modelos, revisas nuestro trabajo y das tu opinión para asegurarnos de que estamos creando justo lo que necesitas.</p>
                 </div>
               </div>
             </div>
@@ -192,24 +200,24 @@ export const SalesmanAnalogy = () => {
           <CollapsibleSection title="Mi Rol: Lo Que Manejo Por Ti">
             <div className="space-y-4">
               <div className="flex items-start">
-                <div className="w-2 h-2 bg-green-500 rounded-full mt-2 mr-3 flex-shrink-0"></div>
+                <div className="w-2 h-2 bg-accent rounded-full mt-2 mr-3 flex-shrink-0"></div>
                 <div>
                   <h5 className="font-semibold text-gray-900 mb-1">Implementación Técnica</h5>
-                  <p className="text-gray-600">Nosotros nos encargamos de toda la programación, hospedaje, seguridad y lo técnico; como la agencia que gestiona el financiamiento, los papeles y la entrega del auto.</p>
+                  <p className="text-primary/80">Nosotros nos encargamos de toda la programación, hospedaje, seguridad y lo técnico; como la agencia que gestiona el financiamiento, los papeles y la entrega del auto.</p>
                 </div>
               </div>
               <div className="flex items-start">
-                <div className="w-2 h-2 bg-green-500 rounded-full mt-2 mr-3 flex-shrink-0"></div>
+                <div className="w-2 h-2 bg-accent rounded-full mt-2 mr-3 flex-shrink-0"></div>
                 <div>
                   <h5 className="font-semibold text-gray-900 mb-1">Diseño y Experiencia de Usuario</h5>
-                  <p className="text-gray-600">Creamos diseños atractivos e intuitivos que funcionan perfecto en cualquier dispositivo, asegurando que tu vehículo digital ruede suave en cualquier camino.</p>
+                  <p className="text-primary/80">Creamos diseños atractivos e intuitivos que funcionan perfecto en cualquier dispositivo, asegurando que tu vehículo digital ruede suave en cualquier camino.</p>
                 </div>
               </div>
               <div className="flex items-start">
-                <div className="w-2 h-2 bg-green-500 rounded-full mt-2 mr-3 flex-shrink-0"></div>
+                <div className="w-2 h-2 bg-accent rounded-full mt-2 mr-3 flex-shrink-0"></div>
                 <div>
                   <h5 className="font-semibold text-gray-900 mb-1">Optimización y Rendimiento</h5>
-                  <p className="text-gray-600">Optimizamos para velocidad, buscadores y conversiones; como un mecánico afinando tu motor para el mejor desempeño.</p>
+                  <p className="text-primary/80">Optimizamos para velocidad, buscadores y conversiones; como un mecánico afinando tu motor para el mejor desempeño.</p>
                 </div>
               </div>
             </div>
@@ -217,36 +225,36 @@ export const SalesmanAnalogy = () => {
 
           <CollapsibleSection title="Evitando Baches en el Camino: Expectativas vs. Realidad">
             <div className="space-y-6">
-              <p className="text-gray-700 mb-4">
+              <p className="text-primary/80 mb-4">
                 Quiero pasar de ser un "chofer renuente" a tu confiable "instructor de manejo". Así es como podemos asegurar un viaje sin frustraciones:
               </p>
-              
+
               <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 mb-4">
                 <h5 className="font-semibold text-blue-800 mb-2">🗺️ ¿Falta de Ruta? Hagamos una Juntos</h5>
                 <p className="text-blue-700">Muchos clientes quieren "conducir hacia el éxito", pero no están seguros del destino. Te ayudaré a definir tus metas, público objetivo y estrategia de contenido desde el principio.</p>
               </div>
-              
+
               <div className="bg-purple-50 border border-purple-200 rounded-lg p-4 mb-4">
                 <h5 className="font-semibold text-purple-800 mb-2">🚦 ¿Conducción desde el Asiento Trasero? Comuniquémonos Claramente</h5>
                 <p className="text-purple-700">Los cambios "pequeños" a veces son revisiones mayores (¡como convertir un coche en un barco a mitad del viaje!). Explicaré el alcance de las solicitudes para que siempre estemos en la misma página.</p>
               </div>
-              
+
               <div className="bg-amber-50 border border-amber-200 rounded-lg p-4 mb-4">
                 <h5 className="font-semibold text-amber-800 mb-2">🔮 ¿Leer la Mente? No es Necesario</h5>
                 <p className="text-amber-700">No puedo adivinar tus necesidades, pero haré las preguntas correctas para entender tu visión. Una comunicación clara nos ahorrará tiempo y recursos.</p>
               </div>
-              
+
               <div className="bg-emerald-50 border border-emerald-200 rounded-lg p-4 mb-4">
                 <h5 className="font-semibold text-emerald-800 mb-2">⛽ ¿Quién Paga la Gasolina?</h5>
                 <p className="text-emerald-700">Los sitios web necesitan cuidados continuos (actualizaciones, seguridad, hospedaje). Te explicaré estos costos desde el inicio para que no haya sorpresas.</p>
               </div>
-              
+
               <div className="bg-red-50 border border-red-200 rounded-lg p-4">
                 <h5 className="font-semibold text-red-800 mb-2">❌ Expectativa Irreal</h5>
                 <p className="text-red-700 mb-2">"Quiero una página como Amazon, pero solo tengo $500 y la necesito para la próxima semana."</p>
                 <p className="text-red-600 text-sm">Esto es como querer un auto de lujo con presupuesto de bicicleta y esperar entrega inmediata.</p>
               </div>
-              
+
               <div className="bg-green-50 border border-green-200 rounded-lg p-4">
                 <h5 className="font-semibold text-green-800 mb-2">✅ Enfoque Realista</h5>
                 <p className="text-green-700 mb-2">"Necesito una página profesional que muestre mis servicios y convierta visitantes en clientes. ¿Qué se puede hacer con mi presupuesto?"</p>
@@ -258,88 +266,88 @@ export const SalesmanAnalogy = () => {
           <CollapsibleSection title="Tu Manual del Propietario: El Proceso de Desarrollo">
             <div className="space-y-4">
               <div className="flex items-center">
-                <div className="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center mr-4 text-blue-600 font-bold">1</div>
+                <div className="w-8 h-8 bg-accent rounded-xl flex items-center justify-center mr-4 text-primary font-bold">1</div>
                 <div>
                   <h5 className="font-semibold text-gray-900">Descubrimiento y Planeación</h5>
-                  <p className="text-gray-600">Como platicar tus necesidades con el vendedor antes de ver opciones.</p>
+                  <p className="text-primary/80">Como platicar tus necesidades con el vendedor antes de ver opciones.</p>
                 </div>
               </div>
               <div className="flex items-center">
-                <div className="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center mr-4 text-blue-600 font-bold">2</div>
+                <div className="w-8 h-8 bg-accent rounded-xl flex items-center justify-center mr-4 text-primary font-bold">2</div>
                 <div>
                   <h5 className="font-semibold text-gray-900">Diseño y Prototipado</h5>
-                  <p className="text-gray-600">Creamos bocetos y prototipos; es como el test drive de tu página web.</p>
+                  <p className="text-primary/80">Creamos bocetos y prototipos; es como el test drive de tu página web.</p>
                 </div>
               </div>
               <div className="flex items-center">
-                <div className="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center mr-4 text-blue-600 font-bold">3</div>
+                <div className="w-8 h-8 bg-accent rounded-xl flex items-center justify-center mr-4 text-primary font-bold">3</div>
                 <div>
                   <h5 className="font-semibold text-gray-900">Desarrollo y Pruebas</h5>
-                  <p className="text-gray-600">Construimos y probamos tu página; como fabricar y hacer control de calidad de un auto.</p>
+                  <p className="text-primary/80">Construimos y probamos tu página; como fabricar y hacer control de calidad de un auto.</p>
                 </div>
               </div>
               <div className="flex items-center">
-                <div className="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center mr-4 text-blue-600 font-bold">4</div>
+                <div className="w-8 h-8 bg-accent rounded-xl flex items-center justify-center mr-4 text-primary font-bold">4</div>
                 <div>
                   <h5 className="font-semibold text-gray-900">Lanzamiento y Soporte</h5>
-                  <p className="text-gray-600">Publicamos tu sitio y damos mantenimiento; como la entrega y la garantía de tu coche.</p>
+                  <p className="text-primary/80">Publicamos tu sitio y damos mantenimiento; como la entrega y la garantía de tu coche.</p>
                 </div>
               </div>
             </div>
           </CollapsibleSection>
-          
+
           <CollapsibleSection title="Creación de Contenido: Llenando el Coche con Equipaje">
             <div className="space-y-4">
               <div className="flex items-start">
-                <div className="w-2 h-2 bg-amber-500 rounded-full mt-2 mr-3 flex-shrink-0"></div>
+                <div className="w-2 h-2 bg-accent rounded-full mt-2 mr-3 flex-shrink-0"></div>
                 <div>
                   <h5 className="font-semibold text-gray-900 mb-1">Mi Rol</h5>
-                  <p className="text-gray-600">Me enfoco en construir la estructura y funcionalidad de tu sitio. A menos que se acuerde lo contrario, la creación de contenido (textos, imágenes, videos, logotipos, etc.) generalmente no está incluida en el diseño y desarrollo.</p>
+                  <p className="text-primary/80">Me enfoco en construir la estructura y funcionalidad de tu sitio. A menos que se acuerde lo contrario, la creación de contenido (textos, imágenes, videos, logotipos, etc.) generalmente no está incluida en el diseño y desarrollo.</p>
                 </div>
               </div>
               <div className="flex items-start">
-                <div className="w-2 h-2 bg-amber-500 rounded-full mt-2 mr-3 flex-shrink-0"></div>
+                <div className="w-2 h-2 bg-accent rounded-full mt-2 mr-3 flex-shrink-0"></div>
                 <div>
                   <h5 className="font-semibold text-gray-900 mb-1">Tu Rol</h5>
-                  <p className="text-gray-600">Proporcionar el contenido para tu sitio o comunicarme si necesitas ayuda para crearlo. Si necesitas ayuda con el contenido, puedo incluir redacción, edición o búsqueda de imágenes por un costo adicional.</p>
+                  <p className="text-primary/80">Proporcionar el contenido para tu sitio o comunicarme si necesitas ayuda para crearlo. Si necesitas ayuda con el contenido, puedo incluir redacción, edición o búsqueda de imágenes por un costo adicional.</p>
                 </div>
               </div>
             </div>
           </CollapsibleSection>
-          
+
           <CollapsibleSection title="Gestión de Dominio y Hospedaje: Preparando tu Garaje">
             <div className="space-y-4">
               <div className="flex items-start">
-                <div className="w-2 h-2 bg-blue-500 rounded-full mt-2 mr-3 flex-shrink-0"></div>
+                <div className="w-2 h-2 bg-accent rounded-full mt-2 mr-3 flex-shrink-0"></div>
                 <div>
                   <h5 className="font-semibold text-gray-900 mb-1">Mi Rol</h5>
-                  <p className="text-gray-600">Puedo manejar el registro de dominio, configuración de DNS y hospedaje para una experiencia sin complicaciones. Si prefieres gestionarlos tú, te proporcionaré instrucciones claras y soporte para conectar tu dominio al sitio.</p>
+                  <p className="text-primary/80">Puedo manejar el registro de dominio, configuración de DNS y hospedaje para una experiencia sin complicaciones. Si prefieres gestionarlos tú, te proporcionaré instrucciones claras y soporte para conectar tu dominio al sitio.</p>
                 </div>
               </div>
               <div className="flex items-start">
-                <div className="w-2 h-2 bg-blue-500 rounded-full mt-2 mr-3 flex-shrink-0"></div>
+                <div className="w-2 h-2 bg-accent rounded-full mt-2 mr-3 flex-shrink-0"></div>
                 <div>
                   <h5 className="font-semibold text-gray-900 mb-1">Tu Rol (Si lo Gestionas Tú)</h5>
-                  <p className="text-gray-600">Responsabilizarte de la configuración de DNS y la propagación. Te guiaré, pero los errores pueden causar tiempos de inactividad, así que es importante prestar atención a los detalles.</p>
+                  <p className="text-primary/80">Responsabilizarte de la configuración de DNS y la propagación. Te guiaré, pero los errores pueden causar tiempos de inactividad, así que es importante prestar atención a los detalles.</p>
                 </div>
               </div>
             </div>
           </CollapsibleSection>
-          
+
           <CollapsibleSection title="Mantenimiento y Actualizaciones: Conduciendo y Manteniendo el Coche">
             <div className="space-y-4">
               <div className="flex items-start">
-                <div className="w-2 h-2 bg-green-500 rounded-full mt-2 mr-3 flex-shrink-0"></div>
+                <div className="w-2 h-2 bg-accent rounded-full mt-2 mr-3 flex-shrink-0"></div>
                 <div>
                   <h5 className="font-semibold text-gray-900 mb-1">Mi Rol</h5>
-                  <p className="text-gray-600">Ofrezco paquetes opcionales de mantenimiento continuo, que incluyen respaldos, actualizaciones de seguridad y edición de contenido. También proporciono capacitación y documentación si deseas "conducir" el sitio tú mismo.</p>
+                  <p className="text-primary/80">Ofrezco paquetes opcionales de mantenimiento continuo, que incluyen respaldos, actualizaciones de seguridad y edición de contenido. También proporciono capacitación y documentación si deseas "conducir" el sitio tú mismo.</p>
                 </div>
               </div>
               <div className="flex items-start">
-                <div className="w-2 h-2 bg-green-500 rounded-full mt-2 mr-3 flex-shrink-0"></div>
+                <div className="w-2 h-2 bg-accent rounded-full mt-2 mr-3 flex-shrink-0"></div>
                 <div>
                   <h5 className="font-semibold text-gray-900 mb-1">Tu Rol</h5>
-                  <p className="text-gray-600">Decidir si manejarás las actualizaciones y el mantenimiento o prefieres que yo tome el volante con un plan de soporte. ¡Los sitios web, como los coches, necesitan "combustible" y "cambios de aceite" regulares para mantenerse en óptimas condiciones!</p>
+                  <p className="text-primary/80">Decidir si manejarás las actualizaciones y el mantenimiento o prefieres que yo tome el volante con un plan de soporte. ¡Los sitios web, como los coches, necesitan "combustible" y "cambios de aceite" regulares para mantenerse en óptimas condiciones!</p>
                 </div>
               </div>
             </div>
@@ -352,13 +360,13 @@ export const SalesmanAnalogy = () => {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.5 }}
           viewport={{ once: true }}
-          className="bg-white rounded-2xl shadow-lg p-8 border border-gray-100 mb-12"
+          className="glass rounded-2xl p-8 shadow-lg border border-white/20 mb-12"
         >
           <h3 className="text-3xl font-bold text-gray-900 mb-8 text-center">
             Cómo Trabajamos: Tu Viaje al Éxito Digital
           </h3>
 
-          <p className="text-gray-600 text-center mb-8">
+          <p className="text-primary/80 text-center mb-8">
             Un proceso claro y transparente que garantiza resultados excepcionales en cada proyecto, como una ruta bien planificada para tu viaje digital.
           </p>
 
@@ -368,7 +376,7 @@ export const SalesmanAnalogy = () => {
               initial={{ opacity: 0, x: -30 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              className="bg-blue-50 rounded-xl p-6 border border-blue-100 relative overflow-hidden cursor-pointer"
+              className="glass rounded-xl p-6 border border-white/20 relative overflow-hidden cursor-pointer"
               whileHover={{
                 x: 8,
                 scale: 1.05,
@@ -379,7 +387,7 @@ export const SalesmanAnalogy = () => {
             >
               <motion.div
                 initial={{ scale: 0.9 }}
-                className="absolute top-0 right-0 w-16 h-16 bg-blue-100 rounded-full -mr-8 -mt-8 flex items-center justify-center"
+                className="absolute top-0 right-0 w-16 h-16 bg-accent rounded-full -mr-8 -mt-8 flex items-center justify-center"
                 animate={{
                   scale: [1, 1.1, 1],
                 }}
@@ -391,13 +399,12 @@ export const SalesmanAnalogy = () => {
                 whileHover={{
                   scale: 1.2,
                   rotate: 5,
-                  backgroundColor: "#bfdbfe"
                 }}
               >
-                <span className="text-2xl font-bold text-blue-600 ml-2 mb-2">1</span>
+                <span className="text-2xl font-bold text-primary ml-2 mb-2">1</span>
               </motion.div>
               <h4 className="text-xl font-bold text-gray-900 mb-3">Consulta y Análisis</h4>
-              <p className="text-gray-600">
+              <p className="text-primary/80">
                 Como un buen mecánico, primero diagnosticamos tus necesidades exactas antes de proponer soluciones. Entendemos tus objetivos de negocio para crear la solución perfecta.
               </p>
             </motion.div>
@@ -407,7 +414,7 @@ export const SalesmanAnalogy = () => {
               initial={{ opacity: 0, x: -30 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              className="bg-green-50 rounded-xl p-6 border border-green-100 relative overflow-hidden cursor-pointer"
+              className="glass rounded-xl p-6 border border-white/20 relative overflow-hidden cursor-pointer"
               whileHover={{
                 x: 8,
                 scale: 1.05,
@@ -418,7 +425,7 @@ export const SalesmanAnalogy = () => {
             >
               <motion.div
                 initial={{ scale: 0.9 }}
-                className="absolute top-0 right-0 w-16 h-16 bg-green-100 rounded-full -mr-8 -mt-8 flex items-center justify-center"
+                className="absolute top-0 right-0 w-16 h-16 bg-accent rounded-full -mr-8 -mt-8 flex items-center justify-center"
                 animate={{
                   scale: [1, 1.1, 1],
                 }}
@@ -430,13 +437,12 @@ export const SalesmanAnalogy = () => {
                 whileHover={{
                   scale: 1.2,
                   rotate: 5,
-                  backgroundColor: "#a7f3d0"
                 }}
               >
-                <span className="text-2xl font-bold text-green-600 ml-2 mb-2">2</span>
+                <span className="text-2xl font-bold text-primary ml-2 mb-2">2</span>
               </motion.div>
               <h4 className="text-xl font-bold text-gray-900 mb-3">Propuesta y Cotización</h4>
-              <p className="text-gray-600">
+              <p className="text-primary/80">
                 Como elegir el modelo y características de tu vehículo, desarrollamos una propuesta detallada con cronograma y presupuesto transparente.
               </p>
             </motion.div>
@@ -446,7 +452,7 @@ export const SalesmanAnalogy = () => {
               initial={{ opacity: 0, x: -30 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              className="bg-purple-50 rounded-xl p-6 border border-purple-100 relative overflow-hidden cursor-pointer"
+              className="glass rounded-xl p-6 border border-white/20 relative overflow-hidden cursor-pointer"
               whileHover={{
                 x: 8,
                 scale: 1.05,
@@ -457,7 +463,7 @@ export const SalesmanAnalogy = () => {
             >
               <motion.div
                 initial={{ scale: 0.9 }}
-                className="absolute top-0 right-0 w-16 h-16 bg-purple-100 rounded-full -mr-8 -mt-8 flex items-center justify-center"
+                className="absolute top-0 right-0 w-16 h-16 bg-accent rounded-full -mr-8 -mt-8 flex items-center justify-center"
                 animate={{
                   scale: [1, 1.1, 1],
                 }}
@@ -469,13 +475,12 @@ export const SalesmanAnalogy = () => {
                 whileHover={{
                   scale: 1.2,
                   rotate: 5,
-                  backgroundColor: "#ddd6fe"
                 }}
               >
-                <span className="text-2xl font-bold text-purple-600 ml-2 mb-2">3</span>
+                <span className="text-2xl font-bold text-primary ml-2 mb-2">3</span>
               </motion.div>
               <h4 className="text-xl font-bold text-gray-900 mb-3">Desarrollo</h4>
-              <p className="text-gray-600">
+              <p className="text-primary/80">
                 Como ingenieros construyendo tu vehículo a medida, creamos tu proyecto con las mejores prácticas y tecnologías actuales para un rendimiento óptimo.
               </p>
             </motion.div>
@@ -485,7 +490,7 @@ export const SalesmanAnalogy = () => {
               initial={{ opacity: 0, x: -30 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              className="bg-amber-50 rounded-xl p-6 border border-amber-100 relative overflow-hidden cursor-pointer"
+              className="glass rounded-xl p-6 border border-white/20 relative overflow-hidden cursor-pointer"
               whileHover={{
                 x: 8,
                 scale: 1.05,
@@ -496,7 +501,7 @@ export const SalesmanAnalogy = () => {
             >
               <motion.div
                 initial={{ scale: 0.9 }}
-                className="absolute top-0 right-0 w-16 h-16 bg-amber-100 rounded-full -mr-8 -mt-8 flex items-center justify-center"
+                className="absolute top-0 right-0 w-16 h-16 bg-accent rounded-full -mr-8 -mt-8 flex items-center justify-center"
                 animate={{
                   scale: [1, 1.1, 1],
                 }}
@@ -508,37 +513,46 @@ export const SalesmanAnalogy = () => {
                 whileHover={{
                   scale: 1.2,
                   rotate: 5,
-                  backgroundColor: "#fde68a"
                 }}
               >
-                <span className="text-2xl font-bold text-amber-600 ml-2 mb-2">4</span>
+                <span className="text-2xl font-bold text-primary ml-2 mb-2">4</span>
               </motion.div>
               <h4 className="text-xl font-bold text-gray-900 mb-3">Lanzamiento y Soporte</h4>
-              <p className="text-gray-600">
+              <p className="text-primary/80">
                 Como la entrega de llaves y servicio postventa, lanzamos tu proyecto y brindamos soporte continuo para asegurar su crecimiento y óptimo funcionamiento.
               </p>
             </motion.div>
           </div>
         </motion.div>
-        
-        {/* Unified Call to Action Section with Tabs */}
+
+        {/* Unified Call to Action Section with Tabs - Redesigned */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.6 }}
           viewport={{ once: true }}
-          className="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-2xl shadow-lg p-8 border border-blue-100 mt-12"
+          className="glass rounded-2xl p-8 shadow-lg border border-white/20 mt-12"
         >
-          <h3 className="text-3xl font-bold text-gray-900 mb-6 text-center">
-            ¿Listo para Encender el Motor? ¡Vamos!
-          </h3>
-          
-          <p className="text-lg mb-8 max-w-3xl mx-auto text-center text-gray-600">
-            Para asegurar un viaje suave desde el principio, aclaremos algunas cosas antes de empezar:
-          </p>
-          
+          <motion.header
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="text-center mb-12"
+          >
+            <span className="px-4 py-2 rounded-full bg-accent text-sm font-medium mb-6 inline-block" role="text">
+              ¿Listo para empezar?
+            </span>
+            <h3 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
+              ¿Listo para Encender el Motor? ¡Vamos!
+            </h3>
+            <p className="text-lg mb-8 max-w-3xl mx-auto text-primary/80">
+              Para asegurar un viaje suave desde el principio, aclaremos algunas cosas antes de empezar:
+            </p>
+          </motion.header>
+
           {/* Tabs Navigation */}
-          <div className="flex justify-center mb-1 gap-1">
+          <div className="flex flex-wrap justify-center mb-8 gap-2">
             <Tab
               title="Información"
               icon={
@@ -563,7 +577,7 @@ export const SalesmanAnalogy = () => {
               title="Hospedaje"
               icon={
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9 3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
                 </svg>
               }
               isActive={activeTab === 2}
@@ -580,68 +594,68 @@ export const SalesmanAnalogy = () => {
               onClick={() => setActiveTab(3)}
             />
           </div>
-          
+
           {/* Tab Contents */}
           <div className="mb-8">
             {/* Overview Tab */}
             <TabContent isActive={activeTab === 0}>
-              <div className="text-gray-700">
+              <div className="text-primary/80">
                 <p className="mb-6">
                   Al definir estos roles ahora, evitaremos desvíos y construiremos un sitio web que te lleve exactamente a donde quieres ir. Estoy aquí para construir el "coche" de tus sueños y enseñarte a conducirlo, o conducirlo por ti si esa es tu preferencia.
                 </p>
                 <div className="grid md:grid-cols-3 gap-6 mb-6">
-                  <div className="bg-blue-50 rounded-xl p-5 border border-blue-100">
-                    <h4 className="font-semibold text-blue-800 mb-2 flex items-center">
+                  <div className="bg-accent/30 rounded-xl p-5 border border-accent">
+                    <h4 className="font-semibold text-primary mb-2 flex items-center">
                       <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                       </svg>
                       Claridad
                     </h4>
-                    <p className="text-sm text-blue-700">Roles y responsabilidades claramente definidos para evitar confusiones.</p>
+                    <p className="text-sm text-primary/70">Roles y responsabilidades claramente definidos para evitar confusiones.</p>
                   </div>
-                  <div className="bg-green-50 rounded-xl p-5 border border-green-100">
-                    <h4 className="font-semibold text-green-800 mb-2 flex items-center">
+                  <div className="bg-accent/30 rounded-xl p-5 border border-accent">
+                    <h4 className="font-semibold text-primary mb-2 flex items-center">
                       <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                       </svg>
                       Eficiencia
                     </h4>
-                    <p className="text-sm text-green-700">Proceso optimizado que ahorra tiempo y recursos para todos.</p>
+                    <p className="text-sm text-primary/70">Proceso optimizado que ahorra tiempo y recursos para todos.</p>
                   </div>
-                  <div className="bg-purple-50 rounded-xl p-5 border border-purple-100">
-                    <h4 className="font-semibold text-purple-800 mb-2 flex items-center">
+                  <div className="bg-accent/30 rounded-xl p-5 border border-accent">
+                    <h4 className="font-semibold text-primary mb-2 flex items-center">
                       <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
                       </svg>
                       Colaboración
                     </h4>
-                    <p className="text-sm text-purple-700">Trabajo en equipo efectivo para lograr los mejores resultados.</p>
+                    <p className="text-sm text-primary/70">Trabajo en equipo efectivo para lograr los mejores resultados.</p>
                   </div>
                 </div>
                 <p className="mb-4 text-center font-medium">¡Hagamos Algo Increíble Juntos!</p>
               </div>
             </TabContent>
-            
+
             {/* Content Tab */}
             <TabContent isActive={activeTab === 1}>
-              <div className="text-gray-700">
+              <div className="text-primary/80">
                 <h4 className="text-xl font-semibold mb-4">Contenido: Llenando el Coche con Equipaje</h4>
-                <div className="mb-6 bg-amber-50 p-4 rounded-lg border border-amber-100">
+                <div className="mb-6 bg-accent/20 p-4 rounded-lg border border-accent/30">
                   <p className="mb-4">
                     Así como llenarías tu coche con equipaje para un viaje, tu sitio web necesita contenido de calidad para funcionar correctamente.
                   </p>
                   <div className="flex items-start mb-4">
-                    <div className="w-2 h-2 bg-amber-500 rounded-full mt-2 mr-3 flex-shrink-0"></div>
+                    <div className="w-2 h-2 bg-accent rounded-full mt-2 mr-3 flex-shrink-0"></div>
                     <div>
                       <h5 className="font-semibold text-gray-900 mb-1">Mi Rol</h5>
-                      <p className="text-gray-600">Me enfoco en construir la estructura y funcionalidad de tu sitio. A menos que se acuerde lo contrario, la creación de contenido (textos, imágenes, videos, logotipos, etc.) generalmente no está incluida en el diseño y desarrollo.</p>
+                      <p className="text-primary/80">Me enfoco en construir la estructura y funcionalidad de tu sitio. A menos que se acuerde lo contrario, la creación de contenido (textos, imágenes, videos, logotipos, etc.) generalmente no está incluida en el diseño y desarrollo.</p>
                     </div>
                   </div>
                   <div className="flex items-start">
-                    <div className="w-2 h-2 bg-amber-500 rounded-full mt-2 mr-3 flex-shrink-0"></div>
+                    <div className="w-2 h-2 bg-accent rounded-full mt-2 mr-3 flex-shrink-0"></div>
                     <div>
                       <h5 className="font-semibold text-gray-900 mb-1">Tu Rol</h5>
-                      <p className="text-gray-600">Proporcionar el contenido para tu sitio o comunicarme si necesitas ayuda para crearlo. Si necesitas ayuda con el contenido, puedo incluir redacción, edición o búsqueda de imágenes por un costo adicional.</p>
+                      <p className="text-primary/80">Proporcionar el contenido para tu sitio o comunicarme si necesitas ayuda para crearlo. Si necesitas ayuda con el contenido, puedo incluir redacción, edición o búsqueda de imágenes por un costo adicional.</p>
                     </div>
                   </div>
                 </div>
@@ -650,27 +664,27 @@ export const SalesmanAnalogy = () => {
                 </p>
               </div>
             </TabContent>
-            
+
             {/* Hosting Tab */}
             <TabContent isActive={activeTab === 2}>
-              <div className="text-gray-700">
+              <div className="text-primary/80">
                 <h4 className="text-xl font-semibold mb-4">Dominio y Hospedaje: Preparando tu Garaje</h4>
-                <div className="mb-6 bg-blue-50 p-4 rounded-lg border border-blue-100">
+                <div className="mb-6 bg-accent/20 p-4 rounded-lg border border-accent/30">
                   <p className="mb-4">
                     Así como un coche necesita un garaje, tu sitio web necesita un dominio y hospedaje para existir en internet.
                   </p>
                   <div className="flex items-start mb-4">
-                    <div className="w-2 h-2 bg-blue-500 rounded-full mt-2 mr-3 flex-shrink-0"></div>
+                    <div className="w-2 h-2 bg-accent rounded-full mt-2 mr-3 flex-shrink-0"></div>
                     <div>
                       <h5 className="font-semibold text-gray-900 mb-1">Mi Rol</h5>
-                      <p className="text-gray-600">Puedo manejar el registro de dominio, configuración de DNS y hospedaje para una experiencia sin complicaciones. Si prefieres gestionarlos tú, te proporcionaré instrucciones claras y soporte para conectar tu dominio al sitio.</p>
+                      <p className="text-primary/80">Puedo manejar el registro de dominio, configuración de DNS y hospedaje para una experiencia sin complicaciones. Si prefieres gestionarlos tú, te proporcionaré instrucciones claras y soporte para conectar tu dominio al sitio.</p>
                     </div>
                   </div>
                   <div className="flex items-start">
-                    <div className="w-2 h-2 bg-blue-500 rounded-full mt-2 mr-3 flex-shrink-0"></div>
+                    <div className="w-2 h-2 bg-accent rounded-full mt-2 mr-3 flex-shrink-0"></div>
                     <div>
                       <h5 className="font-semibold text-gray-900 mb-1">Tu Rol (Si lo Gestionas Tú)</h5>
-                      <p className="text-gray-600">Responsabilizarte de la configuración de DNS y la propagación. Te guiaré, pero los errores pueden causar tiempos de inactividad, así que es importante prestar atención a los detalles.</p>
+                      <p className="text-primary/80">Responsabilizarte de la configuración de DNS y la propagación. Te guiaré, pero los errores pueden causar tiempos de inactividad, así que es importante prestar atención a los detalles.</p>
                     </div>
                   </div>
                 </div>
@@ -679,27 +693,27 @@ export const SalesmanAnalogy = () => {
                 </p>
               </div>
             </TabContent>
-            
+
             {/* Maintenance Tab */}
             <TabContent isActive={activeTab === 3}>
-              <div className="text-gray-700">
+              <div className="text-primary/80">
                 <h4 className="text-xl font-semibold mb-4">Mantenimiento y Actualizaciones: Conduciendo y Manteniendo el Coche</h4>
-                <div className="mb-6 bg-green-50 p-4 rounded-lg border border-green-100">
+                <div className="mb-6 bg-accent/20 p-4 rounded-lg border border-accent/30">
                   <p className="mb-4">
                     Así como un coche necesita mantenimiento regular, tu sitio web requiere actualizaciones y cuidados para seguir funcionando correctamente.
                   </p>
                   <div className="flex items-start mb-4">
-                    <div className="w-2 h-2 bg-green-500 rounded-full mt-2 mr-3 flex-shrink-0"></div>
+                    <div className="w-2 h-2 bg-accent rounded-full mt-2 mr-3 flex-shrink-0"></div>
                     <div>
                       <h5 className="font-semibold text-gray-900 mb-1">Mi Rol</h5>
-                      <p className="text-gray-600">Ofrezco paquetes opcionales de mantenimiento continuo, que incluyen respaldos, actualizaciones de seguridad y edición de contenido. También proporciono capacitación y documentación si deseas "conducir" el sitio tú mismo.</p>
+                      <p className="text-primary/80">Ofrezco paquetes opcionales de mantenimiento continuo, que incluyen respaldos, actualizaciones de seguridad y edición de contenido. También proporciono capacitación y documentación si deseas "conducir" el sitio tú mismo.</p>
                     </div>
                   </div>
                   <div className="flex items-start">
-                    <div className="w-2 h-2 bg-green-500 rounded-full mt-2 mr-3 flex-shrink-0"></div>
+                    <div className="w-2 h-2 bg-accent rounded-full mt-2 mr-3 flex-shrink-0"></div>
                     <div>
                       <h5 className="font-semibold text-gray-900 mb-1">Tu Rol</h5>
-                      <p className="text-gray-600">Decidir si manejarás las actualizaciones y el mantenimiento o prefieres que yo tome el volante con un plan de soporte. ¡Los sitios web, como los coches, necesitan "combustible" y "cambios de aceite" regulares para mantenerse en óptimas condiciones!</p>
+                      <p className="text-primary/80">Decidir si manejarás las actualizaciones y el mantenimiento o prefieres que yo tome el volante con un plan de soporte. ¡Los sitios web, como los coches, necesitan "combustible" y "cambios de aceite" regulares para mantenerse en óptimas condiciones!</p>
                     </div>
                   </div>
                 </div>
@@ -709,20 +723,32 @@ export const SalesmanAnalogy = () => {
               </div>
             </TabContent>
           </div>
-          
+
           {/* Call to Action Buttons */}
           <div className="text-center">
-            <motion.button 
+            <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-lg text-lg shadow-lg hover:shadow-xl transition-all duration-300 mr-4"
+              className="bg-primary hover:bg-primary/90 text-white font-bold py-3 px-8 rounded-lg text-lg shadow-lg hover:shadow-xl transition-all duration-300 mr-4"
+              onClick={() => {
+                document.getElementById('contact')?.scrollIntoView({
+                  behavior: 'smooth',
+                  block: 'start'
+                });
+              }}
             >
               ¡Comencemos Ahora!
             </motion.button>
-            <motion.button 
+            <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="bg-white border border-gray-300 hover:border-gray-400 text-gray-700 font-bold py-3 px-8 rounded-lg text-lg shadow-lg hover:shadow-xl transition-all duration-300"
+              className="glass border border-primary/20 hover:border-primary/40 text-primary font-bold py-3 px-8 rounded-lg text-lg shadow-lg hover:shadow-xl transition-all duration-300"
+              onClick={() => {
+                document.getElementById('services')?.scrollIntoView({
+                  behavior: 'smooth',
+                  block: 'start'
+                });
+              }}
             >
               Conoce Más
             </motion.button>
