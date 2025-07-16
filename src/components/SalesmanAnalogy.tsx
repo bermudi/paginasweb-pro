@@ -1,11 +1,49 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import VanAnimation from './VanAnimation';
 import CarAnimation from './CarAnimation';
 import CollapsibleSection from './CollapsibleSection';
 import './SalesmanAnalogyAnimations.css';
 
+interface TabProps {
+  title: string;
+  icon: React.ReactNode;
+  isActive: boolean;
+  onClick: () => void;
+}
+
+const Tab: React.FC<TabProps> = ({ title, icon, isActive, onClick }) => {
+  return (
+    <button
+      onClick={onClick}
+      className={`flex items-center justify-center gap-2 px-4 py-3 rounded-t-lg transition-all duration-300 ${isActive 
+        ? 'bg-white text-blue-700 font-semibold border-t border-l border-r border-blue-200' 
+        : 'bg-blue-100/50 text-blue-600 hover:bg-blue-100'}`}
+    >
+      <span className="w-5 h-5">{icon}</span>
+      <span>{title}</span>
+    </button>
+  );
+};
+
+interface TabContentProps {
+  isActive: boolean;
+  children: React.ReactNode;
+}
+
+const TabContent: React.FC<TabContentProps> = ({ isActive, children }) => {
+  if (!isActive) return null;
+  
+  return (
+    <div className="bg-white border border-blue-200 rounded-b-lg rounded-tr-lg p-6 animate-fadeIn">
+      {children}
+    </div>
+  );
+};
+
 export const SalesmanAnalogy = () => {
+  const [activeTab, setActiveTab] = useState<number>(0);
+  
   useEffect(() => {
     // Schema.org JSON-LD for SEO
     const script = document.createElement('script');
@@ -179,11 +217,36 @@ export const SalesmanAnalogy = () => {
 
           <CollapsibleSection title="Evitando Baches en el Camino: Expectativas vs. Realidad">
             <div className="space-y-6">
+              <p className="text-gray-700 mb-4">
+                Quiero pasar de ser un "chofer renuente" a tu confiable "instructor de manejo". Así es como podemos asegurar un viaje sin frustraciones:
+              </p>
+              
+              <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 mb-4">
+                <h5 className="font-semibold text-blue-800 mb-2">🗺️ ¿Falta de Ruta? Hagamos una Juntos</h5>
+                <p className="text-blue-700">Muchos clientes quieren "conducir hacia el éxito", pero no están seguros del destino. Te ayudaré a definir tus metas, público objetivo y estrategia de contenido desde el principio.</p>
+              </div>
+              
+              <div className="bg-purple-50 border border-purple-200 rounded-lg p-4 mb-4">
+                <h5 className="font-semibold text-purple-800 mb-2">🚦 ¿Conducción desde el Asiento Trasero? Comuniquémonos Claramente</h5>
+                <p className="text-purple-700">Los cambios "pequeños" a veces son revisiones mayores (¡como convertir un coche en un barco a mitad del viaje!). Explicaré el alcance de las solicitudes para que siempre estemos en la misma página.</p>
+              </div>
+              
+              <div className="bg-amber-50 border border-amber-200 rounded-lg p-4 mb-4">
+                <h5 className="font-semibold text-amber-800 mb-2">🔮 ¿Leer la Mente? No es Necesario</h5>
+                <p className="text-amber-700">No puedo adivinar tus necesidades, pero haré las preguntas correctas para entender tu visión. Una comunicación clara nos ahorrará tiempo y recursos.</p>
+              </div>
+              
+              <div className="bg-emerald-50 border border-emerald-200 rounded-lg p-4 mb-4">
+                <h5 className="font-semibold text-emerald-800 mb-2">⛽ ¿Quién Paga la Gasolina?</h5>
+                <p className="text-emerald-700">Los sitios web necesitan cuidados continuos (actualizaciones, seguridad, hospedaje). Te explicaré estos costos desde el inicio para que no haya sorpresas.</p>
+              </div>
+              
               <div className="bg-red-50 border border-red-200 rounded-lg p-4">
                 <h5 className="font-semibold text-red-800 mb-2">❌ Expectativa Irreal</h5>
                 <p className="text-red-700 mb-2">"Quiero una página como Amazon, pero solo tengo $500 y la necesito para la próxima semana."</p>
                 <p className="text-red-600 text-sm">Esto es como querer un auto de lujo con presupuesto de bicicleta y esperar entrega inmediata.</p>
               </div>
+              
               <div className="bg-green-50 border border-green-200 rounded-lg p-4">
                 <h5 className="font-semibold text-green-800 mb-2">✅ Enfoque Realista</h5>
                 <p className="text-green-700 mb-2">"Necesito una página profesional que muestre mis servicios y convierta visitantes en clientes. ¿Qué se puede hacer con mi presupuesto?"</p>
@@ -220,6 +283,63 @@ export const SalesmanAnalogy = () => {
                 <div>
                   <h5 className="font-semibold text-gray-900">Lanzamiento y Soporte</h5>
                   <p className="text-gray-600">Publicamos tu sitio y damos mantenimiento; como la entrega y la garantía de tu coche.</p>
+                </div>
+              </div>
+            </div>
+          </CollapsibleSection>
+          
+          <CollapsibleSection title="Creación de Contenido: Llenando el Coche con Equipaje">
+            <div className="space-y-4">
+              <div className="flex items-start">
+                <div className="w-2 h-2 bg-amber-500 rounded-full mt-2 mr-3 flex-shrink-0"></div>
+                <div>
+                  <h5 className="font-semibold text-gray-900 mb-1">Mi Rol</h5>
+                  <p className="text-gray-600">Me enfoco en construir la estructura y funcionalidad de tu sitio. A menos que se acuerde lo contrario, la creación de contenido (textos, imágenes, videos, logotipos, etc.) generalmente no está incluida en el diseño y desarrollo.</p>
+                </div>
+              </div>
+              <div className="flex items-start">
+                <div className="w-2 h-2 bg-amber-500 rounded-full mt-2 mr-3 flex-shrink-0"></div>
+                <div>
+                  <h5 className="font-semibold text-gray-900 mb-1">Tu Rol</h5>
+                  <p className="text-gray-600">Proporcionar el contenido para tu sitio o comunicarme si necesitas ayuda para crearlo. Si necesitas ayuda con el contenido, puedo incluir redacción, edición o búsqueda de imágenes por un costo adicional.</p>
+                </div>
+              </div>
+            </div>
+          </CollapsibleSection>
+          
+          <CollapsibleSection title="Gestión de Dominio y Hospedaje: Preparando tu Garaje">
+            <div className="space-y-4">
+              <div className="flex items-start">
+                <div className="w-2 h-2 bg-blue-500 rounded-full mt-2 mr-3 flex-shrink-0"></div>
+                <div>
+                  <h5 className="font-semibold text-gray-900 mb-1">Mi Rol</h5>
+                  <p className="text-gray-600">Puedo manejar el registro de dominio, configuración de DNS y hospedaje para una experiencia sin complicaciones. Si prefieres gestionarlos tú, te proporcionaré instrucciones claras y soporte para conectar tu dominio al sitio.</p>
+                </div>
+              </div>
+              <div className="flex items-start">
+                <div className="w-2 h-2 bg-blue-500 rounded-full mt-2 mr-3 flex-shrink-0"></div>
+                <div>
+                  <h5 className="font-semibold text-gray-900 mb-1">Tu Rol (Si lo Gestionas Tú)</h5>
+                  <p className="text-gray-600">Responsabilizarte de la configuración de DNS y la propagación. Te guiaré, pero los errores pueden causar tiempos de inactividad, así que es importante prestar atención a los detalles.</p>
+                </div>
+              </div>
+            </div>
+          </CollapsibleSection>
+          
+          <CollapsibleSection title="Mantenimiento y Actualizaciones: Conduciendo y Manteniendo el Coche">
+            <div className="space-y-4">
+              <div className="flex items-start">
+                <div className="w-2 h-2 bg-green-500 rounded-full mt-2 mr-3 flex-shrink-0"></div>
+                <div>
+                  <h5 className="font-semibold text-gray-900 mb-1">Mi Rol</h5>
+                  <p className="text-gray-600">Ofrezco paquetes opcionales de mantenimiento continuo, que incluyen respaldos, actualizaciones de seguridad y edición de contenido. También proporciono capacitación y documentación si deseas "conducir" el sitio tú mismo.</p>
+                </div>
+              </div>
+              <div className="flex items-start">
+                <div className="w-2 h-2 bg-green-500 rounded-full mt-2 mr-3 flex-shrink-0"></div>
+                <div>
+                  <h5 className="font-semibold text-gray-900 mb-1">Tu Rol</h5>
+                  <p className="text-gray-600">Decidir si manejarás las actualizaciones y el mantenimiento o prefieres que yo tome el volante con un plan de soporte. ¡Los sitios web, como los coches, necesitan "combustible" y "cambios de aceite" regulares para mantenerse en óptimas condiciones!</p>
                 </div>
               </div>
             </div>
@@ -400,30 +520,212 @@ export const SalesmanAnalogy = () => {
             </motion.div>
           </div>
         </motion.div>
-
-        {/* Call to Action */}
+        
+        {/* Unified Call to Action Section with Tabs */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.6 }}
           viewport={{ once: true }}
-          className="text-center"
+          className="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-2xl shadow-lg p-8 border border-blue-100 mt-12"
         >
-          <div className="bg-gradient-to-r from-blue-50 to-purple-50 rounded-2xl p-12 border border-gray-100">
-            <h3 className="text-3xl font-bold text-gray-900 mb-6">
-              ¿Listo para Encender el Motor? ¡Vamos!
-            </h3>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto mb-8 leading-relaxed">
-              Para asegurar un viaje suave desde el principio, aclaremos algunas cosas antes de empezar: ¿Tienes listos los textos e imágenes? ¿Quién gestionará el dominio y hospedaje? ¿Prefieres un plan de mantenimiento o tomarás el volante para las actualizaciones? Al definir estos roles ahora, evitaremos desvíos y construiremos un sitio web que te lleve exactamente a donde quieres ir.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <button className="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-8 rounded-lg transition-colors duration-200">
-                ¡Comencemos Ahora!
-              </button>
-              <button className="border border-gray-300 hover:border-gray-400 text-gray-700 font-semibold py-3 px-8 rounded-lg transition-colors duration-200">
-                Conoce Más
-              </button>
-            </div>
+          <h3 className="text-3xl font-bold text-gray-900 mb-6 text-center">
+            ¿Listo para Encender el Motor? ¡Vamos!
+          </h3>
+          
+          <p className="text-lg mb-8 max-w-3xl mx-auto text-center text-gray-600">
+            Para asegurar un viaje suave desde el principio, aclaremos algunas cosas antes de empezar:
+          </p>
+          
+          {/* Tabs Navigation */}
+          <div className="flex justify-center mb-1 gap-1">
+            <Tab
+              title="Información"
+              icon={
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+              }
+              isActive={activeTab === 0}
+              onClick={() => setActiveTab(0)}
+            />
+            <Tab
+              title="Contenido"
+              icon={
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                </svg>
+              }
+              isActive={activeTab === 1}
+              onClick={() => setActiveTab(1)}
+            />
+            <Tab
+              title="Hospedaje"
+              icon={
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
+                </svg>
+              }
+              isActive={activeTab === 2}
+              onClick={() => setActiveTab(2)}
+            />
+            <Tab
+              title="Mantenimiento"
+              icon={
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4" />
+                </svg>
+              }
+              isActive={activeTab === 3}
+              onClick={() => setActiveTab(3)}
+            />
+          </div>
+          
+          {/* Tab Contents */}
+          <div className="mb-8">
+            {/* Overview Tab */}
+            <TabContent isActive={activeTab === 0}>
+              <div className="text-gray-700">
+                <p className="mb-6">
+                  Al definir estos roles ahora, evitaremos desvíos y construiremos un sitio web que te lleve exactamente a donde quieres ir. Estoy aquí para construir el "coche" de tus sueños y enseñarte a conducirlo, o conducirlo por ti si esa es tu preferencia.
+                </p>
+                <div className="grid md:grid-cols-3 gap-6 mb-6">
+                  <div className="bg-blue-50 rounded-xl p-5 border border-blue-100">
+                    <h4 className="font-semibold text-blue-800 mb-2 flex items-center">
+                      <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                      </svg>
+                      Claridad
+                    </h4>
+                    <p className="text-sm text-blue-700">Roles y responsabilidades claramente definidos para evitar confusiones.</p>
+                  </div>
+                  <div className="bg-green-50 rounded-xl p-5 border border-green-100">
+                    <h4 className="font-semibold text-green-800 mb-2 flex items-center">
+                      <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                      </svg>
+                      Eficiencia
+                    </h4>
+                    <p className="text-sm text-green-700">Proceso optimizado que ahorra tiempo y recursos para todos.</p>
+                  </div>
+                  <div className="bg-purple-50 rounded-xl p-5 border border-purple-100">
+                    <h4 className="font-semibold text-purple-800 mb-2 flex items-center">
+                      <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+                      </svg>
+                      Colaboración
+                    </h4>
+                    <p className="text-sm text-purple-700">Trabajo en equipo efectivo para lograr los mejores resultados.</p>
+                  </div>
+                </div>
+                <p className="mb-4 text-center font-medium">¡Hagamos Algo Increíble Juntos!</p>
+              </div>
+            </TabContent>
+            
+            {/* Content Tab */}
+            <TabContent isActive={activeTab === 1}>
+              <div className="text-gray-700">
+                <h4 className="text-xl font-semibold mb-4">Contenido: Llenando el Coche con Equipaje</h4>
+                <div className="mb-6 bg-amber-50 p-4 rounded-lg border border-amber-100">
+                  <p className="mb-4">
+                    Así como llenarías tu coche con equipaje para un viaje, tu sitio web necesita contenido de calidad para funcionar correctamente.
+                  </p>
+                  <div className="flex items-start mb-4">
+                    <div className="w-2 h-2 bg-amber-500 rounded-full mt-2 mr-3 flex-shrink-0"></div>
+                    <div>
+                      <h5 className="font-semibold text-gray-900 mb-1">Mi Rol</h5>
+                      <p className="text-gray-600">Me enfoco en construir la estructura y funcionalidad de tu sitio. A menos que se acuerde lo contrario, la creación de contenido (textos, imágenes, videos, logotipos, etc.) generalmente no está incluida en el diseño y desarrollo.</p>
+                    </div>
+                  </div>
+                  <div className="flex items-start">
+                    <div className="w-2 h-2 bg-amber-500 rounded-full mt-2 mr-3 flex-shrink-0"></div>
+                    <div>
+                      <h5 className="font-semibold text-gray-900 mb-1">Tu Rol</h5>
+                      <p className="text-gray-600">Proporcionar el contenido para tu sitio o comunicarme si necesitas ayuda para crearlo. Si necesitas ayuda con el contenido, puedo incluir redacción, edición o búsqueda de imágenes por un costo adicional.</p>
+                    </div>
+                  </div>
+                </div>
+                <p className="text-center">
+                  <span className="font-semibold">Pregunta clave:</span> ¿Tienes listos los textos, imágenes y otros materiales, o necesitas ayuda para crearlos?
+                </p>
+              </div>
+            </TabContent>
+            
+            {/* Hosting Tab */}
+            <TabContent isActive={activeTab === 2}>
+              <div className="text-gray-700">
+                <h4 className="text-xl font-semibold mb-4">Dominio y Hospedaje: Preparando tu Garaje</h4>
+                <div className="mb-6 bg-blue-50 p-4 rounded-lg border border-blue-100">
+                  <p className="mb-4">
+                    Así como un coche necesita un garaje, tu sitio web necesita un dominio y hospedaje para existir en internet.
+                  </p>
+                  <div className="flex items-start mb-4">
+                    <div className="w-2 h-2 bg-blue-500 rounded-full mt-2 mr-3 flex-shrink-0"></div>
+                    <div>
+                      <h5 className="font-semibold text-gray-900 mb-1">Mi Rol</h5>
+                      <p className="text-gray-600">Puedo manejar el registro de dominio, configuración de DNS y hospedaje para una experiencia sin complicaciones. Si prefieres gestionarlos tú, te proporcionaré instrucciones claras y soporte para conectar tu dominio al sitio.</p>
+                    </div>
+                  </div>
+                  <div className="flex items-start">
+                    <div className="w-2 h-2 bg-blue-500 rounded-full mt-2 mr-3 flex-shrink-0"></div>
+                    <div>
+                      <h5 className="font-semibold text-gray-900 mb-1">Tu Rol (Si lo Gestionas Tú)</h5>
+                      <p className="text-gray-600">Responsabilizarte de la configuración de DNS y la propagación. Te guiaré, pero los errores pueden causar tiempos de inactividad, así que es importante prestar atención a los detalles.</p>
+                    </div>
+                  </div>
+                </div>
+                <p className="text-center">
+                  <span className="font-semibold">Pregunta clave:</span> ¿Lo gestionarás tú, o prefieres que yo me encargue de estos aspectos técnicos?
+                </p>
+              </div>
+            </TabContent>
+            
+            {/* Maintenance Tab */}
+            <TabContent isActive={activeTab === 3}>
+              <div className="text-gray-700">
+                <h4 className="text-xl font-semibold mb-4">Mantenimiento y Actualizaciones: Conduciendo y Manteniendo el Coche</h4>
+                <div className="mb-6 bg-green-50 p-4 rounded-lg border border-green-100">
+                  <p className="mb-4">
+                    Así como un coche necesita mantenimiento regular, tu sitio web requiere actualizaciones y cuidados para seguir funcionando correctamente.
+                  </p>
+                  <div className="flex items-start mb-4">
+                    <div className="w-2 h-2 bg-green-500 rounded-full mt-2 mr-3 flex-shrink-0"></div>
+                    <div>
+                      <h5 className="font-semibold text-gray-900 mb-1">Mi Rol</h5>
+                      <p className="text-gray-600">Ofrezco paquetes opcionales de mantenimiento continuo, que incluyen respaldos, actualizaciones de seguridad y edición de contenido. También proporciono capacitación y documentación si deseas "conducir" el sitio tú mismo.</p>
+                    </div>
+                  </div>
+                  <div className="flex items-start">
+                    <div className="w-2 h-2 bg-green-500 rounded-full mt-2 mr-3 flex-shrink-0"></div>
+                    <div>
+                      <h5 className="font-semibold text-gray-900 mb-1">Tu Rol</h5>
+                      <p className="text-gray-600">Decidir si manejarás las actualizaciones y el mantenimiento o prefieres que yo tome el volante con un plan de soporte. ¡Los sitios web, como los coches, necesitan "combustible" y "cambios de aceite" regulares para mantenerse en óptimas condiciones!</p>
+                    </div>
+                  </div>
+                </div>
+                <p className="text-center">
+                  <span className="font-semibold">Pregunta clave:</span> ¿Quieres tomar el volante para las actualizaciones, o prefieres un plan de mantenimiento?
+                </p>
+              </div>
+            </TabContent>
+          </div>
+          
+          {/* Call to Action Buttons */}
+          <div className="text-center">
+            <motion.button 
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-lg text-lg shadow-lg hover:shadow-xl transition-all duration-300 mr-4"
+            >
+              ¡Comencemos Ahora!
+            </motion.button>
+            <motion.button 
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="bg-white border border-gray-300 hover:border-gray-400 text-gray-700 font-bold py-3 px-8 rounded-lg text-lg shadow-lg hover:shadow-xl transition-all duration-300"
+            >
+              Conoce Más
+            </motion.button>
           </div>
         </motion.div>
       </div>
