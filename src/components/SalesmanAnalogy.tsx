@@ -726,11 +726,11 @@ export const SalesmanAnalogy = () => {
           </div>
 
           {/* Call to Action Buttons */}
-          <div className="text-center">
+          <div className="flex flex-col sm:flex-row justify-center items-center gap-4 sm:gap-6">
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="bg-primary hover:bg-primary/90 text-white font-bold py-3 px-8 rounded-lg text-lg shadow-lg hover:shadow-xl transition-all duration-300 mr-4"
+              className="bg-primary hover:bg-primary/90 text-white font-bold py-3 px-8 rounded-lg text-lg shadow-lg hover:shadow-xl transition-all duration-300 w-full sm:w-auto text-center"
               onClick={() => {
                 document.getElementById('contact')?.scrollIntoView({
                   behavior: 'smooth',
@@ -742,7 +742,7 @@ export const SalesmanAnalogy = () => {
             </motion.button>
             <Link 
               to="/preguntas-frecuentes"
-              className="glass border border-primary/20 hover:border-primary/40 text-primary font-bold py-3 px-8 rounded-lg text-lg shadow-lg hover:shadow-xl transition-all duration-300 inline-block"
+              className="glass border border-primary/20 hover:border-primary/40 text-primary font-bold py-3 px-8 rounded-lg text-lg shadow-lg hover:shadow-xl transition-all duration-300 w-full sm:w-auto text-center"
             >
               Conoce Más
             </Link>
