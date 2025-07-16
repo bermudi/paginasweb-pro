@@ -22,14 +22,14 @@ import { NextJSIcon, ReactIcon, VueIcon, LaravelIcon } from "./icons";
 
 const technologies = [
     {
-        icon: <LayoutDashboard className="w-7 h-7" />,  // Better for frameworks
+        icon: <LayoutDashboard className="w-6 h-6" />,  // Better for frameworks
         title: "Frameworks Modernos",
         description: "Desarrollo con las tecnologías más actuales para crear experiencias web rápidas y dinámicas.",
         items: [
-            { name: "React", icon: <ReactIcon className="w-5 h-5" /> },
-            { name: "Vue.js", icon: <VueIcon className="w-5 h-5" /> },
-            { name: "Next.js", icon: <NextJSIcon className="w-5 h-5" /> },
-            { name: "Laravel", icon: <LaravelIcon className="w-5 h-5" /> }
+            { name: "React", icon: <ReactIcon className="w-4 h-4" /> },
+            { name: "Vue.js", icon: <VueIcon className="w-4 h-4" /> },
+            { name: "Next.js", icon: <NextJSIcon className="w-4 h-4" /> },
+            { name: "Laravel", icon: <LaravelIcon className="w-4 h-4" /> }
         ],
         schema: {
             "@type": "TechArticle",
@@ -38,14 +38,14 @@ const technologies = [
         }
     },
     {
-        icon: <Server className="w-7 h-7" />,
+        icon: <Server className="w-6 h-6" />,
         title: "Herramientas de Rendimiento",
         description: "Optimización avanzada para garantizar velocidad y eficiencia en todos los dispositivos.",
         items: [
-            { name: "CDN Global", icon: <Globe className="w-5 h-5" /> },
-            { name: "Caching Avanzado", icon: <HardDrive className="w-5 h-5" /> },
-            { name: "Optimización de Imágenes", icon: <Image className="w-5 h-5" /> },
-            { name: "Lazy Loading", icon: <Clock className="w-5 h-5" /> }
+            { name: "CDN Global", icon: <Globe className="w-4 h-4" /> },
+            { name: "Caching Avanzado", icon: <HardDrive className="w-4 h-4" /> },
+            { name: "Optimización de Imágenes", icon: <Image className="w-4 h-4" /> },
+            { name: "Lazy Loading", icon: <Clock className="w-4 h-4" /> }
         ],
         schema: {
             "@type": "TechArticle",
@@ -54,14 +54,14 @@ const technologies = [
         }
     },
     {
-        icon: <Shield className="w-7 h-7" />,
+        icon: <Shield className="w-6 h-6" />,
         title: "Medidas de Seguridad",
         description: "Protección integral para tu sitio web y los datos de tus usuarios.",
         items: [
-            { name: "Certificados SSL", icon: <Lock className="w-5 h-5" /> },
-            { name: "Backups Automáticos", icon: <Database className="w-5 h-5" /> },
-            { name: "Monitoreo 24/7", icon: <Eye className="w-5 h-5" /> },
-            { name: "Protección contra ataques", icon: <ShieldCheck className="w-5 h-5" /> }
+            { name: "Certificados SSL", icon: <Lock className="w-4 h-4" /> },
+            { name: "Backups Automáticos", icon: <Database className="w-4 h-4" /> },
+            { name: "Monitoreo 24/7", icon: <Eye className="w-4 h-4" /> },
+            { name: "Protección contra ataques", icon: <ShieldCheck className="w-4 h-4" /> }
         ],
         schema: {
             "@type": "TechArticle",
@@ -70,14 +70,14 @@ const technologies = [
         }
     },
     {
-        icon: <BarChart className="w-7 h-7" />,
+        icon: <BarChart className="w-6 h-6" />,
         title: "Analytics e Integración",
         description: "Herramientas para medir y mejorar el rendimiento de tu presencia digital.",
         items: [
-            { name: "Google Analytics", icon: <Activity className="w-5 h-5" /> },
-            { name: "Estadísticas de uso", icon: <BarChart2 className="w-5 h-5" /> },
-            { name: "Mapas de Calor", icon: <Flame className="w-5 h-5" /> },
-            { name: "Integraciones API", icon: <Code className="w-5 h-5" /> }
+            { name: "Google Analytics", icon: <Activity className="w-4 h-4" /> },
+            { name: "Estadísticas de uso", icon: <BarChart2 className="w-4 h-4" /> },
+            { name: "Mapas de Calor", icon: <Flame className="w-4 h-4" /> },
+            { name: "Integraciones API", icon: <Code className="w-4 h-4" /> }
         ],
         schema: {
             "@type": "TechArticle",
@@ -178,7 +178,7 @@ export const TechStack = () => {
                             whileHover={{ y: -5, transition: { duration: 0.2 } }}
                         >
                             <div className="flex items-center gap-4 mb-4">
-                                <div className="p-3 rounded-lg bg-accent/20 text-accent">
+                                <div className="p-3 rounded-xl  bg-accent">
                                     {tech.icon}
                                 </div>
                                 <h3 className="text-xl font-bold">{tech.title}</h3>
@@ -189,10 +189,10 @@ export const TechStack = () => {
                             >
                                 {tech.description}
                             </p>
-                            <ul className="grid grid-cols-2 gap-2">
+                            <ul className="grid grid-cols-2 gap-2 px-4">
                                 {tech.items.map((item, i) => (
                                     <li key={i} className="flex items-center gap-2">
-                                        <span className="text-accent">
+                                        <span className="text-primary/60 rounded-md bg-accent p-1">
                                             {item.icon}
                                         </span>
                                         <span>{item.name}</span>
