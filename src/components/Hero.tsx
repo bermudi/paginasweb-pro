@@ -87,7 +87,7 @@ export const Hero = () => {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, delay: 0.4 }}
-        className="absolute bottom-8 left-0 right-0 mx-auto glass px-6 py-4 rounded-xl w-max"
+        className="hidden md:block absolute bottom-8 left-0 right-0 mx-auto glass px-6 py-4 rounded-xl w-max"
       >
         <div className="flex items-center justify-center">
           <p className="text-sm font-medium text-center">🚀 ¡Arduamente trabajando en proyectos emocionantes!</p>
