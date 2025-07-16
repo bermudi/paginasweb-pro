@@ -1,6 +1,38 @@
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
+import { useState, useEffect } from "react";
 
 export const Hero = () => {
+  // Array of hero images for slideshow
+  const heroImages = [
+    {
+      src: "images/hero01.webp",
+      alt: "Espacio de trabajo de desarrollo web profesional con múltiples pantallas y equipo moderno"
+    },
+    {
+      src: "images/hero02.webp",
+      alt: "Estación de trabajo de diseño web con computadora y herramientas de desarrollo"
+    },
+    {
+      src: "images/hero03.webp",
+      alt: "Ambiente de desarrollo web con código en pantalla y equipo moderno"
+    },
+    {
+      src: "images/hero04.webp",
+      alt: "Espacio de trabajo de desarrollo web profesional con múltiples pantallas y equipo moderno"
+    }
+  ];
+
+  // State to track current image index
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+
+  // Effect to rotate through images
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentImageIndex((prevIndex) => (prevIndex + 1) % heroImages.length);
+    }, 5000); // Change image every 5 seconds
+
+    return () => clearInterval(interval);
+  }, []);
   return (
     <section
       className="min-h-screen flex items-center justify-center section-padding relative overflow-hidden"
@@ -23,12 +55,12 @@ export const Hero = () => {
             Desarrollo web Profesional
           </span>
           <h1 className="text-4xl md:text-6xl font-bold mb-6 tracking-tight">
-            Creando Experiencias Digitales
+            Creando Experiencias Digitales,
             <br /> con Propósito
           </h1>
           <p className="text-lg md:text-xl text-primary/80 max-w-2xl mx-auto lg:mx-0 mb-8">
-            Creo sitios web personalizados que ayudan a las empresas a lograr sus objetivos a través de
-            prácticas modernas de diseño y desarrollo. Cada proyecto es único, por eso creamos propuestas a medida.
+            Desarrollamos sitios web a medida que transforman la visión de tu empresa en experiencias digitales impactantes.
+            Combinando diseño innovador y tecnologías de vanguardia, cada proyecto refleja la esencia única de tu negocio.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
             <motion.button
@@ -67,17 +99,27 @@ export const Hero = () => {
           transition={{ duration: 0.8, delay: 0.2 }}
           className="lg:w-1/2"
         >
-          <div className="relative">
-            <div className="absolute inset-0 bg-gradient-to-tr from-accent/20 to-transparent rounded-2xl" />
-            <img
-              src="images/hero03.webp"
-              alt="Espacio de trabajo de desarrollo web profesional con múltiples pantallas y equipo moderno"
-              className="rounded-2xl shadow-xl w-full object-cover"
-              style={{ maxHeight: "600px" }}
-              loading="eager"
-              width="800"
-              height="600"
-            />
+          <div className="relative" style={{ height: "600px" }}>
+            <div className="absolute inset-0 bg-gradient-to-tr from-accent/20 to-transparent rounded-2xl z-10" />
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={currentImageIndex}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 1 }}
+                className="absolute inset-0"
+              >
+                <img
+                  src={heroImages[currentImageIndex].src}
+                  alt={heroImages[currentImageIndex].alt}
+                  className="rounded-2xl shadow-xl w-full h-full object-cover"
+                  loading={currentImageIndex === 0 ? "eager" : "lazy"}
+                  width="800"
+                  height="600"
+                />
+              </motion.div>
+            </AnimatePresence>
           </div>
         </motion.div>
       </div>
