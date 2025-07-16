@@ -11,12 +11,13 @@ export const FAQHero = () => {
             {/* Fondo degradado similar al Hero principal */}
             <div className="absolute inset-0 bg-gradient-to-br from-accent via-background to-muted" />
 
-            {/* Contenido principal, centrado y sin imagen para mantenerlo compacto */}
-            <div className="relative z-10 max-w-4xl mx-auto px-8 py-12 flex flex-col items-center text-center bg-background/80 backdrop-blur-sm rounded-2xl shadow-lg border border-primary/10">
+            {/* Contenido principal con imagen */}
+            <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12 flex flex-col lg:flex-row items-center justify-between gap-8 bg-background/80 backdrop-blur-sm rounded-2xl shadow-lg border border-primary/10">
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.8 }}
+                    className="lg:max-w-[55%]"
                 >
                     <span className="px-4 py-2 rounded-full bg-accent text-sm font-medium mb-6 inline-block">
                         Respuestas a tus dudas
@@ -42,6 +43,22 @@ export const FAQHero = () => {
                             Explorar Preguntas
                         </motion.button>
                     </div>
+                </motion.div>
+                {/* Ilustración */}
+                <motion.div 
+                    className="relative w-full max-w-md lg:max-w-none lg:w-2/5"
+                    initial={{ opacity: 0, x: 20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.8, delay: 0.2 }}
+                >
+                    <img
+                        src="/images/faq/illustration-woman-online-mobile.svg"
+                        alt="Ilustración de una mujer interactuando con contenido digital"
+                        width={500}
+                        height={500}
+                        className="w-full h-auto object-contain"
+                        loading="eager"
+                    />
                 </motion.div>
             </div>
 
