@@ -178,7 +178,7 @@ export const TechStack = () => {
                             whileHover={{ y: -5, transition: { duration: 0.2 } }}
                         >
                             <div className="flex items-center gap-4 mb-4">
-                                <div className="p-3 rounded-xl  bg-accent">
+                                <div className="p-3 rounded-xl text-primary/90 bg-accent">
                                     {tech.icon}
                                 </div>
                                 <h3 className="text-xl font-bold">{tech.title}</h3>
@@ -195,7 +195,7 @@ export const TechStack = () => {
                                         <span className="text-primary/25">
                                             {item.icon}
                                         </span>
-                                        <span>{item.name}</span>
+                                        <span className="text-primary/70">{item.name}</span>
                                     </li>
                                 ))}
                             </ul>
