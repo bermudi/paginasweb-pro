@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronDown, Search } from 'lucide-react';
+import ReactMarkdown from 'react-markdown';
+import remarkGfm from 'remark-gfm';
+import rehypeRaw from 'rehype-raw';
 
 type FAQItem = {
   question: string;
@@ -331,12 +334,11 @@ const FAQ: React.FC = () => {
                       role="region"
                       aria-labelledby={`faq-question-${index}`}
                     >
-                      <div
-                        className="prose prose-indigo max-w-none"
-                        dangerouslySetInnerHTML={{
-                          __html: faq.answer.replace(/\n/g, '<br />')
-                        }}
-                      />
+                      <div className="prose prose-indigo max-w-none">
+                        <ReactMarkdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]}>
+                          {faq.answer}
+                        </ReactMarkdown>
+                      </div>
                     </motion.div>
                   )}
                 </AnimatePresence>
