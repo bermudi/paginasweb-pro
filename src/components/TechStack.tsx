@@ -4,7 +4,6 @@ import {
     Server,
     Shield,
     BarChart,
-    Cpu,
     Globe,
     HardDrive,
     Clock,
@@ -13,16 +12,17 @@ import {
     ShieldCheck,
     Activity,
     LayoutDashboard,
-    Search,
     Flame,
-    BarChart2
+    BarChart2,
+    Image,
+    Eye
 } from "lucide-react";
 import { useEffect, useRef } from "react";
 import { NextJSIcon, ReactIcon, VueIcon, LaravelIcon } from "./icons";
 
 const technologies = [
     {
-        icon: <LayoutDashboard className="w-7 h-7" />,
+        icon: <LayoutDashboard className="w-7 h-7" />,  // Better for frameworks
         title: "Frameworks Modernos",
         description: "Desarrollo con las tecnologías más actuales para crear experiencias web rápidas y dinámicas.",
         items: [
@@ -44,7 +44,7 @@ const technologies = [
         items: [
             { name: "CDN Global", icon: <Globe className="w-5 h-5" /> },
             { name: "Caching Avanzado", icon: <HardDrive className="w-5 h-5" /> },
-            { name: "Optimización de Imágenes", icon: <Cpu className="w-5 h-5" /> },
+            { name: "Optimización de Imágenes", icon: <Image className="w-5 h-5" /> },
             { name: "Lazy Loading", icon: <Clock className="w-5 h-5" /> }
         ],
         schema: {
@@ -60,7 +60,7 @@ const technologies = [
         items: [
             { name: "Certificados SSL", icon: <Lock className="w-5 h-5" /> },
             { name: "Backups Automáticos", icon: <Database className="w-5 h-5" /> },
-            { name: "Monitoreo 24/7", icon: <Search className="w-5 h-5" /> },
+            { name: "Monitoreo 24/7", icon: <Eye className="w-5 h-5" /> },
             { name: "Protección contra ataques", icon: <ShieldCheck className="w-5 h-5" /> }
         ],
         schema: {
