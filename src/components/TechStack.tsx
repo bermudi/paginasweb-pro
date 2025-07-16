@@ -1,13 +1,36 @@
 import { motion } from "framer-motion";
-import { Code, Server, Shield, BarChart } from "lucide-react";
-import { useEffect } from "react";
+import {
+    Code,
+    Server,
+    Shield,
+    BarChart,
+    Cpu,
+    Globe,
+    HardDrive,
+    Clock,
+    Lock,
+    Database,
+    ShieldCheck,
+    Activity,
+    LayoutDashboard,
+    Search,
+    Flame,
+    BarChart2
+} from "lucide-react";
+import { useEffect, useRef } from "react";
+import { NextJSIcon, ReactIcon, VueIcon, LaravelIcon } from "./icons";
 
 const technologies = [
     {
-        icon: <Code className="w-6 h-6" />,
+        icon: <LayoutDashboard className="w-7 h-7" />,
         title: "Frameworks Modernos",
         description: "Desarrollo con las tecnologías más actuales para crear experiencias web rápidas y dinámicas.",
-        items: ["React", "Vue.js", "Next.js", "Laravel"],
+        items: [
+            { name: "React", icon: <ReactIcon className="w-5 h-5" /> },
+            { name: "Vue.js", icon: <VueIcon className="w-5 h-5" /> },
+            { name: "Next.js", icon: <NextJSIcon className="w-5 h-5" /> },
+            { name: "Laravel", icon: <LaravelIcon className="w-5 h-5" /> }
+        ],
         schema: {
             "@type": "TechArticle",
             "name": "Frameworks Modernos",
@@ -15,10 +38,15 @@ const technologies = [
         }
     },
     {
-        icon: <Server className="w-6 h-6" />,
+        icon: <Server className="w-7 h-7" />,
         title: "Herramientas de Rendimiento",
         description: "Optimización avanzada para garantizar velocidad y eficiencia en todos los dispositivos.",
-        items: ["CDN Global", "Caching Avanzado", "Optimización de Recursos", "Lazy Loading"],
+        items: [
+            { name: "CDN Global", icon: <Globe className="w-5 h-5" /> },
+            { name: "Caching Avanzado", icon: <HardDrive className="w-5 h-5" /> },
+            { name: "Optimización de Imágenes", icon: <Cpu className="w-5 h-5" /> },
+            { name: "Lazy Loading", icon: <Clock className="w-5 h-5" /> }
+        ],
         schema: {
             "@type": "TechArticle",
             "name": "Herramientas de Rendimiento",
@@ -26,10 +54,15 @@ const technologies = [
         }
     },
     {
-        icon: <Shield className="w-6 h-6" />,
+        icon: <Shield className="w-7 h-7" />,
         title: "Medidas de Seguridad",
         description: "Protección integral para tu sitio web y los datos de tus usuarios.",
-        items: ["Certificados SSL", "Backups Automáticos", "Monitoreo 24/7", "Protección contra ataques"],
+        items: [
+            { name: "Certificados SSL", icon: <Lock className="w-5 h-5" /> },
+            { name: "Backups Automáticos", icon: <Database className="w-5 h-5" /> },
+            { name: "Monitoreo 24/7", icon: <Search className="w-5 h-5" /> },
+            { name: "Protección contra ataques", icon: <ShieldCheck className="w-5 h-5" /> }
+        ],
         schema: {
             "@type": "TechArticle",
             "name": "Medidas de Seguridad",
@@ -37,10 +70,15 @@ const technologies = [
         }
     },
     {
-        icon: <BarChart className="w-6 h-6" />,
+        icon: <BarChart className="w-7 h-7" />,
         title: "Analytics e Integración",
         description: "Herramientas para medir y mejorar el rendimiento de tu presencia digital.",
-        items: ["Google Analytics", "Seguimiento de Conversiones", "Mapas de Calor", "Integraciones API"],
+        items: [
+            { name: "Google Analytics", icon: <Activity className="w-5 h-5" /> },
+            { name: "Estadísticas de uso", icon: <BarChart2 className="w-5 h-5" /> },
+            { name: "Mapas de Calor", icon: <Flame className="w-5 h-5" /> },
+            { name: "Integraciones API", icon: <Code className="w-5 h-5" /> }
+        ],
         schema: {
             "@type": "TechArticle",
             "name": "Analytics e Integración",
@@ -50,6 +88,8 @@ const technologies = [
 ];
 
 export const TechStack = () => {
+    const descriptionRefs = useRef([]);
+
     useEffect(() => {
         // Add Schema.org JSON-LD
         const schema = {
@@ -66,6 +106,14 @@ export const TechStack = () => {
         script.type = 'application/ld+json';
         script.text = JSON.stringify(schema);
         document.head.appendChild(script);
+
+        // Equalize description heights
+        const maxHeight = Math.max(...descriptionRefs.current.map(el => el?.getBoundingClientRect().height || 0));
+        descriptionRefs.current.forEach(el => {
+            if (el) {
+                el.style.height = `${maxHeight}px`;
+            }
+        });
 
         return () => {
             document.head.removeChild(script);
@@ -135,14 +183,19 @@ export const TechStack = () => {
                                 </div>
                                 <h3 className="text-xl font-bold">{tech.title}</h3>
                             </div>
-                            <p className="text-primary/80 mb-4">
+                            <p
+                                ref={(el) => (descriptionRefs.current[index] = el)}
+                                className="text-primary/80 mb-4"
+                            >
                                 {tech.description}
                             </p>
                             <ul className="grid grid-cols-2 gap-2">
                                 {tech.items.map((item, i) => (
                                     <li key={i} className="flex items-center gap-2">
-                                        <span className="text-accent">•</span>
-                                        <span>{item}</span>
+                                        <span className="text-accent">
+                                            {item.icon}
+                                        </span>
+                                        <span>{item.name}</span>
                                     </li>
                                 ))}
                             </ul>
