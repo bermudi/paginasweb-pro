@@ -63,7 +63,7 @@ export const Hero = () => {
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="px-8 py-4 bg-accent text-white rounded-lg font-medium"
+              className="px-8 py-4 bg-accent rounded-lg font-medium"
               onClick={() => {
                 document.getElementById('contact')?.scrollIntoView({
                   behavior: 'smooth',
