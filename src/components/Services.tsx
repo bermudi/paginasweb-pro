@@ -118,6 +118,19 @@ export const Services = () => {
             </motion.article>
           ))}
         </div>
+        
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.4 }}
+          className="mt-16 text-center"
+        >
+          <div className="inline-block glass rounded-2xl px-8 py-6">
+            <h3 className="text-xl font-semibold mb-2">¡También hacemos software de escritorio a la medida!</h3>
+            <p className="text-primary/80">¿Necesitas una aplicación de escritorio personalizada? ¡Pregúntanos!</p>
+          </div>
+        </motion.div>
       </div>
     </section>
   );
