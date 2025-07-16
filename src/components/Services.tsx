@@ -66,6 +66,7 @@ export const Services = () => {
 
   return (
     <section
+      id="services"
       className="section-padding"
       aria-label="Servicios ofrecidos"
     >

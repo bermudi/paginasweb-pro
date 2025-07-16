@@ -75,7 +75,7 @@ export const Projects = () => {
   return (
     <section 
       id="projects" 
-      className="section-padding bg-secondary"
+      className="py-20 bg-gradient-to-b from-background to-muted section-padding bg-secondary"
       aria-label="Proyectos destacados"
     >
       <div className="max-w-6xl mx-auto">

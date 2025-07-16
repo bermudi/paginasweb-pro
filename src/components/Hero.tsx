@@ -10,22 +10,6 @@ export const Hero = () => {
       {/* Fondo degradado */}
       <div className="absolute inset-0 bg-gradient-to-br from-accent via-background to-muted" />
 
-      {/* Círculos decorativos 
-      <div className="absolute inset-0 overflow-hidden">
-        <motion.div
-          initial={{ opacity: 0, scale: 0.8 }}
-          animate={{ opacity: 0.1, scale: 1 }}
-          transition={{ duration: 1.5, repeat: Infinity, repeatType: "reverse" }}
-          className="absolute -top-1/4 -right-1/4 w-1/2 h-1/2 rounded-full bg-primary"
-        />
-        <motion.div
-          initial={{ opacity: 0, scale: 0.8 }}
-          animate={{ opacity: 0.1, scale: 1 }}
-          transition={{ duration: 2, repeat: Infinity, repeatType: "reverse", delay: 0.5 }}
-          className="absolute -bottom-1/4 -left-1/4 w-1/2 h-1/2 rounded-full bg-accent"
-        />
-      </div> Círculos decorativos */}
-
       {/* Contenido principal */}
       <div className="relative z-10 max-w-7xl mx-auto px-8 py-12 flex flex-col lg:flex-row items-center gap-12 bg-background/80 backdrop-blur-sm rounded-2xl shadow-lg border border-primary/10">
         {/* Contenido de texto */}
