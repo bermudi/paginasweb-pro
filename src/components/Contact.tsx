@@ -48,6 +48,7 @@ export const Contact = ({ }: ContactProps = {}) => {
     { value: "ecommerce", label: "Tienda online / E-commerce" },
     { value: "aplicacion-web", label: "Aplicación web" },
     { value: "rediseno", label: "Rediseño de sitio existente" },
+    { value: "desktop-app", label: "Aplicación de escritorio" },
     { value: "otro", label: "Otro" },
   ];
 
