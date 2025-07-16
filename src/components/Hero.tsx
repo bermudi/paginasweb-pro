@@ -106,7 +106,7 @@ export const Hero = () => {
         className="absolute bottom-8 left-0 right-0 mx-auto glass px-6 py-4 rounded-xl w-max"
       >
         <div className="flex items-center justify-center">
-          <p className="text-sm font-medium text-center">🚀 Arduamente trabajando en proyectos emocionantes</p>
+          <p className="text-sm font-medium text-center">🚀 ¡Arduamente trabajando en proyectos emocionantes!</p>
         </div>
       </motion.div>
 
