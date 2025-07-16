@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
 import VanAnimation from './VanAnimation';
 import CarAnimation from './CarAnimation';
 import CollapsibleSection from './CollapsibleSection';
@@ -739,19 +740,12 @@ export const SalesmanAnalogy = () => {
             >
               ¡Comencemos Ahora!
             </motion.button>
-            <motion.button
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="glass border border-primary/20 hover:border-primary/40 text-primary font-bold py-3 px-8 rounded-lg text-lg shadow-lg hover:shadow-xl transition-all duration-300"
-              onClick={() => {
-                document.getElementById('services')?.scrollIntoView({
-                  behavior: 'smooth',
-                  block: 'start'
-                });
-              }}
+            <Link 
+              to="/preguntas-frecuentes"
+              className="glass border border-primary/20 hover:border-primary/40 text-primary font-bold py-3 px-8 rounded-lg text-lg shadow-lg hover:shadow-xl transition-all duration-300 inline-block"
             >
               Conoce Más
-            </motion.button>
+            </Link>
           </div>
         </motion.div>
       </div>
