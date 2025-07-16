@@ -12,17 +12,7 @@
   will-change: transform;
 }
 
-.van-main {
-  position: absolute;
-  bottom: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 10;
-  animation: carbody-bounce 1s linear infinite;
-  width: 70%;
-  height: auto;
-  max-width: 400px;
-}
+
 
 @keyframes carbody-bounce {
   0%, 100% { transform: translateX(-50%) translateY(0); }
@@ -32,7 +22,7 @@
   80% { transform: translateX(-50%) translateY(0); }
 }
 
-.van-wheel {
+.van-wheel-inner {
   animation: van-wheel-spin 0.6s linear infinite;
   transform-origin: center;
 }
@@ -55,13 +45,19 @@
   80% { transform: scaleX(1) scaleY(1); }
 }
 
-.smoke-group {
+.van-main {
   position: absolute;
-  bottom: 70px;
-  right: 15%;
-  z-index: 0;
-  pointer-events: none;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
+  animation: carbody-bounce 1s linear infinite;
+  width: 70%;
+  height: auto;
+  max-width: 400px;
 }
+
+
 
 .smoke-puff {
   fill: #BDE6E3;

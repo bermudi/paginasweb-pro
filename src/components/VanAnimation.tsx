@@ -22,17 +22,17 @@ interface VanAnimationProps {
 const VanAnimation: React.FC<VanAnimationProps> = ({ animationSpeed = 1 }) => {
   return (
     <div className="van-container">
-      {/* Smoke Animation as SVG */}
-      <Smoke animationSpeed={animationSpeed} />
       {/* Main Van SVG */}
       <svg
         className="van-main"
-        viewBox="0 0 545.6 313.5"
+        viewBox="0 0 600 313.5"
         width="100%"
         height="auto"
         aria-label="Animated camper van with surfboard and smoke"
         role="img"
       >
+        {/* Smoke is now inside the SVG, positioned relative to the van */}
+        <Smoke animationSpeed={animationSpeed} />
         <g className="van-wrapper">
           {/* Surf Board */}
           <g className="surf-board">
@@ -99,17 +99,20 @@ const VanAnimation: React.FC<VanAnimationProps> = ({ animationSpeed = 1 }) => {
  * @param animationSpeed Animation speed multiplier
  */
 const Wheel: React.FC<{ cx: number; cy: number; animationSpeed: number }> = ({ cx, cy, animationSpeed }) => (
-  <g
-    className="van-wheel"
-    style={{ transformOrigin: `${cx}px ${cy}px`, animationDuration: `${0.6 / animationSpeed}s` }}
-    aria-hidden="true"
-  >
+  <g className="van-wheel-container" aria-hidden="true">
+    {/* Fixed tire position */}
     <circle cx={cx} cy={cy} r={24} fill="#898989" />
     <circle cx={cx + 0.3} cy={cy + 0.3} r={11} fill="#FFFFFF" />
-    <path
-      fill="#C9CACA"
-      d={`M${cx + 0.5},${cy - 6.9}c-4.1,0-7.3,3.2-7.3,7.2c0,4,3.3,7.2,7.3,7.2c0-2.3,0-4.7,0-7c2.8,0,4.7,0,7.3,0c0-0.1,0-0.2,0-0.2C${cx + 7.3},${cy - 3.7},${cx + 4.1},${cy - 6.9},${cx + 0.5},${cy - 6.9}z`}
-    />
+    {/* Only the inner wheel pattern rotates */}
+    <g
+      className="van-wheel-inner"
+      style={{ transformOrigin: `${cx}px ${cy}px`, animationDuration: `${0.6 / animationSpeed}s` }}
+    >
+      <path
+        fill="#C9CACA"
+        d={`M${cx + 0.5},${cy - 6.9}c-4.1,0-7.3,3.2-7.3,7.2c0,4,3.3,7.2,7.3,7.2c0-2.3,0-4.7,0-7c2.8,0,4.7,0,7.3,0c0-0.1,0-0.2,0-0.2C${cx + 7.3},${cy - 3.7},${cx + 4.1},${cy - 6.9},${cx + 0.5},${cy - 6.9}z`}
+      />
+    </g>
   </g>
 );
 
@@ -118,11 +121,11 @@ const Wheel: React.FC<{ cx: number; cy: number; animationSpeed: number }> = ({ c
  * @param animationSpeed Animation speed multiplier
  */
 const Smoke: React.FC<{ animationSpeed: number }> = ({ animationSpeed }) => (
-  <svg className="smoke-group" width="60" height="60" viewBox="0 0 60 60" aria-hidden="true">
-    <circle className="smoke-puff" cx="15" cy="45" r="8" style={{ animationDuration: `${1.5 / animationSpeed}s` }} />
-    <circle className="smoke-puff smoke-puff2" cx="30" cy="50" r="6" style={{ animationDuration: `${1.5 / animationSpeed}s` }} />
-    <circle className="smoke-puff smoke-puff3" cx="45" cy="55" r="4" style={{ animationDuration: `${1.5 / animationSpeed}s` }} />
-  </svg>
+  <g className="smoke-group" transform="translate(510, 185)" aria-hidden="true">
+    <circle className="smoke-puff" cx="15" cy="25" r="4" style={{ animationDuration: `${1.5 / animationSpeed}s` }} />
+    <circle className="smoke-puff smoke-puff2" cx="30" cy="20" r="6" style={{ animationDuration: `${1.5 / animationSpeed}s` }} />
+    <circle className="smoke-puff smoke-puff3" cx="45" cy="15" r="8" style={{ animationDuration: `${1.5 / animationSpeed}s` }} />
+  </g>
 );
 
 
