@@ -201,22 +201,13 @@ const FAQ: React.FC = () => {
 
   // Animation variants
   const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1
-      }
-    }
+    hidden: { },
+    visible: { }
   };
 
   const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: { duration: 0.3 }
-    }
+    hidden: { },
+    visible: { }
   };
 
   const contentVariants = {
@@ -246,9 +237,7 @@ const FAQ: React.FC = () => {
     <section id="faq" className="py-16 md:py-24 bg-gradient-to-b from-white to-gray-50">
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
         <motion.header
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.3 }}
+          initial={false}
           variants={containerVariants}
           className="text-center mb-12"
         >
@@ -301,17 +290,14 @@ const FAQ: React.FC = () => {
         {/* FAQ Items */}
         <motion.div
           className="max-w-3xl mx-auto space-y-4"
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.2 }}
+          initial={false}
         >
           {filteredFAQs.length > 0 ? (
             filteredFAQs.map((faq, index) => (
               <motion.div
                 key={index}
                 className="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden"
-                variants={itemVariants}
+                initial={false}
               >
                 <button
                   className="w-full px-6 py-5 text-left flex justify-between items-center focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 rounded-lg"
