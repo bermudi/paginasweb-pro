@@ -98,16 +98,18 @@ export const Hero = () => {
         </motion.div>
       </div>
 
-      {/* Tarjeta con efecto de vidrio 
+      {/* Tarjeta con efecto de vidrio Tarjeta con efecto de vidrio */}
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, delay: 0.4 }}
-        className="absolute bottom-8 left-1/2 transform -translate-x-1/2 glass px-6 py-4 rounded-xl"
+        className="absolute bottom-8 left-0 right-0 mx-auto glass px-6 py-4 rounded-xl w-max"
       >
-        <p className="text-sm font-medium">🚀 Actualmente trabajando en proyectos emocionantes</p>
+        <div className="flex items-center justify-center">
+          <p className="text-sm font-medium text-center">🚀 Arduamente trabajando en proyectos emocionantes</p>
+        </div>
       </motion.div>
-      Tarjeta con efecto de vidrio */}
+
     </section>
   );
 };
