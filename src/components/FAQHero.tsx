@@ -35,7 +35,7 @@ export const FAQHero = () => {
                                 whileTap={{ scale: 0.95 }}
                                 className="px-6 py-3 sm:px-8 sm:py-4 bg-primary text-white rounded-lg font-medium whitespace-nowrap"
                                 onClick={() => {
-                                    document.getElementById('faq')?.scrollIntoView({
+                                    document.getElementById('faq-content')?.scrollIntoView({
                                         behavior: 'smooth',
                                         block: 'start'
                                     });

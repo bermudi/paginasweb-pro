@@ -237,16 +237,24 @@ const FAQ: React.FC = () => {
   };
 
   const faqSectionRef = useRef<HTMLElement>(null);
+  const hasScrolled = useRef(false);
 
-  // Scroll to FAQ section when component mounts if URL has #faq
+  // Scroll to FAQ section only when explicitly requested via hash
   useEffect(() => {
-    if (window.location.hash === '#faq' && faqSectionRef.current) {
-      faqSectionRef.current.scrollIntoView({ behavior: 'smooth' });
+    if (window.location.hash === '#faq' && faqSectionRef.current && !hasScrolled.current) {
+      // Small timeout to ensure the page has rendered
+      const timer = setTimeout(() => {
+        if (faqSectionRef.current) {
+          window.scrollTo(0, 0);
+          hasScrolled.current = true;
+        }
+      }, 50);
+      return () => clearTimeout(timer);
     }
   }, []);
 
   return (
-    <section id="faq" ref={faqSectionRef} className="py-16 md:py-24 bg-gradient-to-b from-white to-gray-50">
+    <section id="faq-content" ref={faqSectionRef} className="py-16 md:py-24 bg-gradient-to-b from-white to-gray-50">
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
         <AnimatePresence mode="wait">
           <motion.header
