@@ -28,20 +28,30 @@ export const FAQHero = () => {
                     <p className="text-lg md:text-xl text-primary/80 max-w-2xl mx-auto mb-8">
                         Encuentra respuestas claras y detalladas a las consultas más comunes sobre nuestros servicios de desarrollo web, procesos y tecnologías. Si no ves lo que buscas, no dudes en contactarnos.
                     </p>
-                    <div className="flex justify-center">
-                        <motion.button
-                            whileHover={{ scale: 1.05 }}
-                            whileTap={{ scale: 0.95 }}
-                            className="px-8 py-4 bg-primary text-white rounded-lg font-medium"
-                            onClick={() => {
-                                document.getElementById('faq')?.scrollIntoView({
-                                    behavior: 'smooth',
-                                    block: 'start'
-                                });
-                            }}
-                        >
-                            Explorar Preguntas
-                        </motion.button>
+                    <div className="w-full">
+                        <div className="inline-flex flex-col sm:flex-row gap-4">
+                            <motion.button
+                                whileHover={{ scale: 1.05 }}
+                                whileTap={{ scale: 0.95 }}
+                                className="px-6 py-3 sm:px-8 sm:py-4 bg-primary text-white rounded-lg font-medium whitespace-nowrap"
+                                onClick={() => {
+                                    document.getElementById('faq')?.scrollIntoView({
+                                        behavior: 'smooth',
+                                        block: 'start'
+                                    });
+                                }}
+                            >
+                                Explorar Preguntas
+                            </motion.button>
+                            <motion.a
+                                href="/"
+                                whileHover={{ scale: 1.05 }}
+                                whileTap={{ scale: 0.95 }}
+                                className="px-6 py-3 sm:px-8 sm:py-4 bg-transparent text-primary border-2 border-primary rounded-lg font-medium whitespace-nowrap"
+                            >
+                                Ir al Inicio
+                            </motion.a>
+                        </div>
                     </div>
                 </motion.div>
                 {/* Ilustración */}
