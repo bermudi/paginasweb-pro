@@ -107,37 +107,47 @@ export const TechStack = () => {
         script.text = JSON.stringify(schema);
         document.head.appendChild(script);
 
-        // Equalize description heights with resize observer for responsiveness
+        // Equalize description heights with debounced resize handling
+        let resizeTimeout;
+        let lastMaxHeight = 0;
+        
         const equalizeHeights = () => {
-            // Reset heights first
-            descriptionRefs.current.forEach(el => {
-                if (el) el.style.height = 'auto';
-            });
+            // Clear any pending timeout
+            if (resizeTimeout) {
+                clearTimeout(resizeTimeout);
+            }
             
-            // Calculate and set max height
-            setTimeout(() => {
-                const maxHeight = Math.max(...descriptionRefs.current.map(el => el?.scrollHeight || 0));
+            // Debounce the height calculation
+            resizeTimeout = setTimeout(() => {
+                // Temporarily reset heights to measure natural height
                 descriptionRefs.current.forEach(el => {
-                    if (el) el.style.height = `${maxHeight}px`;
+                    if (el) el.style.height = 'auto';
                 });
-            }, 100);
+                
+                // Calculate max height
+                const maxHeight = Math.max(...descriptionRefs.current.map(el => el?.scrollHeight || 0));
+                
+                // Only update if height has actually changed significantly
+                if (Math.abs(maxHeight - lastMaxHeight) > 2) {
+                    lastMaxHeight = maxHeight;
+                    descriptionRefs.current.forEach(el => {
+                        if (el) el.style.height = `${maxHeight}px`;
+                    });
+                }
+            }, 150);
         };
 
-        // Initial equalization
-        equalizeHeights();
+        // Initial equalization after a brief delay to ensure DOM is ready
+        setTimeout(equalizeHeights, 200);
 
-        // Set up resize observer
-        const resizeObserver = new ResizeObserver(equalizeHeights);
-        descriptionRefs.current.forEach(el => {
-            if (el) resizeObserver.observe(el);
-        });
-
-        // Handle window resize events
+        // Handle window resize events with debouncing
         window.addEventListener('resize', equalizeHeights);
 
         return () => {
             document.head.removeChild(script);
-            resizeObserver.disconnect();
+            if (resizeTimeout) {
+                clearTimeout(resizeTimeout);
+            }
             window.removeEventListener('resize', equalizeHeights);
         };
     }, []);
