@@ -1,12 +1,12 @@
 import React, { useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { SalesmanAnalogyIntro } from './salesman-analogy/SalesmanAnalogyIntro';
-import { DigitalJourneySection } from './salesman-analogy/DigitalJourneySection';
-import { PerformanceSection } from './salesman-analogy/PerformanceSection';
-import { RolesResponsibilitiesSection } from './salesman-analogy/RolesResponsibilitiesSection';
-import { WorkflowSection } from './salesman-analogy/WorkflowSection';
-import { CallToActionSection } from './salesman-analogy/CallToActionSection';
-import './SalesmanAnalogyAnimations.css';
+import { SalesmanAnalogyIntro } from './SalesmanAnalogy/SalesmanAnalogyIntro';
+import { DigitalJourneySection } from './SalesmanAnalogy/DigitalJourneySection';
+import { PerformanceSection } from './SalesmanAnalogy/PerformanceSection';
+import { RolesResponsibilitiesSection } from './SalesmanAnalogy/RolesResponsibilitiesSection';
+import { WorkflowSection } from './SalesmanAnalogy/WorkflowSection';
+import { CallToActionSection } from './SalesmanAnalogy/CallToActionSection';
+import './SalesmanAnalogy/SalesmanAnalogyAnimations.css';
 
 export const SalesmanAnalogy = () => {
   useEffect(() => {
