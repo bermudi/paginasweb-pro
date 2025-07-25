@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import CollapsibleSection, { CollapsibleSectionProps } from './CollapsibleSection';
+import CollapsibleSection, { CollapsibleSectionProps } from './collapsible-section';
 
 export interface CollapsibleSectionGroupProps {
   children: React.ReactElement<CollapsibleSectionProps>[];
