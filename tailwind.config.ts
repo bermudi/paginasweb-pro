@@ -40,6 +40,12 @@ export default {
           DEFAULT: "#F1F0FB",
           foreground: "#221F26",
         },
+        workflow: {
+          step1: "#93c5fd",
+          step2: "#6ee7b7", 
+          step3: "#c4b5fd",
+          step4: "#fcd34d",
+        },
       },
       keyframes: {
         "accordion-down": {
