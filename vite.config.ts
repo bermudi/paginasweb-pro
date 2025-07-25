@@ -82,12 +82,7 @@ export default defineConfig({
             '@tanstack/react-query'
           ],
           
-          // Content and markdown
-          content: [
-            'react-markdown',
-            'remark-gfm',
-            'rehype-raw'
-          ],
+
           
           // Utilities and misc
           utils: [
