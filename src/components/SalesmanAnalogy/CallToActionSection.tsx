@@ -26,7 +26,7 @@ export const CallToActionSection: React.FC = () => {
           ¿Listo para empezar?
         </span>
         <h3 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
-          ¿Listo para Encender el Motor? ¡Vamos!
+          ¿Quieres Encender el Motor? ¡Vamos!
         </h3>
         <p className="text-lg mb-8 max-w-3xl mx-auto text-primary/80">
           Para asegurar un viaje suave desde el principio, aclaremos algunas cosas antes de empezar:

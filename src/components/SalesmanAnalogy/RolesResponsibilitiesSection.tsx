@@ -12,8 +12,13 @@ export const RolesResponsibilitiesSection: React.FC = () => {
       viewport={{ once: true }}
       className="glass rounded-2xl p-8 shadow-lg border border-white/20 mb-12"
     >
+      <div className="text-center">
+        <span className="px-4 py-2 rounded-full bg-accent text-sm font-medium mb-6 inline-block" role="text">
+          ¿Quién Hace Qué?
+        </span>
+      </div>
       <h3 className="text-3xl font-bold text-gray-900 mb-8 text-center">
-        ¿Quién Hace Qué? Definiendo Roles y Responsabilidades
+        Definiendo Roles y Responsabilidades
       </h3>
 
       <CollapsibleSectionGroup defaultOpenSection="tu-rol">

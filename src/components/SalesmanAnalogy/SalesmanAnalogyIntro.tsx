@@ -10,6 +10,9 @@ export const SalesmanAnalogyIntro: React.FC = () => {
       viewport={{ once: true }}
       className="text-center mb-16"
     >
+      <span className="px-4 py-2 rounded-full bg-accent text-sm font-medium mb-6 inline-block" role="text">
+        Plan de Viaje
+      </span>
       <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
         ¡Planea tu Viaje Web: Construyamos y Conduzcamos Juntos!
       </h2>
