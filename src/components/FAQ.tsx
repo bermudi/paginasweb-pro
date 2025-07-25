@@ -455,20 +455,14 @@ const FAQ: React.FC = () => {
   };
 
   const faqSectionRef = useRef<HTMLElement>(null);
-  const hasScrolled = useRef(false);
 
-  // Scroll to FAQ section only when explicitly requested via hash
+  // Scroll to top when component mounts (for direct navigation to FAQ page)
   useEffect(() => {
-    if (window.location.hash === '#faq' && faqSectionRef.current && !hasScrolled.current) {
-      // Small timeout to ensure the page has rendered
-      const timer = setTimeout(() => {
-        if (faqSectionRef.current) {
-          window.scrollTo(0, 0);
-          hasScrolled.current = true;
-        }
-      }, 50);
-      return () => clearTimeout(timer);
-    }
+    // Small timeout to ensure the page has rendered
+    const timer = setTimeout(() => {
+      window.scrollTo(0, 0);
+    }, 50);
+    return () => clearTimeout(timer);
   }, []);
 
   return (

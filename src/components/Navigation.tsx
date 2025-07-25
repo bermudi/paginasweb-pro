@@ -97,7 +97,8 @@ export const Navigation: React.FC = () => {
   // Handle anchor links
   const handleLinkClick = (path: string) => {
     setIsOpen(false);
-    
+
+    // If it's a hash link and we're already on the home page, scroll immediately
     if (path.includes('#') && location.pathname === '/') {
       const id = path.split('#')[1];
       const element = document.getElementById(id);
@@ -105,6 +106,8 @@ export const Navigation: React.FC = () => {
         element.scrollIntoView({ behavior: 'smooth', block: 'start' });
       }
     }
+    // For hash links from other pages, React Router will handle the navigation
+    // and the ScrollToTop component will handle the scrolling
   };
 
   return (
@@ -112,16 +115,15 @@ export const Navigation: React.FC = () => {
       {/* Floating menu button */}
       <motion.button
         initial={{ scale: 0.8, opacity: 0 }}
-        animate={{ 
-          scale: 1, 
+        animate={{
+          scale: 1,
           opacity: 1,
           boxShadow: isScrolled ? '0 10px 25px -5px rgba(0, 0, 0, 0.1)' : '0 4px 6px -1px rgba(0, 0, 0, 0.1)'
         }}
         transition={{ duration: 0.3 }}
         onClick={() => setIsOpen(!isOpen)}
-        className={`fixed bottom-6 right-6 z-50 w-14 h-14 rounded-full flex items-center justify-center ${
-          isOpen ? 'bg-primary text-white' : 'glass text-primary'
-        } shadow-lg border border-white/20`}
+        className={`fixed bottom-6 right-6 z-50 w-14 h-14 rounded-full flex items-center justify-center ${isOpen ? 'bg-primary text-white' : 'glass text-primary'
+          } shadow-lg border border-white/20`}
         aria-label="Menu de navegación"
       >
         <motion.div
@@ -182,19 +184,18 @@ export const Navigation: React.FC = () => {
               <nav className="flex-1">
                 <ul className="space-y-2">
                   {links.map((link) => {
-                    const isActive = location.pathname === link.path || 
-                                    (link.path.includes('#') && location.pathname === '/' && location.hash === link.path.substring(1));
-                    
+                    const isActive = location.pathname === link.path ||
+                      (link.path.includes('#') && location.pathname === '/' && location.hash === link.path.substring(1));
+
                     return (
                       <li key={link.path}>
                         <Link
                           to={link.path}
                           onClick={() => handleLinkClick(link.path)}
-                          className={`flex items-center gap-3 px-4 py-3 rounded-lg transition-all ${
-                            isActive
-                              ? 'bg-accent text-primary font-medium'
-                              : 'hover:bg-white/50 text-primary/80 hover:text-primary'
-                          }`}
+                          className={`flex items-center gap-3 px-4 py-3 rounded-lg transition-all ${isActive
+                            ? 'bg-accent text-primary font-medium'
+                            : 'hover:bg-white/50 text-primary/80 hover:text-primary'
+                            }`}
                         >
                           <span className={`${isActive ? 'text-primary' : 'text-primary/70'}`}>
                             {link.icon}
