@@ -110,23 +110,23 @@ export const TechStack = () => {
         // Equalize description heights with debounced resize handling
         let resizeTimeout;
         let lastMaxHeight = 0;
-        
+
         const equalizeHeights = () => {
             // Clear any pending timeout
             if (resizeTimeout) {
                 clearTimeout(resizeTimeout);
             }
-            
+
             // Debounce the height calculation
             resizeTimeout = setTimeout(() => {
                 // Temporarily reset heights to measure natural height
                 descriptionRefs.current.forEach(el => {
                     if (el) el.style.height = 'auto';
                 });
-                
+
                 // Calculate max height
                 const maxHeight = Math.max(...descriptionRefs.current.map(el => el?.scrollHeight || 0));
-                
+
                 // Only update if height has actually changed significantly
                 if (Math.abs(maxHeight - lastMaxHeight) > 2) {
                     lastMaxHeight = maxHeight;
@@ -200,13 +200,14 @@ export const TechStack = () => {
                     variants={containerVariants}
                     initial="hidden"
                     whileInView="visible"
-                    viewport={{ once: true, amount: 0.1 }}
+                    viewport={{ once: true, amount: 0.3 }}
                 >
                     {technologies.map((tech, index) => (
                         <motion.div
                             key={index}
                             variants={itemVariants}
-                            className="bg-background rounded-xl p-6 shadow-lg border border-primary/10 hover:border-primary/30 transition-all flex flex-col h-full"
+                            className="bg-background rounded-xl p-6 shadow-lg transition-colors flex flex-col h-full transform-gpu"
+                            style={{ willChange: 'transform' }}
                             whileHover={{ y: -5, transition: { duration: 0.2 } }}
                         >
                             <div className="flex items-center gap-4 mb-4">
