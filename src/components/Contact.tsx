@@ -1,6 +1,7 @@
 import { useState, FormEvent } from "react";
 import { motion } from "framer-motion";
-import { Send, Phone, CheckCircle, AlertTriangle, Loader } from "lucide-react";
+import { Send, Phone, Loader } from "lucide-react";
+import { SubmissionModal } from "./SubmissionModal";
 
 // Define the structure for form data
 interface FormData {
@@ -39,7 +40,20 @@ interface ContactProps { }
 export const Contact = ({ }: ContactProps = {}) => {
   const [formData, setFormData] = useState<FormData>(initialFormData);
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitStatus, setSubmitStatus] = useState<"idle" | "success" | "error">("idle");
+  const [modalState, setModalState] = useState<{
+    isOpen: boolean;
+    type: "success" | "error";
+    title: string;
+    message: string;
+  }>({
+    isOpen: false,
+    type: "success",
+    title: "",
+    message: "",
+  });
+
+  // Toggle this to test without actually submitting
+  const MOCK_MODE = true;
 
   // Options for form select fields
   const tipoProyectoOptions = [
@@ -71,6 +85,30 @@ export const Contact = ({ }: ContactProps = {}) => {
   ];
 
   /**
+   * Mock submission for testing
+   */
+  const mockSubmit = async () => {
+    // Simulate network delay
+    await new Promise(resolve => setTimeout(resolve, 2000));
+    
+    // Simulate random success/failure (80% success rate)
+    const shouldSucceed = Math.random() > 0.2;
+    
+    if (shouldSucceed) {
+      setModalState({
+        isOpen: true,
+        type: "success",
+        title: "¡Solicitud enviada exitosamente!",
+        message: "Hemos recibido tu solicitud de cotización. Nuestro equipo la revisará y te contactaremos dentro de las próximas 24 horas para discutir los detalles de tu proyecto.",
+      });
+      setFormData(initialFormData);
+      console.log("Mock submission data:", formData);
+    } else {
+      throw new Error("Mock error for testing");
+    }
+  };
+
+  /**
    * Handles form submission to the static forms API.
    */
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
@@ -78,9 +116,13 @@ export const Contact = ({ }: ContactProps = {}) => {
     if (isSubmitting) return;
 
     setIsSubmitting(true);
-    setSubmitStatus("idle");
 
     try {
+      if (MOCK_MODE) {
+        await mockSubmit();
+        return;
+      }
+
       const response = await fetch('https://api.staticforms.xyz/submit', {
         method: 'POST',
         headers: {
@@ -107,14 +149,24 @@ export const Contact = ({ }: ContactProps = {}) => {
       });
 
       if (response.ok) {
-        setSubmitStatus("success");
+        setModalState({
+          isOpen: true,
+          type: "success",
+          title: "¡Solicitud enviada exitosamente!",
+          message: "Hemos recibido tu solicitud de cotización. Nuestro equipo la revisará y te contactaremos dentro de las próximas 24 horas para discutir los detalles de tu proyecto.",
+        });
         setFormData(initialFormData); // Reset form fields
       } else {
         throw new Error('Error en la respuesta del servidor.');
       }
     } catch (error) {
       console.error("Submission error:", error);
-      setSubmitStatus("error");
+      setModalState({
+        isOpen: true,
+        type: "error",
+        title: "Error al enviar la solicitud",
+        message: "Hubo un problema al procesar tu solicitud. Por favor, verifica tu conexión a internet e intenta de nuevo, o contáctanos directamente por WhatsApp o teléfono.",
+      });
     } finally {
       setIsSubmitting(false);
     }
@@ -295,26 +347,7 @@ ${formData.message || '...'}`;
             style={{ display: 'none' }} tabIndex={-1} autoComplete="off"
           />
 
-          {/* Submission Status Feedback */}
-          {submitStatus !== 'idle' && (
-            <div
-              aria-live="polite"
-              className={`p-4 rounded-lg text-center font-medium ${submitStatus === 'success' ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800'
-                }`}
-            >
-              {submitStatus === 'success' ? (
-                <div className="flex items-center justify-center gap-2">
-                  <CheckCircle className="w-5 h-5" />
-                  <span>¡Solicitud enviada! Te contactaremos pronto.</span>
-                </div>
-              ) : (
-                <div className="flex items-center justify-center gap-2">
-                  <AlertTriangle className="w-5 h-5" />
-                  <span>Hubo un error. Por favor, intenta de nuevo.</span>
-                </div>
-              )}
-            </div>
-          )}
+
 
           {/* Action Buttons */}
           <div className="flex flex-col md:flex-row gap-4 mt-8">
@@ -362,6 +395,15 @@ ${formData.message || '...'}`;
             </div>
           </div>
         </motion.form>
+
+        {/* Submission Modal */}
+        <SubmissionModal
+          isOpen={modalState.isOpen}
+          onClose={() => setModalState(prev => ({ ...prev, isOpen: false }))}
+          type={modalState.type}
+          title={modalState.title}
+          message={modalState.message}
+        />
       </div>
     </section>
   );
