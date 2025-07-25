@@ -95,18 +95,14 @@ export const Projects = () => {
           </p>
         </motion.header>
 
-        <div 
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
-          role="list"
-          aria-label="Lista de proyectos"
-        >
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" role="list" aria-label="Lista de proyectos">
           {projects.map((project, index) => (
             <motion.article
               key={index}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: index * 0.2 }}
+              viewport={{ once: true, amount: 0.3 }}
+              transition={{ duration: 0.4, delay: index * 0.1 }}
               role="listitem"
               className="group relative overflow-hidden rounded-2xl bg-white shadow-xl flex flex-col"
             >

@@ -195,13 +195,7 @@ export const TechStack = () => {
                     </p>
                 </motion.header>
 
-                <motion.div
-                    className="grid grid-cols-1 md:grid-cols-2 gap-8"
-                    variants={containerVariants}
-                    initial="hidden"
-                    whileInView="visible"
-                    viewport={{ once: true, amount: 0.3 }}
-                >
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                     {technologies.map((tech, index) => (
                         <motion.div
                             key={index}
@@ -209,6 +203,10 @@ export const TechStack = () => {
                             className="bg-background rounded-xl p-6 shadow-lg transition-colors flex flex-col h-full transform-gpu"
                             style={{ willChange: 'transform' }}
                             whileHover={{ y: -5, transition: { duration: 0.2 } }}
+                            initial={{ opacity: 0, y: 20 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true, amount: 0.3 }}
+                            transition={{ duration: 0.4, delay: index * 0.1 }}
                         >
                             <div className="flex items-center gap-4 mb-4">
                                 <div className="p-3 rounded-xl text-primary/90 bg-accent">
@@ -234,7 +232,7 @@ export const TechStack = () => {
                             </ul>
                         </motion.div>
                     ))}
-                </motion.div>
+                </div>
             </div>
         </section>
     );

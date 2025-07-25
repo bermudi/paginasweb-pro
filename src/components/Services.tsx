@@ -88,18 +88,14 @@ export const Services = () => {
           </p>
         </motion.header>
 
-        <div
-          className="grid grid-cols-1 md:grid-cols-3 gap-8"
-          role="list"
-          aria-label="Lista de servicios"
-        >
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8" role="list" aria-label="Lista de servicios">
           {services.map((service, index) => (
             <motion.article
               key={index}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: index * 0.2 }}
+              viewport={{ once: true, amount: 0.3 }}
+              transition={{ duration: 0.4, delay: index * 0.1 }}
               className="glass rounded-2xl p-8 shadow-[10px_10px_20px_rgba(0,0,0,0.1)] hover:shadow-[5px_5px_10px_rgba(0,0,0,0.15)] transition-shadow duration-300"
               role="listitem"
             >
