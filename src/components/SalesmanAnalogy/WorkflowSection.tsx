@@ -63,10 +63,10 @@ export const WorkflowSection: React.FC = () => {
             initial={{ opacity: 0, y: 50, scale: 0.9 }}
             whileInView={{ opacity: 1, y: 0, scale: 1 }}
             viewport={{ once: true, amount: 0.3 }}
-            transition={getTransition({ 
-              duration: 0.6, 
+            transition={getTransition({
+              duration: 0.6,
               delay: index * 0.15,
-              ease: "easeOut" 
+              ease: "easeOut"
             })}
             className="glass rounded-xl p-6 border border-white/20 relative overflow-hidden cursor-pointer"
             whileHover={{
@@ -77,10 +77,10 @@ export const WorkflowSection: React.FC = () => {
           >
             <motion.div
               initial={{ scale: 0.9 }}
-              className="absolute top-0 right-0 w-16 h-16 rounded-full -mr-8 -mt-8 flex items-center justify-center"
+              className="absolute top-0 right-0 w-16 h-16 rounded-full -mr-8 -mt-8 flex items-center justify-center opacity-50"
               style={{ backgroundColor: step.color }}
               animate={{
-                scale: [1, 1.1, 1],
+                scale: [1, 1.2, 1],
               }}
               transition={getTransition({
                 repeat: Infinity,
