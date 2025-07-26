@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
 
 export interface CollapsibleSectionProps {
@@ -25,12 +25,16 @@ const CollapsibleSection: React.FC<CollapsibleSectionProps> = ({
 }) => {
   // Use local state only when not in single open mode
   const [localIsOpen, setLocalIsOpen] = React.useState(defaultOpen);
+  const sectionRef = useRef<HTMLDivElement>(null);
+  const wasOpenRef = useRef(defaultOpen);
   
   // Determine if section is open based on mode
   const isOpen = singleOpenMode ? activeSection === id : localIsOpen;
 
+
+
   return (
-    <div className="border border-gray-200 rounded-lg overflow-hidden mb-4">
+    <div ref={sectionRef} className="border border-gray-200 rounded-lg overflow-hidden mb-4">
       <button
         onClick={() => {
           if (singleOpenMode && onToggle) {
@@ -58,6 +62,17 @@ const CollapsibleSection: React.FC<CollapsibleSectionProps> = ({
           opacity: isOpen ? 1 : 0
         }}
         transition={{ duration: 0.3, ease: 'easeInOut' }}
+        onAnimationComplete={() => {
+          // Only scroll when transitioning from closed to open
+          if (isOpen && !wasOpenRef.current && sectionRef.current) {
+            sectionRef.current.scrollIntoView({
+              behavior: 'smooth',
+              block: 'nearest'
+            });
+          }
+          // Update the ref to track current state
+          wasOpenRef.current = isOpen;
+        }}
         className="overflow-hidden"
       >
         <div className="px-6 py-4 bg-white">
