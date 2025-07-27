@@ -52,8 +52,9 @@ export const Contact = ({ }: ContactProps = {}) => {
     message: "",
   });
 
-  // Toggle this to test without actually submitting
-  const MOCK_MODE = true;
+  // Auto-detect if we're in development mode and mock form submissions
+  // This will be true when running with 'vite' dev server and false in production builds
+  const MOCK_MODE = import.meta.env.DEV;
 
   // Options for form select fields
   const tipoProyectoOptions = [
